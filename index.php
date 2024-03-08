@@ -12,10 +12,8 @@
   <?php
   header("Location:/site/trang_chu/index.php")
 
-    ?>
-
-
-  <h1>check </h1>
+  ?>
+  <h1>Test Checkgit</h1>
 
 </body>
 

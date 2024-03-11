@@ -26,6 +26,7 @@
     <link type="text/css" rel="stylesheet" href="/content/css/nouislider.min.css" />
 
     <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/content/css/font-awesome.min.css">
 
     <!-- Custom stlylesheet -->
@@ -34,12 +35,7 @@
 
 </head>
 
-<script src="/content/js/jquery.min.js"></script>
-<script src="/content/js/bootstrap.min.js"></script>
-<script src="/content/js/slick.min.js"></script>
-<script src="/content/js/nouislider.min.js"></script>
-<script src="/content/js/jquery.zoom.min.js"></script>
-<script src="/content/js/main.js"></script>
+
 <style>
     label.error {
         color: red;
@@ -81,5 +77,12 @@
     ?>
 
 </body>
+
+<script src="/content/js/jquery.min.js"></script>
+<script src="/content/js/bootstrap.min.js"></script>
+<script src="/content/js/slick.min.js"></script>
+<script src="/content/js/nouislider.min.js"></script>
+<script src="/content/js/jquery.zoom.min.js"></script>
+<script src="/content/js/main.js"></script>
 
 </html>

@@ -13,9 +13,33 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
         type="text/javascript"></script>
     <script src="demoValidation.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="/content/css/bootstrap.min.css" />
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="/content/css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="/content/css/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="/content/css/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="/content/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="/content/css/style.css" />
 
 
 </head>
+
+<script src="/content/js/jquery.min.js"></script>
+<script src="/content/js/bootstrap.min.js"></script>
+<script src="/content/js/slick.min.js"></script>
+<script src="/content/js/nouislider.min.js"></script>
+<script src="/content/js/jquery.zoom.min.js"></script>
+<script src="/content/js/main.js"></script>
 <style>
     label.error {
         color: red;
@@ -44,36 +68,13 @@
     require("header.php");
     ?>
 
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-4">
-        <ul role="list" class="grid grid-cols-12 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12">
-            <?php
-            $currentURL = $_SERVER['REQUEST_URI'];
-            if ($currentURL === "/site/trang_chu/" || $currentURL === "/site/trang_chu/index.php") {
+    <?php
+    require($VIEW_NAME)
+        ?>
 
 
-                ?>
-                <div class="col-span-12">
-                    <img src="/content/images/slider_2.webp" class="w-full object-cover" alt="">
-                </div>
-                <?php
-            }
 
-            ?>
-            <div class="col-span-9 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12">
-                <?php
-                require($VIEW_NAME)
-                    ?>
-            </div>
-            <div class="col-span-3">
-                <?php
-                require("danh_muc.php")
-                    ?>
-            </div>
-
-            <!-- More people... -->
-        </ul>
-
-    </div>
+    <!-- More people... -->
 
     <?php
     require("footer.php");

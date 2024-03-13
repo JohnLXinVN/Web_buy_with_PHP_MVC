@@ -9,14 +9,8 @@ if (exist_param("cart_check")) {
     $VIEW_NAME = "cart_check.php";
 
 
-}
-if (exist_param("page_successfull")) {
-    // $ds_loai_hang = loai_selectall();
-    $VIEW_NAME = "page_successfull.php";
-
-
 } else {
-    $VIEW_NAME = "checkout_bill.php";
+    $VIEW_NAME = "favorite.php";
 
 }
 

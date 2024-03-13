@@ -26,7 +26,6 @@
     <link type="text/css" rel="stylesheet" href="/content/css/nouislider.min.css" />
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/content/css/font-awesome.min.css">
 
     <!-- Custom stlylesheet -->

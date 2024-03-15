@@ -64,11 +64,11 @@
 <body>
 
     <?php
-    require("header.php");
+    require ("header.php");
     ?>
 
     <?php
-    require($VIEW_NAME)
+    require ($VIEW_NAME)
         ?>
 
 
@@ -76,7 +76,7 @@
     <!-- More people... -->
 
     <?php
-    require("footer.php");
+    require ("footer.php");
     ?>
 
 </body>

@@ -55,6 +55,10 @@
         text-decoration: none;
         cursor: not-allowed;
     }
+
+    .padding {
+        padding: 10px 20px;
+    }
 </style>
 
 <body>

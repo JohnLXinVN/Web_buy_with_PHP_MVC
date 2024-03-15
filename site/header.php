@@ -143,6 +143,8 @@ if (isset($_COOKIE['user'])) {
                     <li><a href="#">Cao cấp</a></li>
                     <li><a href="#">Sản phẩm mới</a></li>
                     <li><a href="#">Liên hệ</a></li>
+                    <li><a href="">Tin tức</a></li>
+                    <li><a href="">Giới thiệu</a></li>
 
                 </ul>
                 <!-- /NAV -->

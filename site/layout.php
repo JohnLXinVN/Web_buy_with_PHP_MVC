@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
-        type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
     <script src="demoValidation.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="/content/css/bootstrap.min.css" />
 
@@ -59,24 +59,28 @@
     .padding {
         padding: 10px 20px;
     }
+
+    .custom-button:hover {
+        background-color: #FF1493;
+    }
 </style>
 
 <body>
 
     <?php
-    require ("header.php");
+    require("header.php");
     ?>
 
     <?php
-    require ($VIEW_NAME)
-        ?>
+    require($VIEW_NAME)
+    ?>
 
 
 
     <!-- More people... -->
 
     <?php
-    require ("footer.php");
+    require("footer.php");
     ?>
 
 </body>

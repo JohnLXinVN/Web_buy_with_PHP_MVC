@@ -1,6 +1,6 @@
 <?php
 $userLogin = null;
-if (isset($_COOKIE['user'])) {
+if (isset ($_COOKIE['user'])) {
     $userCookie = $_COOKIE['user'];
 
     $userLogin = unserialize($userCookie);
@@ -63,7 +63,7 @@ if (isset($_COOKIE['user'])) {
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
-                            <a href="#">
+                            <a href="/site/favourite/index.php?favourite_product">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Danh Sách Yêu Thích</span>
                                 <div class="qty">2</div>
@@ -73,7 +73,8 @@ if (isset($_COOKIE['user'])) {
 
                         <!-- Cart -->
                         <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <a href="/site/checkout/index.php?cart_check" class="dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Giỏi Hàng</span>
                                 <div class="qty">3</div>
@@ -107,8 +108,9 @@ if (isset($_COOKIE['user'])) {
                                     <h5>SUBTOTAL: $2940.00</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
-                                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/site/checkout/index.php?cart_check">View Cart</a>
+                                    <a href="/site/checkout/index.php">Checkout <i
+                                            class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -139,12 +141,13 @@ if (isset($_COOKIE['user'])) {
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="#">Trang chủ</a></li>
-                    <li><a href="#">Bán chạy</a></li>
-                    <li><a href="#">Cao cấp</a></li>
-                    <li><a href="#">Sản phẩm mới</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                    <li><a href="">Tin tức</a></li>
-                    <li><a href="">Giới thiệu</a></li>
+                    <li><a href="/site/hang_hoa/store.php">Bán chạy</a></li>
+                    <li><a href="/site/hang_hoa/store.php">Cao cấp</a></li>
+                    <li><a href="/site/hang_hoa/store.php">Sản phẩm mới</a></li>
+                    <li><a href="/site/trang_chu/index.php?lien_he">Liên hệ</a></li>
+                    <li><a href="/site/tin_tuc">Tin tức</a></li>
+                    <li><a href="/site/tin_tuc">Góp ý</a></li>
+                    <li><a href="/site/trang_chu/index.php?gioi_thieu">Giới thiệu</a></li>
 
                 </ul>
                 <!-- /NAV -->

@@ -7,8 +7,6 @@ require("../../global.php");
 if (exist_param("favourite_product")) {
     // $ds_loai_hang = loai_selectall();
     $VIEW_NAME = "favourite_product.php";
-
-
 }
 
 require("../layout.php");

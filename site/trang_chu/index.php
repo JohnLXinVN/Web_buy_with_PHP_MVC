@@ -8,6 +8,9 @@ $ds_hang_hoa_top_10 = hang_hoa_select_top10();
 
 $ds_loai_hang = loai_selectall();
 
+$ds_hang_hoa = hang_hoa_select_all();
+
+$ds_hang_hoa_moi_nhat = hang_hoa_select_newest();
 
 
 if (exist_param("gioi_thieu")) {

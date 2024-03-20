@@ -2428,3 +2428,7 @@ textarea.input {
 .about-us4 .about-us4-1 .about-us4-2{
   line-height: 40px;
 }
+
+.product-btns .add-to-wishlist.active {
+  color: red !important;
+}

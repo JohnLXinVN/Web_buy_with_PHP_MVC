@@ -23,6 +23,11 @@ function hang_hoa_delete($ma_hh)
     pdo_execute($sql);
 }
 
+function loadall_hang_hoa_home(){
+    $sql = "SELECT * FROM hang_hoa where 1 ORDER BY ma_hh DESC LIMIT 0,9";
+    return qdo_query($sql);
+}
+
 
 function hang_hoa_delete_by_loai($ma_loai)
 {

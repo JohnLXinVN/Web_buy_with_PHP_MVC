@@ -51,7 +51,7 @@ if (isset($_COOKIE['user'])) {
                                 <option value="1">Mới Nhất</option>
                                 <option value="1">Cao Cấp</option>
                             </select>
-                            <input class="input" placeholder="Tìm kiếm">
+                            <input class="input focus-visible:outline-none" placeholder="Tìm kiếm">
                             <button class="search-btn">Tìm kiếm</button>
                         </form>
                     </div>

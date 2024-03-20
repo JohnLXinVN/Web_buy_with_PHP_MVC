@@ -1,112 +1,96 @@
-<div class="col-span-12">
-    <h1 class="w-full items-center text-2xl justify-center flex">
-        Giới Thiệu
-    </h1>
-    <div class="row-top py-3 px-4 bg-gray-200 mt-4">
-        <div contenteditable="false" tabindex="-1">
-            <div class="btgrid" data-widget="btgrid">
-                <div class="grid grid-cols-12">
-                    <div class="col col-span-4">
-                        <div class="content">
-                            <meta charset="utf-8">
-                            <table border="0" cellpadding="1" cellspacing="1">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="block w-[40px] h-[40px]"> <img alt=""
-                                                    src="/content/images/Group%2011012.png"
-                                                    style="width: 40px; height: 40px;"></p>
-                                        </td>
-                                        <td>
-                                            <p><strong>Trụ sở chính</strong></p>
-                                            <p><span style="font-size:14px;">VP&nbsp;Hà Nội: Tầng 6 - Tòa nhà MAC PLAZA
-                                                    - Số 10 -&nbsp;Trần Phú, Hà Đông, Hà Nội&nbsp; &nbsp; &nbsp; &nbsp;
-                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+<!--Section: Contact v.2-->
+<section class="mb-4 padding">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+        a matter of hours to help you.</p>
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control">
+                            <label for="name" class="">Your name</label>
                         </div>
                     </div>
-                    <div class="col col-span-4">
-                        <div class="content">
-                            <meta charset="utf-8">
-                            <table border="0" cellpadding="1" cellspacing="1">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="block w-[40px] h-[40px]"><img alt=""
-                                                    src="/content/images/Group%2011013.png"
-                                                    style="width: 40px; height: 40px;"></p>
-                                        </td>
-                                        <td>
-                                            <p><strong>Gửi thắc mắc:</strong></p>
-                                            <p>savanivietnam@savani.com.vn&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;</p>
-                                            <p>&nbsp;</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Your email</label>
                         </div>
                     </div>
-                    <div class="col col-span-4">
-                        <div class="content">
-                            <meta charset="utf-8">
-                            <table border="0" cellpadding="1" cellspacing="1">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <p class="block w-[40px] h-[40px]"><img alt=""
-                                                    src="/content/images/Group%2011014.png"
-                                                    style="width: 40px; height: 40px;"></p>
-                                        </td>
-                                        <td>
-                                            <p><strong>Hotline:</strong></p>
-                                            <p>0888.566.599&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control">
+                            <label for="subject" class="">Subject</label>
                         </div>
                     </div>
                 </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                            <label for="message">Your message</label>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
             </div>
+            <div class="status"></div>
         </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>San Francisco, CA 94126, USA</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+ 01 234 567 89</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>contact@mdbootstrap.com</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+
     </div>
 
-    <form>
-        <div class="mb-4">
-            <label for="name" class="block mb-2 text-gray-800">Họ và tên</label>
-            <input type="text" id="name" name="name"
-                class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
-                placeholder="Nhập họ và tên">
-        </div>
-        <div class="mb-4">
-            <label for="email" class="block mb-2 text-gray-800">Email</label>
-            <input type="email" id="email" name="email"
-                class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
-                placeholder="Nhập địa chỉ email">
-        </div>
-        <div class="mb-4">
-            <label for="message" class="block mb-2 text-gray-800">Nội dung</label>
-            <textarea id="message" name="message"
-                class="w-full border border-gray-300 rounded p-2 h-32 resize-none focus:outline-none focus:border-blue-500"
-                placeholder="Nhập nội dung tin nhắn"></textarea>
-        </div>
-        <div class="text-center">
-            <button type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none">Gửi</button>
-        </div>
-    </form>
-</div>
+</section>
+<!--Section: Contact v.2-->

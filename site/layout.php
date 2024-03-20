@@ -26,7 +26,6 @@
     <link type="text/css" rel="stylesheet" href="/content/css/nouislider.min.css" />
 
     <!-- Font Awesome Icon -->
-
     <link rel="stylesheet" href="/content/css/font-awesome.min.css">
 
     <!-- Custom stlylesheet -->
@@ -56,16 +55,20 @@
         text-decoration: none;
         cursor: not-allowed;
     }
+
+    .padding {
+        padding: 10px 20px;
+    }
 </style>
 
 <body>
 
     <?php
-    require("header.php");
+    require ("header.php");
     ?>
 
     <?php
-    require($VIEW_NAME)
+    require ($VIEW_NAME)
         ?>
 
 
@@ -73,7 +76,7 @@
     <!-- More people... -->
 
     <?php
-    require("footer.php");
+    require ("footer.php");
     ?>
 
 </body>

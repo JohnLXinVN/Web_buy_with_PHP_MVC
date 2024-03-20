@@ -1,11 +1,17 @@
 <?php
 
 require_once("pdo.php");
-
+// Bảo Sửa inner join bảng loại hàng
 function hang_hoa_select_all()
 {
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai ";
+    return qdo_query($sql);
+}
 
-    $sql = "SELECT * FROM hang_hoa";
+// sản phẩm mới nhất
+function hang_hoa_select_newest()
+{
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai ORDER BY hh.ngay_nhap DESC";
     return qdo_query($sql);
 }
 
@@ -46,7 +52,7 @@ function hang_hoa_select_by_id($id)
 
 function hang_hoa_select_top10()
 {
-    $sql = "SELECT * FROM hang_hoa ORDER BY luot_xem DESC LIMIT 10";
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai ORDER BY hh.luot_xem DESC LIMIT 10";
     return qdo_query($sql);
 }
 

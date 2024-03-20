@@ -63,6 +63,14 @@
     .custom-button:hover {
         background-color: #FF1493;
     }
+
+    .product-old-price {
+        margin-left: 10px;
+    }
+
+    .add-to-cart {
+        background-color: #FFC0CB !important;
+    }
 </style>
 
 <body>
@@ -91,5 +99,6 @@
 <script src="/content/js/nouislider.min.js"></script>
 <script src="/content/js/jquery.zoom.min.js"></script>
 <script src="/content/js/main.js"></script>
+<script src="/content/js/app.js"></script>
 
 </html>

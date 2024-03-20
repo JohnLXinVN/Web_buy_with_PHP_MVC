@@ -7,26 +7,25 @@
             <div class="row">
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut.</p>
+                        <h3 class="footer-title">Về XShop</h3>
+                        <p>XShop Không Chỉ Là Thương Hiệu Về Mỹ Phẩm , Chúng Tôi Luôn Quan Tâm Tới Người Tiêu Dùng </p>
                         <ul class="footer-links">
                             <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
                             <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>Xshop@email.com</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
+                        <h3 class="footer-title">Danh Mục</h3>
                         <ul class="footer-links">
-                            <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">Laptops</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Cameras</a></li>
-                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sữa Rửa Mặt</a></li>
+                            <li><a href="#">Son</a></li>
+                            <li><a href="#">Phấn</a></li>
+                            <li><a href="#">Dưỡng Da</a></li>
+                            <li><a href="#">Kem Nền</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,26 +34,26 @@
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Information</h3>
+                        <h3 class="footer-title">Thông Tin</h3>
                         <ul class="footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Orders and Returns</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Xshop</a></li>
+                            <li><a href="#">Liên Hệ</a></li>
+                            <li><a href="#">Mã Giảm Giá</a></li>
+                            <li><a href="#">Đặt Hàng</a></li>
+                            <li><a href="#">Điều Khoản</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Service</h3>
+                        <h3 class="footer-title">Dịch Vụ</h3>
                         <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Tài Khoản</a></li>
+                            <li><a href="#">Giỏ Hàng</a></li>
+                            <li><a href="#">Sản Phẩm</a></li>
+                            <li><a href="#">Tiến Trình</a></li>
+                            <li><a href="#">Giúp Đỡ</a></li>
                         </ul>
                     </div>
                 </div>

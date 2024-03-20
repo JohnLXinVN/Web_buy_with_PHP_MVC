@@ -39,19 +39,28 @@ INSERT INTO `binh_luan` (`ma_bl`, `noi_dung`, `ma_hh`, `ngay_bl`, `ma_kh`) VALUE
 	(19, '123', 22, '2024-02-21', 1),
 	(20, 'ok', 21, '2024-02-21', 7);
 
+-- Dumping structure for table xxshop.category_new
+CREATE TABLE IF NOT EXISTS `category_new` (
+  `id` int NOT NULL,
+  `ten_danh_muc` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table xxshop.category_new: ~0 rows (approximately)
+
 -- Dumping structure for table xxshop.chi_tiet_don_hang
 CREATE TABLE IF NOT EXISTS `chi_tiet_don_hang` (
   `ma_ctdh` int NOT NULL AUTO_INCREMENT,
   `giam_gia` double(10,2) NOT NULL DEFAULT '0.00',
   `don_gia` double(10,2) NOT NULL DEFAULT '0.00',
   `so_luong` int NOT NULL DEFAULT '0',
-  `ma_hh` int NOT NULL DEFAULT '0',
   `ma_dh` int NOT NULL DEFAULT '0',
+  `ma_bt` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ma_ctdh`),
-  KEY `ma_hh1` (`ma_hh`),
   KEY `FK_chi_tiet_don_hang_don_hang` (`ma_dh`),
+  KEY `FK_chi_tiet_don_hang_loai_bt` (`ma_bt`),
   CONSTRAINT `FK_chi_tiet_don_hang_don_hang` FOREIGN KEY (`ma_dh`) REFERENCES `don_hang` (`ma_dh`),
-  CONSTRAINT `ma_hh1` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`)
+  CONSTRAINT `FK_chi_tiet_don_hang_loai_bt` FOREIGN KEY (`ma_bt`) REFERENCES `loai_bt` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table xxshop.chi_tiet_don_hang: ~0 rows (approximately)
@@ -142,6 +151,15 @@ INSERT INTO `hang_hoa` (`ma_hh`, `ten_hh`, `don_gia`, `giam_gia`, `hinh`, `ngay_
 	(24, 'Áo thun nữ tank top, cổ tròn Gavani Abl Fluffy', 99000.00, 0.50, 'gvn16964-min_3a5ab718972f437e8bf77a9c4e1749e6.webp', '2024-02-24', 'Form tank top unisex. Nam nữ đều mặc được.\r\nThiết kế cá tính, với hình in cấu trúc thân trước áo mang nét dễ thường hài hòa, năng động phù hợp buổi đi chơi ngoài trời', 1, 2, 45),
 	(25, 'Áo thun nữ form croptop dài tay _ Gavani akh Forever Mine', 149000.00, 0.70, 'gvn16175-min_e74b51b55f1c4f43b161a00cc9cb4c34.webp', '2024-02-24', 'Được thiết kế tinh tế, áo thun này không chỉ là sự kết hợp hoàn hảo giữa chất liệu cotton 2 chiều cao cấp mà còn mang đến cho bạn phong cách tối giản và sự thoải mái khi mặc.', 1, 2, 45);
 
+-- Dumping structure for table xxshop.loai_bt
+CREATE TABLE IF NOT EXISTS `loai_bt` (
+  `id` int NOT NULL,
+  `loai_bt` varchar(225) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table xxshop.loai_bt: ~0 rows (approximately)
+
 -- Dumping structure for table xxshop.loai_hang
 CREATE TABLE IF NOT EXISTS `loai_hang` (
   `ma_loai` int NOT NULL AUTO_INCREMENT,
@@ -155,36 +173,33 @@ INSERT INTO `loai_hang` (`ma_loai`, `ten_loai`) VALUES
 	(44, 'Đồ Nam'),
 	(45, 'Đồ nữ');
 
--- Dumping structure for table xxshop.sach
-CREATE TABLE IF NOT EXISTS `sach` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tieu_de` varchar(50) NOT NULL DEFAULT '0x30',
-  `hinh_anh` varchar(255) NOT NULL DEFAULT '0x30',
-  `gia` int NOT NULL DEFAULT '0',
-  `mo_ta` varchar(255) NOT NULL DEFAULT '0',
-  `id_tac_gia` int NOT NULL DEFAULT '0',
+-- Dumping structure for table xxshop.order
+CREATE TABLE IF NOT EXISTS `order` (
+  `id` int NOT NULL,
+  `order_date` date NOT NULL,
+  `total_amount` double(10,2) NOT NULL DEFAULT '0.00',
+  `ma_kh` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_sach_tacgia` (`id_tac_gia`),
-  CONSTRAINT `FK_sach_tacgia` FOREIGN KEY (`id_tac_gia`) REFERENCES `tacgia` (`id_tacgia`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_order_users` (`ma_kh`),
+  CONSTRAINT `FK_order_users` FOREIGN KEY (`ma_kh`) REFERENCES `users` (`ma_kh`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table xxshop.sach: ~3 rows (approximately)
-INSERT INTO `sach` (`id`, `tieu_de`, `hinh_anh`, `gia`, `mo_ta`, `id_tac_gia`) VALUES
-	(1, '44444123', '156952.jpg', 123, '123', 1),
-	(11, '1231', '28d5fc7c9a83873a56e541adba74dd27.jpg', 123, '123', 2),
-	(12, 'Hoàng', 'lambo gray.jpg', 123, 'test', 1);
+-- Dumping data for table xxshop.order: ~0 rows (approximately)
 
--- Dumping structure for table xxshop.tacgia
-CREATE TABLE IF NOT EXISTS `tacgia` (
-  `id_tacgia` int NOT NULL AUTO_INCREMENT,
-  `ten_tac_gia` varchar(255) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_tacgia`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Dumping structure for table xxshop.tin_tuc
+CREATE TABLE IF NOT EXISTS `tin_tuc` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `content` text NOT NULL,
+  `author` text NOT NULL,
+  `publish_date` date NOT NULL,
+  `category_id` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `FK_tin_tuc_category_new` (`category_id`),
+  CONSTRAINT `FK_tin_tuc_category_new` FOREIGN KEY (`category_id`) REFERENCES `category_new` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table xxshop.tacgia: ~2 rows (approximately)
-INSERT INTO `tacgia` (`id_tacgia`, `ten_tac_gia`) VALUES
-	(1, 'Xuân Diệu'),
-	(2, 'Nguyễn Du');
+-- Dumping data for table xxshop.tin_tuc: ~0 rows (approximately)
 
 -- Dumping structure for table xxshop.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -213,6 +228,48 @@ INSERT INTO `users` (`ma_kh`, `mat_khau`, `ho_ten`, `kich_hoat`, `hinh`, `email`
 	(18, '', '123', 1, '', 'anhhmph46019@fpt.edu.vn', 0, '123'),
 	(19, '', '123', 1, '', 'anhhmph46019@fpt.edu.vn', 0, 'Hoàng'),
 	(20, '123', '123', 1, '', '123123@gmail.com', 0, '123123');
+
+-- Dumping structure for table xxshop.variant
+CREATE TABLE IF NOT EXISTS `variant` (
+  `id` int NOT NULL,
+  `variant_name` varchar(255) NOT NULL DEFAULT '',
+  `variant_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `quantity` double(10,2) DEFAULT NULL,
+  `ma_hh` int DEFAULT NULL,
+  `loai_bt` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_variant_hang_hoa` (`ma_hh`),
+  KEY `FK_variant_loai_bt` (`loai_bt`),
+  CONSTRAINT `FK_variant_hang_hoa` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`),
+  CONSTRAINT `FK_variant_loai_bt` FOREIGN KEY (`loai_bt`) REFERENCES `loai_bt` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table xxshop.variant: ~0 rows (approximately)
+
+-- Dumping structure for table xxshop.voucher
+CREATE TABLE IF NOT EXISTS `voucher` (
+  `id` int NOT NULL,
+  `voucher_name` varchar(225) DEFAULT NULL,
+  `voucher_code` varchar(225) DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table xxshop.voucher: ~0 rows (approximately)
+
+-- Dumping structure for table xxshop.yeu_thich
+CREATE TABLE IF NOT EXISTS `yeu_thich` (
+  `id` int NOT NULL,
+  `ma_hh` int DEFAULT NULL,
+  `ma_kh` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_yeu_thich_hang_hoa` (`ma_hh`),
+  KEY `FK_yeu_thich_users` (`ma_kh`),
+  CONSTRAINT `FK_yeu_thich_hang_hoa` FOREIGN KEY (`ma_hh`) REFERENCES `hang_hoa` (`ma_hh`),
+  CONSTRAINT `FK_yeu_thich_users` FOREIGN KEY (`ma_kh`) REFERENCES `users` (`ma_kh`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table xxshop.yeu_thich: ~0 rows (approximately)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

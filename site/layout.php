@@ -71,6 +71,50 @@
     .add-to-cart {
         background-color: #FFC0CB !important;
     }
+
+    .i1 {
+		background-color: #f5f5f5;
+		padding: 20px;
+		border-radius: 5px;
+	}
+
+	.i1 .content {
+		margin-top: 10px;
+	}
+
+	.i1 .content h1 {
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	.i1 .content p {
+		margin-bottom: 10px;
+	}
+
+	.i1 .content p:not(:last-child) {
+		border-bottom: 1px solid #ccc;
+	}
+
+	.i1 .tin-tuc2 {
+		margin-top: 20px;
+	}
+	.i1 .tin-tuc2 h3 {
+		/* font-size: 20px; */
+		font-weight: bold;
+	}
+
+	.i1 .tin-tuc2 p {
+		margin-bottom: 10px;
+	}
+
+    .chi-tiet-tin-tuc .box-title {
+		font-size: 30px;
+		font-weight: bold;
+		margin: 20px 0;
+        padding-top: 10px;
+		border-top: 2px solid #000;
+		margin: 20px 0;
+	}
 </style>
 
 <body>

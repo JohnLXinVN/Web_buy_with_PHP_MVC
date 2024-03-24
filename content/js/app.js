@@ -7,10 +7,10 @@ function updateCountdown() {
     var timeRemaining = targetDate - now;
 
     // Calculate the days, hours, minutes, and seconds remaining
-    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    var days = Math.abs(Math.floor(timeRemaining / (1000 * 60 * 60 * 24)));
+    var hours = Math.abs(Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+    var minutes = Math.abs(Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60)));
+    var seconds = Math.abs(Math.floor((timeRemaining % (1000 * 60)) / 1000));
 
     // Update the countdown elements with the new values
     document.getElementById("days").innerHTML = "<h3>" + days + "</h3><span>Days</span>";
@@ -32,15 +32,12 @@ updateCountdown();
 // Update the countdown every second (1000 milliseconds)
 var countdownInterval = setInterval(updateCountdown, 1000);
 
-
-
-// toogle tim
+// Toggle tim
 // Lấy phần tử nút tim
 var addToWishlistBtn = document.querySelector('.product-btns .add-to-wishlist');
 
 // Thêm sự kiện click cho nút tim
 addToWishlistBtn.addEventListener('click', function() {
     // Thêm hoặc xóa lớp "active" cho nút tim
-    console.log("a")
     addToWishlistBtn.classList.toggle('active');
 });

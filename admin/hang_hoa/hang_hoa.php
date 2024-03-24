@@ -18,8 +18,7 @@
 
     <form class="mt-4 sm:mt-4 sm:flex-none" action="loai_hang.php" method="POST">
         <div class="flex">
-            <a href="index.php?add_loai_hang" type="button"
-                class="min-w-[100px]  rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <a href="index.php?add_loai_hang" type="button" class="min-w-[100px]  rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Thêm mới</a>
         </div>
     </form>
@@ -38,8 +37,7 @@
                         <tr>
 
 
-                            <th scope="col"
-                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                 Tên hàng hóa</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Giá</th>
@@ -70,36 +68,35 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
                         <?php
-                        foreach ($ds_hang_hoa as $key => $value) {
+                        foreach ($ds_hang_hoa as $hang_hoa) { ?>
+                            <!-- print_r($hang_hoa); -->
 
-                            echo "<tr>";
-                            echo "<td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>" . $value["ten_hh"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["don_gia"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["giam_gia"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500 w-[250px]'><p class='example_text'>" . $value["mo_ta"] . "</p></td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["ngay_nhap"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["luot_xem"] . "</td>";
-                            foreach ($ds_loai_hang as $key => $value1) {
-                                if ($value1["ma_loai"] == $value["ma_loai"]) {
-                                    echo "<td>" . $value1["ten_loai"] . "</td>";
-                                }
-                            }
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . ($value["dac_biet"] == 1 ? "Đặc biệt" : "Không đặc biệt") . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><img class='w-[50px] h-[50px]' src='../../upload/" . $value["hinh"] . "' /></td>";
+                            <tr>
+                                <td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'><?php echo $hang_hoa["ten_hh"]; ?></td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><?php echo $hang_hoa["don_gia"]; ?></td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><?php echo $hang_hoa["giam_gia"]; ?></td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500 w-[250px]'>
+                                    <p class='example_text'><?php echo $hang_hoa["mo_ta"]; ?></p>
+                                </td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><?php echo $hang_hoa["ngay_nhap"]; ?></td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><?php echo $hang_hoa["luot_xem"]; ?></td>
+                                <td><?php echo $hang_hoa["ten_loai"]; ?></td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><?php echo ($hang_hoa["dac_biet"] == 1 ? "Đặc biệt" : "Không đặc biệt"); ?></td>
+                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><img class='w-[50px] h-[50px]' src='../../upload/<?php echo $hang_hoa["hinh"]; ?>' /></td>
 
-                            echo "<td class='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>";
-                            echo "<a href='?ma_hh=" . $value["ma_hh"] . "&edit_hang_hoa' type='button' class='mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
-                            echo "<i class='fa-solid fa-pencil'></i>";
-                            echo "Sửa";
-                            echo "</a>";
-                            echo "<a href='?btn_delete&ma_hh=" . $value["ma_hh"] . "' type='button' onclick='return confirmDelete()' class=' ml-2 mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
-                            echo "<i class='fa-solid fa-trash-can'></i>";
-                            echo "Xóa";
-                            echo "</a>";
-                            echo "</td>";
-                            echo "</tr>";
+                                <td class='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                    <a href='?ma_hh=<?php echo $hang_hoa["ma_hh"]; ?>&edit_hang_hoa' type='button' class='mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                        <i class='fa-solid fa-pencil'></i>
+                                        Sửa
+                                    </a>
+                                    <a href='?btn_delete&ma_hh=<?php echo $hang_hoa["ma_hh"]; ?>' type='button' onclick='return confirmDelete()' class=' ml-2 mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                        <i class='fa-solid fa-trash-can'></i>
+                                        Xóa
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php
                         }
-
                         ?>
 
 

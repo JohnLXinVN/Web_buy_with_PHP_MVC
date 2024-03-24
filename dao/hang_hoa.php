@@ -4,7 +4,7 @@ require_once("pdo.php");
 // Bảo Sửa inner join bảng loại hàng
 function hang_hoa_select_all()
 {
-    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai ";
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
     return qdo_query($sql);
 }
 
@@ -19,12 +19,10 @@ function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta
 {
     $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai) VALUES (?,?,?,?,?,?,?,?,?)";
     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai);
-
 }
 
 function hang_hoa_delete($ma_hh)
 {
-
     $sql = "DELETE FROM hang_hoa WHERE ma_hh = $ma_hh";
     pdo_execute($sql);
 }
@@ -32,7 +30,6 @@ function hang_hoa_delete($ma_hh)
 
 function hang_hoa_delete_by_loai($ma_loai)
 {
-
     $sql = "DELETE FROM hang_hoa WHERE ma_loai= $ma_loai";
     pdo_execute($sql);
 }

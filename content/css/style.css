@@ -2248,12 +2248,14 @@ textarea.input {
 
 /*TIN TUC*/
 
-.tin-tuc{
+.tin-tuc {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-gap: 40px;
-  margin-bottom: 50px;
-  border-bottom: 1px solid black;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  max-width: 1250px; /* Giới hạn chiều rộng tối đa của phần tử tin tức */
+  margin: 0 auto; /* Căn giữa phần tử tin tức trong container */
 }
 
 .tin-tuc .o1>img{
@@ -2265,22 +2267,8 @@ textarea.input {
   margin-bottom: 100px;
 }
 
-.tin-tuc .o2>img{
-  width: 100%;
-  margin-bottom: 30px;
-}
-.tin-tuc .o2>p{
-  font-style: oblique;
-  margin-bottom: 100px;
-}
-
-.tin-tuc .o3>img{
-  width: 100%;
-  margin-bottom: 30px;
-}
-.tin-tuc .o3>p{
-  font-style: oblique;
-  margin-bottom: 100px;
+.tin-tuc h3 {
+  font-size: bold;
 }
 
 .tin-tuc .o1>a{
@@ -2419,22 +2407,12 @@ textarea.input {
   line-height: 40px;
 }
 
-.tin-tuc-container {
-  display: flex;
-  justify-content: center;
-}
-
-.tin-tuc {
-  max-width: 1000px; /* Điều chỉnh kích thước phần tin tức tùy ý */
-  margin: 0 auto; /* Căn giữa theo chiều ngang */
-}
-
 .tin-tuc .o1 {
   width: 100%;
   height: 100%; /* Điều chỉnh kích thước theo ý muốn */
   padding: 10px;
   border: 1px solid #ccc; /* Màu và độ dày của khung */
-  margin-bottom: 20px; /* Khoảng cách giữa các phần tử o1 */
+  margin-bottom: 40px; /* Khoảng cách giữa các phần tử o1 */
 }
 
 .tin-tuc .o1 img {
@@ -2444,4 +2422,58 @@ textarea.input {
 }
 .tin-tuc .o1 p {
   margin-bottom: 20px;
+}
+
+#dmtt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 24px;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+
+
+.form-wrapper {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+/* form tìm kiếm danh mục đó ba */
+.form-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-select {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #f44336 !important;
 }

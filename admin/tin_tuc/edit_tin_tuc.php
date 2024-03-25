@@ -87,7 +87,7 @@
             <div class="sm:col-span-2">
                 <label class="block text-sm font-medium text-gray-700">Nội Dung</label>
                 <div class="mt-1">
-                    <textarea type="text" rows="4" name="noi_dung" id="noi_dung" value="<?=$tt['noi_dung']?>" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"></textarea>
+                    <textarea type="text" rows="4" name="noi_dung" id="noi_dung" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"><?=$tt['noi_dung']?></textarea>
                 </div>
             </div>
             <div class="mt-4">

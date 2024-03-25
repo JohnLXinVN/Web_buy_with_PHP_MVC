@@ -75,7 +75,7 @@ if (isset($_COOKIE['user'])) {
                         <div class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>Giỏi Hàng</span>
+                                <span>Giỏ Hàng</span>
                                 <div class="qty">3</div>
                             </a>
                             <div class="cart-dropdown">
@@ -138,12 +138,12 @@ if (isset($_COOKIE['user'])) {
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Trang chủ</a></li>
+                    <li class="active"><a href="../trang_chu/index.php">Trang chủ</a></li>
                     <li><a href="#">Bán chạy</a></li>
                     <li><a href="#">Cao cấp</a></li>
                     <li><a href="#">Sản phẩm mới</a></li>
                     <li><a href="#">Liên hệ</a></li>
-                    <li><a href="list_tin_tuc.php?list_tin_tuc">Tin tức</a></li>
+                    <li><a href="../tin_tuc/list_tin_tuc.php?list_tin_tuc">Tin tức</a></li>
                     <li><a href="">Giới thiệu</a></li>
 
                 </ul>

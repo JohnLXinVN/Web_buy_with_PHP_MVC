@@ -1,0 +1,48 @@
+<?php
+require_once("../../dao/tin_tuc.php");
+require_once("../../dao/pdo.php");
+require("../../global.php");
+// extract($_REQUEST);
+
+if (exist_param("add_danh_muc")) {
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
+
+    $VIEW_NAME = "danh_muc_tin_tuc/add_danh_muc.php";
+} else if (exist_param("list_danh_muc")) {
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
+
+    $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
+} else if (exist_param("btn_add_danh_muc")) {
+    $ten_danh_muc = $_POST['ten_danh_muc'];
+    danh_muc_tin_tuc_insert($ten_danh_muc);
+
+
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
+    $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
+} else if (exist_param("edit_danh_muc")) {
+
+    $id = $_GET['id'];
+    $danh_muc_id = danh_muc_tin_tuc_sellect_id($id);
+
+    
+    $VIEW_NAME = "danh_muc_tin_tuc/edit_danh_muc.php";
+} else if (exist_param("btn_edit_danh_muc")) {
+    $id = $_POST['id'];
+    $ten_danh_muc = $_POST['ten_danh_muc'];
+
+
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
+    $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
+} else if (exist_param("btn_delete")) {
+    $id = $_GET['id'];
+    danh_muc_tin_tuc_delete($id);
+
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
+    $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
+} else {
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
+
+    $VIEW_NAME = "danh_muc_tin_tuc/add_danh_muc.php";
+}
+
+require("../layout.php");

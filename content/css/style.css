@@ -98,11 +98,11 @@ ol {
 \*----------------------------*/
 
 .primary-btn {
-  display: inline-block;
   padding: 12px 30px;
   background-color: #d10024;
   border: none;
   border-radius: 40px;
+  margin-bottom: 10px !important;
   color: #fff;
   text-transform: uppercase;
   font-weight: 700;
@@ -2293,6 +2293,14 @@ textarea.input {
   grid-gap: 40px;
   margin-bottom: 50px;
 }
+.tin-tuc2 .o1 {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
 
 .tin-tuc2 .o1 > img {
   width: 100%;
@@ -2300,25 +2308,7 @@ textarea.input {
 }
 .tin-tuc2 .o1 > p {
   font-style: oblique;
-  margin-bottom: 100px;
-}
-
-.tin-tuc2 .o2 > img {
-  width: 100%;
-  margin-bottom: 30px;
-}
-.tin-tuc2 .o2 > p {
-  font-style: oblique;
-  margin-bottom: 100px;
-}
-
-.tin-tuc2 .o3 > img {
-  width: 100%;
-  margin-bottom: 30px;
-}
-.tin-tuc2 .o3 > p {
-  font-style: oblique;
-  margin-bottom: 100px;
+  margin-bottom: 30px !important;
 }
 
 .tin-tuc2 .o1 > a {
@@ -2426,6 +2416,29 @@ textarea.input {
   line-height: 40px;
 }
 
-.product-btns .add-to-wishlist.active {
-  color: red !important;
+.tin-tuc-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tin-tuc {
+  max-width: 1000px; /* Điều chỉnh kích thước phần tin tức tùy ý */
+  margin: 0 auto; /* Căn giữa theo chiều ngang */
+}
+
+.tin-tuc .o1 {
+  width: 100%;
+  height: 100%; /* Điều chỉnh kích thước theo ý muốn */
+  padding: 10px;
+  border: 1px solid #ccc; /* Màu và độ dày của khung */
+  margin-bottom: 20px; /* Khoảng cách giữa các phần tử o1 */
+}
+
+.tin-tuc .o1 img {
+  width: 100%;
+  height: 200px; /* Điều chỉnh kích thước hình ảnh theo ý muốn */
+  object-fit: cover; /* Hiển thị hình ảnh mà không bị méo */
+}
+.tin-tuc .o1 p {
+  margin-bottom: 20px;
 }

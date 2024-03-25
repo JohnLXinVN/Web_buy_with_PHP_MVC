@@ -6,29 +6,27 @@
             return inputDate < currentDate;
         }, "Vui lòng nhập ngày trước thời gian hiện tại.");
 
-        $("#editHH").validate({
+        $("#addTT").validate({
             onfocusout: true,
             onkeyup: true,
             onclick: true,
             rules: {
-                "ten_hh": {
+                "tieu_de": {
                     required: true,
-                },
-                "don_gia": {
-                    required: true,
-                    pattern: /^[1-9][0-9]*$/,
                 },
                 "mo_ta": {
                     required: true,
                 },
-                "giam_gia": {
-                    required: true,
-                    pattern: /^(0(\.\d+)?|1(\.0+)?)$/,
-                },
                 "hinh": {
                     required: true,
                 },
-                "ngay_nhap": {
+                "noi_dung": {
+                    required: true,
+                },
+                "tac_gia": {
+                    required: true,
+                },
+                "ngay_xuat_ban": {
                     required: true,
                     beforeCurrentDate: true,
                 },
@@ -36,57 +34,118 @@
 
             },
             messages: {
-                "ten_hh": {
+                "tieu_de": {
                     required: "Bắt buộc nhập",
-                },
-                "don_gia": {
-                    required: "Bắt buộc nhập",
-                    pattern: "Vui lòng chỉ nhập số dương",
                 },
                 "mo_ta": {
                     required: "Bắt buộc nhập",
                 },
-                "giam_gia": {
-                    required: "Bắt buộc nhập",
-                    pattern: "Vui lòng chỉ nhập số 0-1",
-
-                },
                 "hinh": {
                     required: "Bắt buộc nhập",
                 },
-                "ngay_nhap": {
+                "noi_dung": {
+                    required: "Bắt buộc nhập",
+                },
+                "tac_gia": {
+                    required: "Bắt buộc nhập",
+                },
+                "ngay_xuat_ban": {
                     required: "Bắt buộc nhập",
                 },
             }
         });
     });
-
 </script>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Thêm mới tin tức</h1>
 
-    <!-- Form thêm mới tin tức -->
-    <form class="bg-white shadow-md rounded-md px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Tiêu đề:</label>
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="title" type="text" placeholder="Nhập tiêu đề">
-        </div>
-        <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="content">Nội dung:</label>
-            <textarea
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="content" rows="4" placeholder="Nhập nội dung"></textarea>
-        </div>
-        <div class="flex items-center justify-end">
-            <button
-                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button">
-                Thêm tin tức
-            </button>
-        </div>
-    </form>
-    <!-- Kết thúc form thêm mới tin tức -->
+<div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Tin Tức</h1>
+        <p class="mt-2 text-sm text-gray-700">Sửa Tin Tức</p>
+    </div>
+
 </div>
+<form class="mt-4 sm:mt-4 sm:flex-none" method="POST" id="addTT" enctype="multipart/form-data" action="index.php">
+
+
+    <div class="mt-10 border-t border-gray-200 pt-10">
+
+        <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Tiêu Đề</label>
+                <input type="hidden" name="id_tin_tuc" value="<?= $tt['id_tin_tuc'] ?>">
+                <div class="mt-1">
+                    <input type="text" id="tieu_de" name="tieu_de" value="<?= $tt['tieu_de'] ?>" autocomplete="given-name"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                </div>
+            </div>
+            <div class="">
+                <label class="block text-sm font-medium text-gray-700">Mô Tả</label>
+                <div class="mt-1">
+                    <input type="text" name="mo_ta" id="mo_ta" value="<?= $tt['mo_ta'] ?>"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                </div>
+            </div>
+            <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Nội Dung</label>
+                <div class="mt-1">
+                    <textarea type="text" rows="4" name="noi_dung" id="noi_dung" value="<?= $tt['noi_dung'] ?>"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"></textarea>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700">Hình:</label>
+                <input id="hinh" name="hinh" type="file" class="" value="<?= $tt["hinh"] ?>">
+                <input id="hinh_no_load" name="hinh_no_load" type="text" hidden value="<?php echo $tt["hinh"] ?>">
+                <img src="/upload/<?php echo $tt["hinh"] ?>" alt="" class="w-[40px] h-[40px] mt-4">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Ngày Xuất Bản</label>
+                <div class="mt-1">
+                    <input type="date" id="ngay_xuat_ban" name="ngay_xuat_ban" value="<?= $tt['ngay_xuat_ban'] ?>"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Tác Giả</label>
+                <div class="mt-1">
+                    <input type="text" id="tac_gia" name="tac_gia" value="<?= $tt['tac_gia'] ?>"
+                        autocomplete="family-name"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Danh Mục</label>
+                <div class="mt-1">
+                    <select id="id_danh_muc" name="id_danh_muc" autocomplete="country-name"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                        <?php
+                        foreach ($ds_dm as $dm) {
+                            $id_dm = $tt['id_danh_muc'];
+                            $selected = "";
+                            if ($dm['id'] === $id_dm) {
+                                $selected = "selected";
+                            }
+                            ?>
+                            <option value="<?= $dm['id'] ?>" <?= $selected ?>>
+                                <?= $dm['ten_danh_muc'] ?>
+                            </option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <button type="submit" name="btn_edit_tin_tuc"
+            class="mt-4 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Sửa</button>
+        <a href="?list_tin_tuc"
+            class="mt-4 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Danh sách</a>
+</form>

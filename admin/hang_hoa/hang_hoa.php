@@ -1,12 +1,10 @@
 <style>
-    .example_text {
+    p {
 
-        white-space: nowrap;
-        /* Ngăn văn bản xuống dòng */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        /* Ẩn phần văn bản vượt qua khung */
-        text-overflow: ellipsis;
-        /* Hiển thị dấu ba chấm */
 
     }
 </style>
@@ -73,10 +71,9 @@
                         foreach ($ds_hang_hoa as $key => $value) {
 
                             echo "<tr>";
-                            echo "<td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>" . $value["ten_hh"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["don_gia"] . "</td>";
+                            echo "<td class=' py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'><p>" . $value["ten_hh"] . "</p></td>";
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["giam_gia"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500 w-[250px]'><p class='example_text'>" . $value["mo_ta"] . "</p></td>";
+                            echo "<td class=' px-3 py-4 text-sm text-gray-500 w-[250px]'><p class='example_text'>" . $value["mo_ta"] . "</p></td>";
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["ngay_nhap"] . "</td>";
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["luot_xem"] . "</td>";
                             foreach ($ds_loai_hang as $key => $value1) {
@@ -88,6 +85,10 @@
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><img class='w-[50px] h-[50px]' src='../../upload/" . $value["hinh"] . "' /></td>";
 
                             echo "<td class='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>";
+                            echo "<a href='/admin/hang_hoa/bien_the/index.php?ma_hh=" . $value["ma_hh"] . "&add_bien_the' type='button' class='mr-3 mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
+                            echo "<i class='fa-solid fa-pencil'></i>";
+                            echo "Thêm biến thể";
+                            echo "</a>";
                             echo "<a href='?ma_hh=" . $value["ma_hh"] . "&edit_hang_hoa' type='button' class='mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
                             echo "<i class='fa-solid fa-pencil'></i>";
                             echo "Sửa";

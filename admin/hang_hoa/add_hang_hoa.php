@@ -85,13 +85,13 @@
                 </div>
             </div>
 
-            <div>
+            <!-- <div>
                 <label class="block text-sm font-medium text-gray-700">Đơn giá</label>
                 <div class="mt-1">
                     <input type="text" id="don_gia" name="don_gia" autocomplete="family-name"
                         class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                 </div>
-            </div>
+            </div> -->
             <div class="sm:col-span-2">
                 <label class="block text-sm font-medium text-gray-700">Mô tả</label>
                 <div class="mt-1">
@@ -159,8 +159,10 @@
                 </div>
             </div>
 
+            <!-- Hiển thị danh sách biến thể -->
 
         </div>
+
         <button type="submit" name="btn_add_hang_hoa"
             class="mt-4 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             Thêm</button>

@@ -109,7 +109,7 @@
             <div class="mt-4">
                 <label class="block text-sm font-medium text-gray-700">Hình:</label>
 
-                <input id="hinh" name="hinh" type="file" class="">
+                <input id="hinh" name="hinh" type="file" class="" multiple>
             </div>
 
             <div>

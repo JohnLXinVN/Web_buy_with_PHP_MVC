@@ -73,26 +73,26 @@
         <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
             <div>
                 <label class="block text-sm font-medium text-gray-700">Tiêu Đề</label>
-                <input type="hidden" name="id_tin_tuc" value="<?=$tt['id_tin_tuc']?>">
+                <input type="hidden" name="id_tin_tuc" value="<?= $tt['id_tin_tuc'] ?>">
                 <div class="mt-1">
-                    <input type="text" id="tieu_de" name="tieu_de" value="<?=$tt['tieu_de']?>" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                    <input type="text" id="tieu_de" name="tieu_de" value="<?= $tt['tieu_de'] ?>" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                 </div>
             </div>
             <div class="">
                 <label class="block text-sm font-medium text-gray-700">Mô Tả</label>
                 <div class="mt-1">
-                    <input type="text" name="mo_ta" id="mo_ta" value="<?=$tt['mo_ta']?>" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                    <input type="text" name="mo_ta" id="mo_ta" value="<?= $tt['mo_ta'] ?>" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                 </div>
             </div>
             <div class="sm:col-span-2">
                 <label class="block text-sm font-medium text-gray-700">Nội Dung</label>
                 <div class="mt-1">
-                    <textarea type="text" rows="4" name="noi_dung" id="noi_dung" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"><?=$tt['noi_dung']?></textarea>
+                    <textarea type="text" rows="4" name="noi_dung" id="noi_dung" value="<?= $tt['noi_dung'] ?>" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"></textarea>
                 </div>
             </div>
             <div class="mt-4">
                 <label class="block text-sm font-medium text-gray-700">Hình:</label>
-                <input id="hinh" name="hinh" type="file" class="" value="<?=$tt["hinh"] ?>">
+                <input id="hinh" name="hinh" type="file" class="" value="<?= $tt["hinh"] ?>">
                 <input id="hinh_no_load" name="hinh_no_load" type="text" hidden value="<?php echo $tt["hinh"] ?>">
                 <img src="/upload/<?php echo $tt["hinh"] ?>" alt="" class="w-[40px] h-[40px] mt-4">
             </div>
@@ -100,14 +100,14 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700">Ngày Xuất Bản</label>
                 <div class="mt-1">
-                    <input type="date" id="ngay_xuat_ban" name="ngay_xuat_ban" value="<?=$tt['ngay_xuat_ban']?>" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                    <input type="date" id="ngay_xuat_ban" name="ngay_xuat_ban" value="<?= $tt['ngay_xuat_ban'] ?>" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                 </div>
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Tác Giả</label>
                 <div class="mt-1">
-                    <input type="text" id="tac_gia" name="tac_gia" value="<?=$tt['tac_gia']?>" autocomplete="family-name" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                    <input type="text" id="tac_gia" name="tac_gia" value="<?= $tt['tac_gia'] ?>" autocomplete="family-name" class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                 </div>
             </div>
 
@@ -119,11 +119,13 @@
                         foreach ($ds_dm as $dm) {
                             $id_dm = $tt['id_danh_muc'];
                             $selected = "";
-                            if($dm['id'] === $id_dm) {
+                            if ($dm['id'] === $id_dm) {
                                 $selected = "selected";
                             }
                         ?>
-                            <option value="<?= $dm['id'] ?>" <?=$selected?>><?= $dm['ten_danh_muc'] ?></option>
+                            <option value="<?= $dm['id'] ?>" <?= $selected ?>>
+                                <?= $dm['ten_danh_muc'] ?>
+                            </option>
                         <?php
                         }
                         ?>

@@ -1,7 +1,7 @@
 <?php
-require_once("../../dao/tin_tuc.php");
-require_once("../../dao/pdo.php");
-require("../../global.php");
+require_once ("../../dao/tin_tuc.php");
+require_once ("../../dao/pdo.php");
+require ("../../global.php");
 // extract($_REQUEST);
 
 if (exist_param("add_tin_tuc")) {
@@ -36,7 +36,7 @@ if (exist_param("add_tin_tuc")) {
 
     $VIEW_NAME = "tin_tuc/edit_tin_tuc.php";
 } elseif (exist_param("btn_edit_tin_tuc")) {
-    
+
     $id_tin_tuc = $_POST['id_tin_tuc'];
     $tieu_de = $_POST['tieu_de'];
     $tac_gia = $_POST['tac_gia'];
@@ -52,7 +52,7 @@ if (exist_param("add_tin_tuc")) {
 
     $tt = tin_tuc_id($id_tin_tuc);
 
-    tin_tuc_edit ($tieu_de , $mo_ta , $noi_dung , $hinh , $tac_gia , $ngay_xuat_ban , $id_danh_muc , $id_tin_tuc);
+    tin_tuc_edit($tieu_de, $mo_ta, $noi_dung, $hinh, $tac_gia, $ngay_xuat_ban, $id_danh_muc, $id_tin_tuc);
 
     $ds_tin_tuc = tin_tuc_select_all();
     $VIEW_NAME = "tin_tuc/tin_tuc.php";
@@ -70,4 +70,4 @@ if (exist_param("add_tin_tuc")) {
     $VIEW_NAME = "tin_tuc/add_tin_tuc.php";
 }
 
-require("../layout.php");
+require ("../layout.php");

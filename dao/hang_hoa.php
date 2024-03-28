@@ -1,12 +1,13 @@
 <?php
-
 require_once("pdo.php");
 // Bảo Sửa inner join bảng loại hàng
 function hang_hoa_select_all()
 {
-    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
+    $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
+        inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
     return qdo_query($sql);
 }
+
 
 // sản phẩm mới nhất
 function hang_hoa_select_newest()
@@ -25,6 +26,12 @@ function hang_hoa_delete($ma_hh)
 {
     $sql = "DELETE FROM hang_hoa WHERE ma_hh = $ma_hh";
     pdo_execute($sql);
+}
+
+function loadall_hang_hoa_home()
+{
+    $sql = "SELECT * FROM hang_hoa where 1 ORDER BY ma_hh DESC LIMIT 0,9";
+    return qdo_query($sql);
 }
 
 
@@ -81,7 +88,4 @@ function hang_hoa_tang_so_luot_xem($ma_hh)
 {
     $sql = "UPDATE hang_hoa SET luot_xem = luot_xem + 1 WHERE ma_hh = $ma_hh";
     return qdo_query($sql);
-
 }
-
-?>

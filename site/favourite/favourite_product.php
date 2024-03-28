@@ -1,110 +1,46 @@
-<div class="container">
-    <h1 class="mt-5">Danh sách sản phẩm yêu thích</h1>
+<?php
+require_once("../../dao/hang_hoa.php");
+require_once("../../dao/loai_hang.php");
+require_once("../../dao/pdo.php");
+require_once("../../dao/favourite.php");
+require("../../global.php");
+if (exist_param("yeu_thich")) {
+    $ds_yt = hang_hoa_yt_select_all();
 
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 1</h5>
-                    <p class="card-text">Mô tả sản phẩm 1.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Xem chi tiết</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger">Xóa khỏi yêu thích</button>
-                        </div>
-                        <small class="text-muted">$24.99</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    $ma_kh = 12;
 
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 2</h5>
-                    <p class="card-text">Mô tả sản phẩm 2.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Xem chi tiết</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger">Xóa khỏi yêu thích</button>
-                        </div>
-                        <small class="text-muted">$19.99</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    $check = kiem_tra_hh_yt($ma_kh);
 
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 2</h5>
-                    <p class="card-text">Mô tả sản phẩm 2.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Xem chi tiết</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger">Xóa khỏi yêu thích</button>
-                        </div>
-                        <small class="text-muted">$19.99</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    $VIEW_NAME = "../favourite/favourite_product_ui.php";
+} else if (exist_param("add_favourite")) {
+    $ma_hh = $_POST['ma_hh'];
+    $ma_kh = $_POST['ma_kh'];
 
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 2</h5>
-                    <p class="card-text">Mô tả sản phẩm 2.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Xem chi tiết</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger">Xóa khỏi yêu thích</button>
-                        </div>
-                        <small class="text-muted">$19.99</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    hang_hoa_yt_insert($ma_hh, $ma_kh);
 
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 2</h5>
-                    <p class="card-text">Mô tả sản phẩm 2.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Xem chi tiết</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger">Xóa khỏi yêu thích</button>
-                        </div>
-                        <small class="text-muted">$19.99</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    $ma_kh = 12;
+    $check = kiem_tra_hh_yt($ma_kh);
+    $ds_yt = hang_hoa_yt_select_all();  
 
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 2</h5>
-                    <p class="card-text">Mô tả sản phẩm 2.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Xem chi tiết</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger">Xóa khỏi yêu thích</button>
-                        </div>
-                        <small class="text-muted">$19.99</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    $VIEW_NAME = "../favourite/favourite_product_ui.php";
+} else if (exist_param("remove_favourite")) {
+    $id = $_GET['id'];
 
-        <!-- Thêm các sản phẩm khác tương tự ở đây -->
+    remove_hang_hoa_yt($id);
 
-    </div>
-</div>
+    $ma_kh = 12;
+
+    $check = kiem_tra_hh_yt($ma_kh);
+
+    $ds_yt = hang_hoa_yt_select_all();
+    $VIEW_NAME = "../favourite/favourite_product_ui.php";
+} else {
+
+    $ma_kh = 12;
+
+    $check = kiem_tra_hh_yt($ma_kh);
+
+    $ds_yt = hang_hoa_yt_select_all();
+    $VIEW_NAME = "../favourite/favourite_product_ui.php";
+}
+require("../layout.php");

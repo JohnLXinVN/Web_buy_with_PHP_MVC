@@ -84,9 +84,11 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product SẢN PHẨM MỚI -->
                                 <?php
-                                foreach ($ds_hang_hoa_moi_nhat as $hang_hoa) {
+                                foreach ($ds_hang_hoa as $hang_hoa) {
                                     $thanh_tien = $hang_hoa['don_gia'] - ($hang_hoa['don_gia'] * $hang_hoa['giam_gia']);
                                     $phan_tram = $hang_hoa['giam_gia'] * 100;
+
+                                    $is_favorite = $check ? "fa-hearted" : '';
                                 ?>
                                     <div class="product">
                                         <div class="product-img">
@@ -99,8 +101,7 @@
                                         <div class="product-body">
                                             <p class="product-category"><?= $hang_hoa['ten_loai'] ?></p>
                                             <h3 class="product-name"><a href="#"><?= $hang_hoa['ten_hh'] ?></a></h3>
-                                            <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del>
-                                            </h4>
+                                            <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del></h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -108,13 +109,25 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                            </div>
+                                            <form action="../favourite/favourite_product.php?add_favourite" method="POST">
+                                                <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
+                                                <input type="hidden" name="ma_kh" value="12">
+                                                <div class="product-btns">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                        <span class="tooltipp">add to wishlist</span>
+                                                    </button>
+                                                    <button class="quick-view">
+                                                        <i class="fa fa-eye"></i>
+                                                        <span class="tooltipp">quick view</span>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="add-to-cart">
-                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <button class="add-to-cart-btn">
+                                                <i class="fa fa-shopping-cart"></i> add to cart
+                                            </button>
                                         </div>
                                     </div>
                                 <?php
@@ -235,8 +248,20 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                <form action="../favourite/favourite_product.php?add_favourite" method="POST">
+                                                    <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
+                                                    <input type="hidden" name="ma_kh" value="12">
+                                                    <div class="product-btns">
+                                                        <button type="submit" class="add-to-wishlist">
+                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                            <span class="tooltipp">add to wishlist</span>
+                                                        </button>
+                                                        <button class="quick-view">
+                                                            <i class="fa fa-eye"></i>
+                                                            <span class="tooltipp">quick view</span>
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                         <div class="add-to-cart">
@@ -296,4 +321,3 @@
     <!-- /container -->
 </div>
 <!-- /NEWSLETTER -->
-

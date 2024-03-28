@@ -122,8 +122,10 @@
                         class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                         <?php
                         foreach ($ds_dm as $dm) { ?>
-                            <option value="<?=$dm['id']?>"><?=$dm['ten_danh_muc']?></option>
-                        <?php
+                            <option value="<?= $dm['id'] ?>">
+                                <?= $dm['ten_danh_muc'] ?>
+                            </option>
+                            <?php
                         }
                         ?>
                     </select>

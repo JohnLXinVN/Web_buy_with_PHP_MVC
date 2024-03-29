@@ -1,6 +1,6 @@
 <?php
 $userLogin = null;
-if (isset ($_COOKIE['user'])) {
+if (isset($_COOKIE['user'])) {
     $userCookie = $_COOKIE['user'];
 
     $userLogin = unserialize($userCookie);
@@ -110,21 +110,25 @@ if (isset ($_COOKIE['user'])) {
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
                         <!-- Wishlist -->
-                        <div>
-                            <a href="/site/favourite/index.php?favourite_product">
-                                <i class="fa fa-heart-o"></i>
-                                <span>Danh Sách Yêu Thích</span>
-                                <div class="qty">2</div>
-                            </a>
-                        </div>
+                        <?php
+                        if ($userLogin) { ?>
+                            <div>
+                                <a href="../favourite/favourite_product.php?yeu_thich">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span>Danh Sách Yêu Thích</span>
+                                    <div class="qty">2</div>
+                                </a>
+                            </div>
+                        <?php
+                        }
+                        ?>
                         <!-- /Wishlist -->
 
                         <!-- Cart -->
                         <div class="dropdown">
-                            <a href="/site/checkout/index.php?cart_check" class="dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="true">
+                            <a href="/site/checkout/index.php?cart_check" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>Giỏi Hàng</span>
+                                <span>Giỏ Hàng</span>
                                 <div class="qty">3</div>
                             </a>
                             <div class="cart-dropdown">
@@ -157,8 +161,7 @@ if (isset ($_COOKIE['user'])) {
                                 </div>
                                 <div class="cart-btns">
                                     <a href="/site/checkout/index.php?cart_check">View Cart</a>
-                                    <a href="/site/checkout/index.php">Checkout <i
-                                            class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="/site/checkout/index.php">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -188,12 +191,12 @@ if (isset ($_COOKIE['user'])) {
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Trang chủ</a></li>
+                    <li class="active"><a href="../trang_chu/index.php">Trang chủ</a></li>
                     <li><a href="#">Bán chạy</a></li>
                     <li><a href="#">Cao cấp</a></li>
                     <li><a href="#">Sản phẩm mới</a></li>
                     <li><a href="#">Liên hệ</a></li>
-                    <li><a href="list_tin_tuc.php?list_tin_tuc">Tin tức</a></li>
+                    <li><a href="../tin_tuc/list_tin_tuc.php?list_tin_tuc">Tin tức</a></li>
                     <li><a href="">Giới thiệu</a></li>
 
                 </ul>

@@ -22,13 +22,36 @@
 <div class="section">
     <!-- container -->
     <div class="container">
-        <!-- row -->
+        <div class="form-wrapper">
+            <form action="../tin_tuc/list_tin_tuc.php" method="POST" id="form_danh_muc" class="form">
+                <div class="form-container">
+                    <label for="danh_muc" class="form-label">Tên Danh Mục:</label>
+                    <div class="form-group">
+                        <select name="danh_muc" id="danh_muc" class="form-select">
+                            <option value="all">All</option>
+                            <?php
+                            foreach ($ds_dm as $category) {
+                                echo "<option value='{$category['id']}' >{$category['ten_danh_muc']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Lọc" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="row">
             <div class="tin-tuc">
                 <?php
                 foreach ($listt as $tintuc) {
                 ?>
                     <div class="o1">
+                        <a href="../tin_tuc/list_tin_tuc.php?id_danh_muc=<?= $tintuc['id_danh_muc'] ?>">
+                            <p id="dmtt" name="id_danh_muc"><?= $tintuc['ten_danh_muc'] ?></p>
+                        </a>
                         <a href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">
                             <img src="/upload/<?= $tintuc['hinh'] ?>" alt="">
                         </a>
@@ -41,7 +64,6 @@
                 ?>
             </div>
         </div>
-        <!-- /row -->
     </div>
     <!-- /container -->
 </div>

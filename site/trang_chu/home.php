@@ -84,9 +84,19 @@
                             <div class="products-slick" data-nav="#slick-nav-1">
                                 <!-- product SẢN PHẨM MỚI -->
                                 <?php
-                                foreach ($ds_hang_hoa_moi_nhat as $hang_hoa) {
+                                // đăng nhập 
+                                $userLogin = null;
+                                if (isset($_COOKIE['user'])) {
+                                    $userCookie = $_COOKIE['user'];
+                                    $userLogin = unserialize($userCookie);
+                                }
+
+
+                                foreach ($ds_hang_hoa as $hang_hoa) {
                                     $thanh_tien = $hang_hoa['don_gia'] - ($hang_hoa['don_gia'] * $hang_hoa['giam_gia']);
                                     $phan_tram = $hang_hoa['giam_gia'] * 100;
+
+                                    $is_favorite = $check > 0 ? "fa-hearted" : '';
                                 ?>
                                     <div class="product">
                                         <div class="product-img">
@@ -99,8 +109,7 @@
                                         <div class="product-body">
                                             <p class="product-category"><?= $hang_hoa['ten_loai'] ?></p>
                                             <h3 class="product-name"><a href="#"><?= $hang_hoa['ten_hh'] ?></a></h3>
-                                            <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del>
-                                            </h4>
+                                            <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del></h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -108,18 +117,87 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                            </div>
+                                            <form action="../favourite/favourite_product.php?add_favourite" method="POST">
+                                                <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
+                                                <input type="hidden" name="ma_kh" value="12">
+                                                <div class="product-btns">
+                                                    <?php
+                                                    if (isset($userLogin)) { ?>
+                                                        <button class="add-to-wishlist">
+                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                            <span class="tooltipp">add to wishlist</span>
+                                                        </button>
+                                                    <?php
+                                                    } else { ?>
+                                                        <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+                                                        <i class="fa fa-eye"></i>
+                                                        <span class="tooltipp">quick view</span>
+                                                    </button>
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            // Xử lý sự kiện nhấp vào nút Quickview
+                                                            $('.quick-view').click(function(e) {
+                                                                e.preventDefault();
+                                                                // Lấy thông tin sản phẩm từ thuộc tính data
+                                                                var tenHH = $(this).data('tenhh');
+                                                                var moTa = $(this).data('mota');
+                                                                var hinhAnh = $(this).data("anh");
+
+                                                                // Gọi hàm showQuickViewModal với thông tin sản phẩm
+                                                                showQuickViewModal(tenHH, moTa, hinhAnh);
+                                                            });
+
+                                                            // Hiển thị modal Quickview với thông tin sản phẩm
+                                                            function showQuickViewModal(tenHH, moTa, hinhAnh) {
+                                                                // Điền thông tin sản phẩm vào modal Quickview
+                                                                $('#quick-view-title').text(tenHH);
+                                                                $('#quick-view-description').text(moTa);
+                                                                $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
+
+                                                                // Hiển thị modal Quickview
+                                                                $('#quick-view-modal').modal('show');
+                                                            }
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="add-to-cart">
-                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <button class="add-to-cart-btn">
+                                                <i class="fa fa-shopping-cart"></i> add to cart
+                                            </button>
                                         </div>
                                     </div>
                                 <?php
                                 }
                                 ?>
+                            </div>
+                            <div id="quick-view-modal" class="modal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="quick-view-title"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img id="quick-view-image" src="" alt="Product Image">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p id="quick-view-description"></p>
+                                                    <!-- Thêm các thông tin khác của sản phẩm vào modal -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div id="slick-nav-1" class="products-slick-nav"></div>
                         </div>
@@ -234,10 +312,54 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                            </div>
+                                            <form action="../favourite/favourite_product.php?add_favourite" method="POST">
+                                                <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
+                                                <input type="hidden" name="ma_kh" value="12">
+                                                <div class="product-btns">
+                                                    <?php
+                                                    if (isset($userLogin)) { ?>
+                                                        <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite'">
+                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                            <span class="tooltipp">add to wishlist</span>
+                                                        </button>
+                                                    <?php
+                                                    } else { ?>
+                                                        <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+                                                        <i class="fa fa-eye"></i>
+                                                        <span class="tooltipp">quick view</span>
+                                                    </button>
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            // Xử lý sự kiện nhấp vào nút Quickview
+                                                            $('.quick-view').click(function(e) {
+                                                                e.preventDefault();
+                                                                // Lấy thông tin sản phẩm từ thuộc tính data
+                                                                var tenHH = $(this).data('tenhh');
+                                                                var moTa = $(this).data('mota');
+                                                                var hinhAnh = $(this).data("anh");
+
+                                                                // Gọi hàm showQuickViewModal với thông tin sản phẩm
+                                                                showQuickViewModal(tenHH, moTa, hinhAnh);
+                                                            });
+
+                                                            // Hiển thị modal Quickview với thông tin sản phẩm
+                                                            function showQuickViewModal(tenHH, moTa, hinhAnh) {
+                                                                // Điền thông tin sản phẩm vào modal Quickview
+                                                                $('#quick-view-title').text(tenHH);
+                                                                $('#quick-view-description').text(moTa);
+                                                                $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
+
+                                                                // Hiển thị modal Quickview
+                                                                $('#quick-view-modal').modal('show');
+                                                            }
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="add-to-cart">
                                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
@@ -296,4 +418,3 @@
     <!-- /container -->
 </div>
 <!-- /NEWSLETTER -->
-

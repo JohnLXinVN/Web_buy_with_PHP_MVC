@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="name" class="text-black">Your name</label>
+                                <label for="name" class="text-black">Họ Tên</label>
                                 <input type="text" id="name" name="name" class="form-control">
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="email" class="text-black">Your email</label>
+                                <label for="email" class="text-black">Email</label>
                                 <input type="email" id="email" name="email" class="form-control">
                             </div>
                         </div>
@@ -30,16 +30,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="subject" class="text-black">Subject</label>
-                                <input type="text" id="subject" name="subject" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="message" class="text-black">Your message</label>
+                                <label for="message" class="text-black">Ý Kiến</label>
                                 <textarea id="message" name="message" rows="5" class="form-control"></textarea>
                             </div>
                         </div>
@@ -47,7 +38,7 @@
 
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <input class="btn btn-primary" type="submit" value="Send">
+                            <input class="btn btn-primary" type="submit" value="Gửi">
                         </div>
                     </div>
 

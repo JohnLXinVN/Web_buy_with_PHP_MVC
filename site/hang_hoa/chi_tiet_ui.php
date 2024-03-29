@@ -16,6 +16,12 @@
 <!-- /NAVIGATION -->
 
 <!-- BREADCRUMB -->
+
+<?php
+// print_r($item_hh);
+echo $ma_hh;
+?>
+
 <div id="breadcrumb" class="section">
     <!-- container -->
     <div class="container">
@@ -44,29 +50,19 @@
         <!-- row -->
         <div class="row">
             <!-- Product main img -->
-            <div class="col-md-5 col-md-push-2">
-                <div id="product-main-img">
-                    <div class="product-preview">
-                        <img src="/content/images/product01.png" alt="">
-                    </div>
+            <div class="col-md-5 ">
 
-                    <div class="product-preview">
-                        <img src="/content/images/product03.png" alt="">
-                    </div>
 
-                    <div class="product-preview">
-                        <img src="/content/images/product06.png" alt="">
-                    </div>
+                <img class="w-full h-full" src="/upload/<?php echo $item_hh["hinh"] ?>" alt="">
 
-                    <div class="product-preview">
-                        <img src="/content/images/product08.png" alt="">
-                    </div>
-                </div>
+
+
+
             </div>
             <!-- /Product main img -->
 
             <!-- Product thumb imgs -->
-            <div class="col-md-2  col-md-pull-5">
+            <!-- <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
                         <img src="/content/images/product01.png" alt="">
@@ -84,11 +80,11 @@
                         <img src="/content/images/product08.png" alt="">
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /Product thumb imgs -->
 
             <!-- Product details -->
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <div class="product-details">
                     <h2 class="product-name">
                         <?php echo $item_hh["ten_hh"] ?>
@@ -142,7 +138,7 @@
                     <ul class="product-links">
                         <li>Category:</li>
                         <li><a href="#">
-                                <?php echo $item_hh["ten_loai"] ?>
+
                             </a></li>
                     </ul>
 
@@ -605,7 +601,7 @@
         // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
         if (item_hh.giam_gia > 0) {
             oldPriceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
-            priceElement.textContent = (parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2);
+            priceElement.textContent = (parseFloat(selectedVariant.gia) - parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2);
             oldPriceElement.style.display = 'inline';
         } else {
             priceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
@@ -625,7 +621,7 @@
         // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
         if (item_hh.giam_gia > 0) {
             oldPriceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
-            priceElement.textContent = (parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2);
+            priceElement.textContent = (parseFloat(selectedVariant.gia) - parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2);
             oldPriceElement.style.display = 'inline';
         } else {
             priceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
@@ -636,13 +632,13 @@
         // Lưu thông tin biến thể vào thuộc tính data của nút "Thêm vào giỏ hàng"
         addToCartButton.setAttribute('data-hh-id', selectedVariant.ma_hh);
         addToCartButton.setAttribute('data-variant-id', selectedVariant.id);
-        addToCartButton.setAttribute('data-variant-price', item_hh.giam_gia ? parseFloat(selectedVariant.gia).toFixed(2) : (parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2));
+        addToCartButton.setAttribute('data-variant-price', item_hh.giam_gia ? parseFloat(selectedVariant.gia).toFixed(2) : (parseFloat(selectedVariant.gia) - parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2));
 
     });
 
     // Xử lý sự kiện khi người dùng nhấp vào nút "Thêm vào giỏ hàng"
     addToCartButton.addEventListener('click', function () {
-        const variantPriceFirst = !item_hh.giam_gia ? parseFloat(list_variant[0].gia).toFixed(2) : (parseFloat(list_variant[0].gia) * parseFloat(item_hh.giam_gia)).toFixed(2)
+        const variantPriceFirst = !item_hh.giam_gia ? parseFloat(list_variant[0].gia).toFixed(2) : (parseFloat(list_variant[0].gia) - parseFloat(list_variant[0].gia) * parseFloat(item_hh.giam_gia)).toFixed(2)
         const selectedVariantId = this.getAttribute('data-variant-id') ? this.getAttribute('data-variant-id') : list_variant[0].id;
         const selectedVariantPrice = this.getAttribute('data-variant-price') ? this.getAttribute('data-variant-price') : variantPriceFirst;
         const quantity = quantityInput.value;

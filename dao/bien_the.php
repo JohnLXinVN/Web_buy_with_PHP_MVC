@@ -36,4 +36,10 @@ function get_one_item($edit_id)
     return qdo_query_one($sql);
 }
 
+function get_one_item_bt($edit_id)
+{
+    $sql = "SELECT * From variant WHERE id = $edit_id";
+    return qdo_query_one($sql);
+}
+
 ?>

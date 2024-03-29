@@ -24,6 +24,10 @@ function pdo_execute($sql)
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
+
+        // Trả về cột id sau khi thêm item
+        $lastInsertId = $conn->lastInsertId();
+        return $lastInsertId;
     } catch (PDOException $th) {
         throw $th;
     } finally {

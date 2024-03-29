@@ -49,7 +49,7 @@ function hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta
 
 function hang_hoa_select_by_id($id)
 {
-    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai= hh.ma_loai WHERE hh.ma_hh = $id";
     return qdo_query_one($sql);
 }
 

@@ -30,10 +30,12 @@ if (exist_param("ma_hh")) {
     $ma_kh = $userLogin["ma_kh"];
     $tong_gia = $quantity * $variantPrice;
     $check_exist = check_hh_by_ma_hh($VariantId);
-    if (count($check_exist) == 0) {
+    if (count($check_exist) == 0 || !$check_exist) {
         cart_insert($VariantId, $ma_kh, $tong_gia, $quantity);
     } else {
-
+        $tong_gia = $tong_gia + $check_exist[0]["tong_gia"];
+        $quantity = $quantity + $check_exist[0]["so_luong"];
+        update_sl_price($quantity, $tong_gia, $VariantId, $ma_kh);
     }
 
 

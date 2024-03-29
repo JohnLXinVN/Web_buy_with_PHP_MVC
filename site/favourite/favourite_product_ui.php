@@ -9,11 +9,13 @@
                     <div class="products-slick" data-nav="#slick-nav-1">
                         <!-- product SẢN PHẨM MỚI -->
                         <?php
+                        // var_dump($check);
+                        // die;
                         foreach ($ds_yt as $hang_hoa) {
                             $thanh_tien = $hang_hoa['don_gia'] - ($hang_hoa['don_gia'] * $hang_hoa['giam_gia']);
                             $phan_tram = $hang_hoa['giam_gia'] * 100;
 
-                            $is_favorite = $check ? "fa-hearted" : '';
+                            $is_favorite = $check > 0 ? "fa-hearted" : '';
                         ?>
                             <div class="product">
                                 <div class="product-img">

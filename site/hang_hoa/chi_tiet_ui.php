@@ -1,3 +1,18 @@
+<style>
+    .product-price-detail {
+        display: inline-block;
+        font-size: 24px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: #d10024;
+    }
+
+    .product-old-price-detail {
+        font-size: 70%;
+        font-weight: 400;
+        color: #8d99ae;
+    }
+</style>
 <!-- /NAVIGATION -->
 
 <!-- BREADCRUMB -->
@@ -75,45 +90,43 @@
             <!-- Product details -->
             <div class="col-md-5">
                 <div class="product-details">
-                    <h2 class="product-name">product name goes here</h2>
+                    <h2 class="product-name">
+                        <?php echo $item_hh["ten_hh"] ?>
+                    </h2>
+
                     <div>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
+                        <div class="flex flex-row items-center gap-3">
+                            <p>$</p>
+                            <h3 class="product-price-detail">
+                            </h3>
+                            <del class="product-old-price-detail"></del>
                         </div>
-                        <a class="review-link" href="#">10 Review(s) | Add your review</a>
                     </div>
-                    <div>
-                        <h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-                        <span class="product-available">In Stock</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>
+                        <?php echo $item_hh["mo_ta"] ?>
+                    </p>
 
                     <div class="product-options">
                         <label>
-                            Size
-                            <select class="input-select">
-                                <option value="0">X</option>
+                            Biến thể
+                            <select class="input-select-variant">
+                                <?php
+                                foreach ($list_variant as $key => $value) {
+                                    ?>
+                                    <option value="<?php echo $value["id"] ?>">
+                                        <?php echo $value["ten_loai"] ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </label>
-                        <label>
-                            Color
-                            <select class="input-select">
-                                <option value="0">Red</option>
-                            </select>
-                        </label>
-                    </div>
 
+                    </div>
+                    <a href="/site/hang_hoa/chi_tiet.php?addToCart">cehck</a>
                     <div class="add-to-cart">
                         <div class="qty-label">
-                            Qty
+                            Tổng
                             <div class="input-number">
-                                <input type="number">
+                                <input type="number" min="1" value="1" step="1">
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>
@@ -128,17 +141,18 @@
 
                     <ul class="product-links">
                         <li>Category:</li>
-                        <li><a href="#">Headphones</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">
+                                <?php echo $item_hh["ten_loai"] ?>
+                            </a></li>
                     </ul>
 
-                    <ul class="product-links">
+                    <!-- <ul class="product-links">
                         <li>Share:</li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                    </ul>
+                    </ul> -->
 
                 </div>
             </div>
@@ -439,7 +453,7 @@
                     <div class="product-body">
                         <p class="product-category">Category</p>
                         <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                        <h4 class="product-price">$234234 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -474,7 +488,7 @@
                     <div class="product-body">
                         <p class="product-category">Category</p>
                         <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                        <h4 class="product-price">$0999 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -507,7 +521,7 @@
                     <div class="product-body">
                         <p class="product-category">Category</p>
                         <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                        <h4 class="product-price">$234234 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                         </div>
                         <div class="product-btns">
@@ -567,3 +581,104 @@
     </div>
     <!-- /container -->
 </div>
+
+<script>
+
+    const list_variant = <?php echo json_encode($list_variant); ?>;
+    const item_hh = <?php echo json_encode($item_hh); ?>;
+
+    const variantSelect = document.querySelector('.input-select-variant');
+    const priceElement = document.querySelector('.product-price-detail');
+    const oldPriceElement = document.querySelector('.product-old-price-detail');
+    const addToCartButton = document.querySelector('.add-to-cart-btn');
+    const quantityInput = document.querySelector('.input-number input');
+
+
+
+    updatePrice();
+
+    function updatePrice() {
+        // Thực hiện cập nhật số tiền tương ứng với biến thể đã chọn
+        var selectedVariant = list_variant[0];
+        // Cập nhật giá tiền hiển thị
+
+        // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
+        if (item_hh.giam_gia > 0) {
+            oldPriceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
+            priceElement.textContent = (parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2);
+            oldPriceElement.style.display = 'inline';
+        } else {
+            priceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
+            oldPriceElement.style.display = 'none';
+        }
+
+    }
+
+
+    // Lắng nghe sự kiện khi người dùng thay đổi biến thể
+    variantSelect.addEventListener('change', function () {
+        // Lấy thông tin về biến thể đã chọn
+        var selectedVariantIndex = variantSelect.selectedIndex;
+        var selectedVariant = list_variant[selectedVariantIndex];
+        // Cập nhật giá tiền hiển thị
+
+        // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
+        if (item_hh.giam_gia > 0) {
+            oldPriceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
+            priceElement.textContent = (parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2);
+            oldPriceElement.style.display = 'inline';
+        } else {
+            priceElement.textContent = parseFloat(selectedVariant.gia).toFixed(2);
+
+            oldPriceElement.style.display = 'none';
+        }
+
+        // Lưu thông tin biến thể vào thuộc tính data của nút "Thêm vào giỏ hàng"
+        addToCartButton.setAttribute('data-hh-id', selectedVariant.ma_hh);
+        addToCartButton.setAttribute('data-variant-id', selectedVariant.id);
+        addToCartButton.setAttribute('data-variant-price', item_hh.giam_gia ? parseFloat(selectedVariant.gia).toFixed(2) : (parseFloat(selectedVariant.gia) * parseFloat(item_hh.giam_gia)).toFixed(2));
+
+    });
+
+    // Xử lý sự kiện khi người dùng nhấp vào nút "Thêm vào giỏ hàng"
+    addToCartButton.addEventListener('click', function () {
+        const variantPriceFirst = !item_hh.giam_gia ? parseFloat(list_variant[0].gia).toFixed(2) : (parseFloat(list_variant[0].gia) * parseFloat(item_hh.giam_gia)).toFixed(2)
+        const selectedVariantId = this.getAttribute('data-variant-id') ? this.getAttribute('data-variant-id') : list_variant[0].id;
+        const selectedVariantPrice = this.getAttribute('data-variant-price') ? this.getAttribute('data-variant-price') : variantPriceFirst;
+        const quantity = quantityInput.value;
+
+        console.log(selectedVariantId);
+        console.log(selectedVariantPrice);
+        console.log(quantity);
+
+        const xhr = new XMLHttpRequest();
+
+        // Xác định phương thức và URL yêu cầu
+        xhr.open('POST', '/site/hang_hoa/chi_tiet.php?addToCart', true);
+
+        // Thiết lập tiêu đề yêu cầu
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // Xử lý sự kiện khi yêu cầu hoàn thành
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Xử lý kết quả trả về từ yêu cầu IJAX
+                console.log("connect oki")
+                const response = xhr.responseText;
+                // Tiếp tục xử lý kết quả theo logic của bạn
+            } else {
+                // Xử lý khi có lỗi xảy ra trong yêu cầu IJAX
+            }
+        };
+
+        // Chuẩn bị dữ liệu để gửi đi
+        const data = 'VariantId=' + encodeURIComponent(selectedVariantId) +
+            '&variantPrice=' + encodeURIComponent(selectedVariantPrice) +
+            '&quantity=' + encodeURIComponent(quantity);
+
+        // Gửi yêu cầu IJAX
+        xhr.send(data);
+
+        // Tiếp tục xử lý yêu cầu theo logic của bạn, ví dụ: thêm vào giỏ hàng, lưu vào cơ sở dữ liệu, vv.
+    });
+</script>

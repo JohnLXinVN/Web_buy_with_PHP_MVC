@@ -964,7 +964,17 @@ textarea.input {
   font-size: 18px;
 }
 
+.product .product-body .product-price-detail {
+  color: #d10024;
+  font-size: 18px;
+}
+
 .product .product-body .product-price .product-old-price {
+  font-size: 70%;
+  font-weight: 400;
+  color: #8d99ae;
+}
+.product .product-body .product-price .product-old-price-detail {
   font-size: 70%;
   font-weight: 400;
   color: #8d99ae;
@@ -1538,6 +1548,12 @@ textarea.input {
 }
 
 .product-details .product-price .product-old-price {
+  font-size: 70%;
+  font-weight: 400;
+  color: #8d99ae;
+}
+
+.product-details .product-price .product-old-price-detail {
   font-size: 70%;
   font-weight: 400;
   color: #8d99ae;

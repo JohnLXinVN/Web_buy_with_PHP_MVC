@@ -2,7 +2,7 @@
     p {
 
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
 
@@ -37,7 +37,7 @@
 
 
                             <th scope="col"
-                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 min-w-[150px]">
                                 Tên hàng hóa</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Giá</th>
@@ -72,8 +72,10 @@
                             <!-- print_r($hang_hoa); -->
 
                             <tr>
-                                <td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>
-                                    <?php echo $hang_hoa["ten_hh"]; ?>
+                                <td class=' py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>
+                                    <p>
+                                        <?php echo $hang_hoa["ten_hh"]; ?>
+                                    </p>
                                 </td>
                                 <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
                                     <?php echo $hang_hoa["don_gia"]; ?>
@@ -81,8 +83,8 @@
                                 <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
                                     <?php echo $hang_hoa["giam_gia"]; ?>
                                 </td>
-                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500 w-[250px]'>
-                                    <p class='example_text'>
+                                <td class=' px-3 py-4 text-sm text-gray-500 w-[250px]'>
+                                    <p class=''>
                                         <?php echo $hang_hoa["mo_ta"]; ?>
                                     </p>
                                 </td>
@@ -103,6 +105,12 @@
 
                                 <td
                                     class='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                    <a href="/admin/hang_hoa/bien_the/index.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>&add_bien_the"
+                                        type='button'
+                                        class='mr-3 mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                        <i class='fa-solid fa-pencil'></i>
+                                        Thêm biến thể
+                                    </a>
                                     <a href='?ma_hh=<?php echo $hang_hoa["ma_hh"]; ?>&edit_hang_hoa' type='button'
                                         class='mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                                         <i class='fa-solid fa-pencil'></i>

@@ -74,7 +74,7 @@
     }
 
     .add-to-cart {
-        background-color: #FFC0CB !important;
+        background-color: white !important;
     }
 
     .i1 {

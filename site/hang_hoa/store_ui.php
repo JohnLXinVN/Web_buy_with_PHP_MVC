@@ -7,285 +7,159 @@
 			<!--Side Bar -->
 
 			<div class="side-bar col-md-3">
-					<div class="menu">
+				<div class="menu">
 
-						<div class="item">
-							<a href="store.php?my_pham">Tất Cả Sản Phẩm</a>
-						</div>
+					<div class="item">
+						<a href="store.php?my_pham">Tất Cả Sản Phẩm</a>
+					</div>
 
-						<div class="item">
-							<a href="#" class="sub-btn">Mỹ Phẩm Hàn<i class="fas fa-angle-right dropdown"></i></a>
-							<div class="sub-menu">
-								<a href="store.php?my_pham_han" class="sub-item">Mỹ Phẩm Hàn</a>
-								<a href="#" class="sub-item">Son</a>
-								<a href="#" class="sub-item">Phấn</a>
-								<a href="#" class="sub-item">Kem Nền</a>
-							</div>
+					<div class="item">
+						<a href="#" class="sub-btn">Mỹ Phẩm Hàn<i class="fas fa-angle-right dropdown"></i></a>
+						<div class="sub-menu">
+							<a href="store.php?my_pham_han" class="sub-item">Mỹ Phẩm Hàn</a>
+							<a href="#" class="sub-item">Son</a>
+							<a href="#" class="sub-item">Phấn</a>
+							<a href="#" class="sub-item">Kem Nền</a>
 						</div>
-						<div class="item">
-							<a href="#" class="sub-btn">Mỹ Phẩm Nhật<i class="fas fa-angle-right dropdown"></i></a>
-							<div class="sub-menu">
-								<a href="store.php?my_pham_nhat" class="sub-item">Mỹ Phẩm Nhật</a>
-								<a href="#" class="sub-item">Son</a>
-								<a href="#" class="sub-item">Phấn</a>
-								<a href="#" class="sub-item">Kem Nền</a>
-							</div>
+					</div>
+					<div class="item">
+						<a href="#" class="sub-btn">Mỹ Phẩm Nhật<i class="fas fa-angle-right dropdown"></i></a>
+						<div class="sub-menu">
+							<a href="store.php?my_pham_nhat" class="sub-item">Mỹ Phẩm Nhật</a>
+							<a href="#" class="sub-item">Son</a>
+							<a href="#" class="sub-item">Phấn</a>
+							<a href="#" class="sub-item">Kem Nền</a>
 						</div>
 					</div>
 				</div>
+			</div>
 
 			<!-- /Side Bar -->
 
 			<!-- STORE -->
-			<div id="store" class="col-md-9">
-				<!-- store top filter -->
-				<!-- <div class="store-filter clearfix">
-					<div class="store-sort">
-						<label>
-							Sort By:
-							<select class="input-select">
-								<option value="0">Popular</option>
-								<option value="1">Position</option>
-							</select>
-						</label>
+			<div id="store" class="col-md-8 ">
 
-						<label>
-							Show:
-							<select class="input-select">
-								<option value="0">20</option>
-								<option value="1">50</option>
-							</select>
-						</label>
-					</div>
-					<ul class="store-grid">
-						<li class="active"><i class="fa fa-th"></i></li>
-						<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-					</ul>
-				</div> -->
-				<!-- /store top filter -->
-
-				<!-- store products -->
-				<div class="row">
+				<div class="grid grid-cols-3 gap-x-4 gap-y-[30px]">
 
 					<?php
+					// đăng nhập 
+					$userLogin = null;
+					if (isset($_COOKIE['user'])) {
+						$userCookie = $_COOKIE['user'];
+						$userLogin = unserialize($userCookie);
+					}
 
-						foreach ($hang_hoa_new as $hang_hoa) {
-							extract($hang_hoa);
-							$img=$UPLOAD_URL.$hinh;
-							$thanh_tien = $don_gia - ($don_gia*$giam_gia);
-							$phan_tram = $giam_gia*100;
+					foreach ($hang_hoa_new as $hang_hoa) {
 
-					?>
-							<div class="col-md-4 col-xs-6">
-										<div class="product">
-											<div class="product-img">
-												<img src="<?php echo $img ?>" alt="">
-												<div class="product-label">
-													<span class="sale">- <?php echo $phan_tram ?>%</span>
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">
-												<?php 
-													if($ma_loai == 46){
-														echo 'Mỹ Phẩm Hàn';
-													}elseif($ma_loai == 55){
-														echo 'Mỹ Phẩm Nhật';
-													}
-												 ?>
-												</p>
-												<h3 class="product-name"><a href="#"><?php echo $ten_hh ?></a></h3>
-												<h4 class="product-price">$<?php echo $thanh_tien ?><del class="product-old-price">$<?php echo $don_gia ?></del></h4>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>
-										</div>
-							</div>
-					<?php
-						}
+						$ds_bt = get_bt_by_ma_hh($hang_hoa["ma_hh"]);
 
-					?>
+						$thanh_tien = $ds_bt[0]['gia'] - ($ds_bt[0]['gia'] * $hang_hoa['giam_gia']);
+						$phan_tram = $hang_hoa['giam_gia'] * 100;
 
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
+						$is_favorite = $check > 0 ? "fa-hearted" : '';
+						?>
+						<div class="product col-span-1 ">
+							<p class="tien hidden">
+								<?php echo $thanh_tien ?>
+							</p>
+							<p class="bien_the hidden">
+								<?php echo $ds_bt[0]["id"] ?>
+							</p>
 							<div class="product-img">
-								<img src="/content/images/product01.png" alt="">
+								<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
 								<div class="product-label">
-									<span class="sale">-30%</span>
-									<span class="new">NEW</span>
+									<?php if ($hang_hoa['giam_gia'] > 0)
+										echo '<span class="sale">' . $phan_tram . '%</span>' ?>
+
+
+										<span class="new">NEW</span>
+									</div>
 								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product02.png" alt="">
-								<div class="product-label">
-									<span class="new">NEW</span>
+								<div class="product-body">
+									<!-- <p class="product-category">
+									<?= $hang_hoa['ten_loai'] ?>
+								</p> -->
+								<h3 class="product-name"><a
+										href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+										<?= $hang_hoa['ten_hh'] ?>
+									</a></h3>
+								<h3 class="product-name text-yellow-500 text-xl">
+									<?= $ds_bt[0]['ten_loai'] ?>
+								</h3>
+								<h4 class="product-price">
+									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del
+										class="product-old-price">
+										<?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
+									</del>
+								</h4>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
 								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<form action="../favourite/favourite_product.php?add_favourite" method="POST">
+									<input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
+									<input type="hidden" name="ma_kh" value="12">
+									<div class="product-btns">
+										<?php
+										if (isset($userLogin)) { ?>
+											<button class="add-to-wishlist">
+												<i class="fa fa-heart <?= $is_favorite ?>"></i>
+												<span class="tooltipp">add to wishlist</span>
+											</button>
+											<?php
+										} else { ?>
+											<p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
+											<?php
+										}
+										?>
+										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
+											data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+											<i class="fa fa-eye"></i>
+											<span class="tooltipp">quick view</span>
+										</button>
+										<script>
+											$(document).ready(function () {
+												// Xử lý sự kiện nhấp vào nút Quickview
+												$('.quick-view').click(function (e) {
+													e.preventDefault();
+													// Lấy thông tin sản phẩm từ thuộc tính data
+													var tenHH = $(this).data('tenhh');
+													var moTa = $(this).data('mota');
+													var hinhAnh = $(this).data("anh");
+
+													// Gọi hàm showQuickViewModal với thông tin sản phẩm
+													showQuickViewModal(tenHH, moTa, hinhAnh);
+												});
+
+												// Hiển thị modal Quickview với thông tin sản phẩm
+												function showQuickViewModal(tenHH, moTa, hinhAnh) {
+													// Điền thông tin sản phẩm vào modal Quickview
+													$('#quick-view-title').text(tenHH);
+													$('#quick-view-description').text(moTa);
+													$('#quick-view-image').attr('src', "/upload/" + hinhAnh);
+
+													// Hiển thị modal Quickview
+													$('#quick-view-modal').modal('show');
+												}
+											});
+										</script>
+									</div>
+								</form>
 							</div>
 							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								<button class="add-to-cart-btn">
+									<i class="fa fa-shopping-cart"></i> add to cart
+								</button>
 							</div>
 						</div>
-					</div> -->
-					<!-- /product -->
+						<?php
+					}
+					?>
 
-					<!-- <div class="clearfix visible-sm visible-xs"></div> -->
 
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- <div class="clearfix visible-lg visible-md"></div> -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product04.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- <div class="clearfix visible-sm visible-xs"></div> -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- <div class="clearfix visible-lg visible-md visible-sm visible-xs"></div> -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product07.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product08.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
-
-					<!-- <div class="clearfix visible-sm visible-xs"></div> -->
-
-					<!-- product -->
-					<!-- <div class="col-md-4 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="/content/images/product09.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div> -->
-					<!-- /product -->
 				</div>
 				<!-- /store products -->
 
@@ -295,9 +169,9 @@
 					<ul class="store-pagination">
 
 						<?php
-							echo $hien_thi_so_trang;
-						 ?>
-						
+						echo $hien_thi_so_trang;
+						?>
+
 
 					</ul>
 				</div>

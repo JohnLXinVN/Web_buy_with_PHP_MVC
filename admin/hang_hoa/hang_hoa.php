@@ -60,6 +60,8 @@
                                 Đặc biệt</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Hình</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                Số Lượng</th>
 
 
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -86,6 +88,7 @@
                             }
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . ($value["dac_biet"] == 1 ? "Đặc biệt" : "Không đặc biệt") . "</td>";
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'><img class='w-[50px] h-[50px]' src='../../upload/" . $value["hinh"] . "' /></td>";
+                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["so_luong"] . "</td>";
 
                             echo "<td class='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>";
                             echo "<a href='?ma_hh=" . $value["ma_hh"] . "&edit_hang_hoa' type='button' class='mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";

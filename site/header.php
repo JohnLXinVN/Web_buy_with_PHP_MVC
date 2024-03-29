@@ -138,7 +138,7 @@ if (isset($_COOKIE['user'])) {
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Trang chủ</a></li>
+                    <li class="active"><a href="home.php">Trang chủ</a></li>
                     <li><a href="#">Bán chạy</a></li>
                     <li><a href="#">Cao cấp</a></li>
                     <li><a href="#">Sản phẩm mới</a></li>

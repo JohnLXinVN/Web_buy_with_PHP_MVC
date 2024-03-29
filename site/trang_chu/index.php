@@ -29,7 +29,10 @@ if (exist_param("gioi_thieu")) {
     // $ds_loai_hang = loai_selectall();
     $VIEW_NAME = "trang_chu/nhan_dien.php";
 
-} else {
+}elseif(exist_param("my_pham")){
+    $VIEW_NAME = "hang_hoa/store_ui.php";
+}
+ else {
     $VIEW_NAME = "trang_chu/home.php";
 
 }

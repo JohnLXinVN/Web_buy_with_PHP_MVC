@@ -96,10 +96,9 @@ if (isset($_COOKIE['user'])) {
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
-
-                            <input class="input focus-visible:outline-none" placeholder="Tìm kiếm">
-                            <button class="search-btn">Tìm kiếm</button>
+                        <form method="post" action="/site/search/index.php?searchkey">
+                            <input class="input focus-visible:outline-none" name="key" id="key" placeholder="Tìm kiếm">
+                            <button class="search-btn" type="submit">Tìm kiếm</button>
                         </form>
                     </div>
                 </div>

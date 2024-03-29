@@ -2,7 +2,7 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <div class="row">
+        <div class="row !ml-0 mr-0">
             <!-- shop -->
             <div class="col-md-4 col-xs-6">
                 <div class="shop">

@@ -9,6 +9,13 @@ function hang_hoa_select_all()
     return qdo_query($sql);
 }
 
+function hang_hoa_select_all_by_key($key_word)
+{
+    $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
+        inner join loai_hang as lh on lh.ma_loai = hh.ma_loai WHERE hh.ten_hh LIKE '%$key_word%' OR hh.mo_ta LIKE '%$key_word%'";
+    return qdo_query($sql);
+}
+
 
 // sản phẩm mới nhất
 function hang_hoa_select_newest()

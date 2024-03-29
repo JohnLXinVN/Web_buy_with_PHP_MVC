@@ -140,9 +140,6 @@ if (isset($_COOKIE['user'])) {
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="../trang_chu/index.php">Trang chủ</a></li>
                     <li><a href="../hang_hoa/store.php?my_pham">Sản phẩm</a></li>
-                    <li><a href="#">Bán chạy</a></li>
-                    <li><a href="#">Cao cấp</a></li>
-                    <li><a href="#">Sản phẩm mới</a></li>
                     <li><a href="#">Liên hệ</a></li>
                     <li><a href="">Tin tức</a></li>
                     <li><a href="">Giới thiệu</a></li>

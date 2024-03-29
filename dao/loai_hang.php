@@ -1,6 +1,6 @@
 <?php
 
-require_once("pdo.php");
+require_once ("pdo.php");
 
 function loai_selectall()
 {
@@ -31,7 +31,7 @@ function edit_loai_hang($ten_loai, $ma_loai)
     pdo_execute($sql, $ten_loai, $ma_loai);
 }
 
-function get_one_item($edit_id)
+function get_one_item_loai_hang($edit_id)
 {
     $sql = "SELECT * From loai_hang WHERE ma_loai = $edit_id";
     return qdo_query_one($sql);

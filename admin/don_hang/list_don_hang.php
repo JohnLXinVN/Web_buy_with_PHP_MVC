@@ -1,14 +1,10 @@
-<section class="py-24 relative">
-    <div class="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
-        <h2 class="font-manrope font-bold text-4xl leading-10 text-black text-center">
-            Payment Successful
-        </h2>
-        <p class="mt-4 font-normal text-lg leading-8 text-gray-500 mb-11 text-center">Thanks for making a purchase
-            you can
-            check our order summary frm below</p>
-    </div>
-</section>
 <div class="container">
+    <?php
+    if (count($ds_order) == 0) {
+        echo "<div class='h-[500px]'><h1>Không có đơn hàng nào</h1></div>";
+    }
+
+    ?>
     <?php
     foreach ($ds_order as $value) {
 
@@ -17,7 +13,7 @@
             <div class="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
                 <div class="data">
                     <p class="font-semibold text-base leading-7 text-black">Order Id: <span
-                            class="text-indigo-600 font-medium">
+                            class="text-indigo-600 font-medium ma_dh_list">
                             <?php echo $value["ma_dh"] ?>
                         </span></p>
                     <p class="font-semibold text-base leading-7 text-black mt-4">Order Payment : <span
@@ -35,6 +31,19 @@
                         </div>
 
                     </div>
+                </div>
+                <div>
+
+                    <select class="ma_trang_thai" name="ma_trang_thai" id="ma_trang_thai"
+                        value="<?php echo $value["ma_trang_thai"] ?>">
+                        <?php foreach ($list_trang_thai as $key => $value1) {
+
+                            ?>
+                            <option value="<?php echo $value1["id"] ?>">
+                                <?php echo $value1["ten_trang_thai"] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
                 </div>
 
             </div>
@@ -124,4 +133,44 @@
     function confirmDelete() {
         return confirm("Are you sure you want to delete");
     }
+
+    const trangThaiSelects = document.querySelectorAll('select[name="ma_trang_thai"]');
+    const listMaDonHang = document.querySelectorAll('.ma_dh_list');
+
+    console.log("trangThaiSelects: ", trangThaiSelects);
+    console.log("listMaDonHang: ", listMaDonHang);
+
+    trangThaiSelects.forEach((select, index) => {
+        select.addEventListener('change', function () {
+            const selectedValue = select.value; // Lấy giá trị của option đã chọn
+            const ma_dh = listMaDonHang[index].innerText;
+            const xhr = new XMLHttpRequest();
+
+            // Xác định phương thức và URL yêu cầu
+            xhr.open('POST', '/admin/don_hang/index.php?update_tt', true);
+
+            // Thiết lập tiêu đề yêu cầu
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // Xử lý sự kiện khi yêu cầu hoàn thành
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Xử lý kết quả trả về từ yêu cầu AJAX
+                    console.log("connect oki");
+                    const response = xhr.responseText;
+                    // Tiếp tục xử lý kết quả theo logic của bạn
+                } else {
+                    // Xử lý khi có lỗi xảy ra trong yêu cầu AJAX
+                }
+            };
+
+            // Chuẩn bị dữ liệu để gửi đi
+            const data = 'ma_trang_thai=' + encodeURIComponent(selectedValue) + '&ma_dh=' + encodeURIComponent(ma_dh);
+
+            // Gửi yêu cầu AJAX
+            console.log("data: ", data);
+            xhr.send(data);
+        });
+    });
+
 </script>

@@ -1,9 +1,9 @@
 <?php
-require_once("../../dao/hang_hoa.php");
-require_once("../../dao/loai_hang.php");
-require_once("../../dao/binh_luan.php");
-require_once("../../dao/pdo.php");
-require("../../global.php");
+require_once ("../../dao/hang_hoa.php");
+require_once ("../../dao/loai_hang.php");
+require_once ("../../dao/binh_luan.php");
+require_once ("../../dao/pdo.php");
+require ("../../global.php");
 // extract($_REQUEST);
 
 if (exist_param("add_loai_hang")) {
@@ -23,6 +23,7 @@ if (exist_param("add_loai_hang")) {
     $ten_hh = $_POST["ten_hh"];
     $don_gia = $_POST["don_gia"];
     $mo_ta = $_POST["mo_ta"];
+    $desc = $_POST["desc"];
     $giam_gia = $_POST["giam_gia"];
     $ngay_nhap = $_POST["ngay_nhap"];
     $luot_xem = $_POST["luot_xem"];
@@ -30,7 +31,7 @@ if (exist_param("add_loai_hang")) {
     $ma_loai = $_POST["ma_loai"];
     $hinh = save_file("hinh", $UPLOAD_URL);
 
-    hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai);
+    hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc);
     $ds_hang_hoa = hang_hoa_select_all();
 
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
@@ -51,6 +52,8 @@ if (exist_param("add_loai_hang")) {
     $ten_hh = $_POST["ten_hh"];
     $don_gia = $_POST["don_gia"];
     $mo_ta = $_POST["mo_ta"];
+    $desc = $_POST["desc"];
+
     $giam_gia = $_POST["giam_gia"];
     $ngay_nhap = $_POST["ngay_nhap"];
     $luot_xem = $_POST["luot_xem"];
@@ -63,7 +66,7 @@ if (exist_param("add_loai_hang")) {
         $hinh = $_POST["hinh_no_load"];
     }
 
-    hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh);
+    hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh, $desc);
     $ds_hang_hoa = hang_hoa_select_all();
 
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
@@ -81,6 +84,6 @@ if (exist_param("add_loai_hang")) {
 
 }
 
-require("../layout.php");
+require ("../layout.php");
 
 ?>

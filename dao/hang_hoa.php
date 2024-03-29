@@ -17,10 +17,10 @@ function hang_hoa_select_newest()
     return qdo_query($sql);
 }
 
-function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai)
+function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc)
 {
-    $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai) VALUES (?,?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai);
+    $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai,desc) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc);
 }
 
 function hang_hoa_delete($ma_hh)
@@ -42,11 +42,11 @@ function hang_hoa_delete_by_loai($ma_loai)
     pdo_execute($sql);
 }
 
-function hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh)
+function hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh, $desc)
 {
-    $sql = "UPDATE hang_hoa SET ten_hh = ?, don_gia = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ? WHERE ma_hh = ?";
+    $sql = "UPDATE hang_hoa SET ten_hh = ?, don_gia = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ?, desc = ? WHERE ma_hh = ?";
 
-    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh);
+    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh, $desc);
 }
 
 function hang_hoa_select_by_id($id)
@@ -81,7 +81,7 @@ function hang_hoa_select_by_loai($loai_hang)
 
 function hang_hoa_select_keyword($key_word)
 {
-    $sql = "SELECT * FROM hang_hoa WHERE ten_hh LIKE '%$key_word%'";
+    $sql = "SELECT * FROM hang_hoa WHERE ten_hh LIKE '%$key_word%' OR mo_ta LIKE '%$key_word%'";
     return qdo_query($sql);
 }
 

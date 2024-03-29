@@ -1,3 +1,67 @@
+<script>
+    $(document).ready(function () {
+        $("#checkout_bill").validate({
+            onfocusout: true,
+            onkeyup: true,
+            onclick: true,
+            rules: {
+                "first_name": {
+                    required: true,
+                    minlength: 1
+                },
+                "last_name": {
+                    required: true,
+                    minlength: 1
+                },
+                "email": {
+                    required: true,
+                    email: true
+                },
+                "address": {
+                    required: true,
+                    minlength: 2
+                },
+                "tel": {
+                    required: true,
+                    pattern: /^(\\+?84|0)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-46-8])[0-9]{7}$/
+                },
+                "payment": {
+                    required: true,
+                    minlength: 1
+                }
+            },
+            messages: {
+                "first_name": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                },
+                "last_name": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                },
+                "email": {
+                    required: "Trường bắt buộc",
+                    email: "Phải là email hợp lệ"
+                },
+                "address": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 2 ký tự"
+                },
+                "tel": {
+                    required: "Trường bắt buộc",
+                    pattern: "Số điện thoại Việt Nam không hợp lệ"
+                },
+                "payment": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                }
+            }
+        });
+    });
+
+</script>
+
+
 <!-- BREADCRUMB -->
 <div id="breadcrumb" class="section">
     <!-- container -->
@@ -23,7 +87,7 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <form action="index.php?btn_order" method="post">
+        <form action="index.php?btn_order" method="post" id="checkout_bill">
             <input type="hidden" name="ma_trang_thai" id="ma_trang_thai" value="1">
             <input type="hidden" name="ma_kh" id="ma_kh" value="<?php echo $userLogin["ma_kh"] ?>">
             <div class="row">

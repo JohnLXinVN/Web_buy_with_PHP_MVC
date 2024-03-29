@@ -25,11 +25,12 @@ if (exist_param("add_bien_the")) {
 
     $ten_loai = $_POST["ten_loai"];
     $gia = $_POST["don_gia"];
+    $tong_so_luong = $_POST["tong_so_luong"];
     if ($ten_loai) {
 
 
 
-        them_bien_the($ten_loai, $gia, $ma_hh);
+        them_bien_the($ten_loai, $gia, $ma_hh, $tong_so_luong);
         $ds_loai_bt = bien_the_selectall($ma_hh);
         $ma_hh = $_GET["ma_hh"];
         $hang_hoa = hang_hoa_select_by_id($ma_hh);
@@ -52,10 +53,12 @@ if (exist_param("add_bien_the")) {
 
     $ten_loai = $_POST["ten_loai"];
     $gia = $_POST["don_gia"];
+    $tong_so_luong = $_POST["tong_so_luong"];
+
 
     if ($ten_loai) {
 
-        edit_bien_the($ten_loai, $gia, $ma_hh, $ma_bien_the);
+        edit_bien_the($ten_loai, $gia, $ma_hh, $ma_bien_the, $tong_so_luong);
 
         $ds_loai_bt = bien_the_selectall($ma_hh);
         $ma_hh = $_GET["ma_hh"];

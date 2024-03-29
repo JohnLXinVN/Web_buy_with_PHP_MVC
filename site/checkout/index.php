@@ -4,6 +4,7 @@ require_once ("../../dao/pdo.php");
 require_once ("../../dao/hang_hoa.php");
 require_once ("../../dao/gio_hang.php");
 require_once ("../../dao/bien_the.php");
+require_once ("../../dao/order.php");
 // require_once ("../../dao/loai_hang.php");
 require_once ("../../dao/checkout.php");
 require ("../../global.php");
@@ -79,7 +80,9 @@ if (exist_param("cart_check")) {
 
     $ds_item_cart_by_id = $_POST["ds_cart_by_id"];
 
-    $idDH = add_don_hang($ma_kh, $ma_trang_thai, $tong_gia, $address, $payment, $first_name, $last_name, $email, $tel, $notes);
+    $ngayHienTai = date("Y-m-d");
+
+    $idDH = add_don_hang($ma_kh, $ma_trang_thai, $tong_gia, $address, $payment, $first_name, $last_name, $email, $tel, $notes, $ngayHienTai);
 
 
     $ds_item_cart = array();
@@ -105,17 +108,22 @@ if (exist_param("cart_check")) {
 
         foreach ($ds_item_cart[$key] as $item) {
 
-            // print_r($item);
 
             add_chi_tiet_dh($idDH, $item["sl_hh_cart"], $item["tong_gia"], $item["ma_bt"]);
             $bt = get_one_item_bt($item["ma_bt"]);
-            echo "1112";
-            print_r($bt);
             $sl_con_lai = (int) $bt["tong_so_luong"] - (int) $item["sl_hh_cart"];
             update_sl_when_order($item["ma_bt"], $sl_con_lai);
             delete_item_by_ma_bt($item["ma_bt"]);
         }
     }
+    $ds_order = get_order_by_ma_kh($userLogin["ma_kh"]);
+    $VIEW_NAME = "page_successfull.php";
+
+} else if (exist_param("deteteItemDH")) {
+    $ma_dh = $_GET["ma_dh"];
+    delete_order_by_id($ma_dh);
+
+    $ds_order = get_order_by_ma_kh($userLogin["ma_kh"]);
 
     $VIEW_NAME = "page_successfull.php";
 

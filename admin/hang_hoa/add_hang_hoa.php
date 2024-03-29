@@ -99,6 +99,13 @@
                         class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"></textarea>
                 </div>
             </div>
+            <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Mô tả chi tiết</label>
+                <div class="mt-1">
+                    <textarea type="text" rows="4" name="desc" id="desc"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm"></textarea>
+                </div>
+            </div>
             <div class="">
                 <label class="block text-sm font-medium text-gray-700">Giảm giá</label>
                 <div class="mt-1">
@@ -144,12 +151,30 @@
 
 
             <div>
-                <label class="block text-sm font-medium text-gray-700">Mã loại</label>
+                <label class="block text-sm font-medium text-gray-700">Loại Hàng</label>
                 <div class="mt-1">
                     <select id="ma_loai" name="ma_loai" autocomplete="country-name"
                         class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                         <?php
                         foreach ($ds_loai_hang as $key => $value) {
+
+                            if ($value["parent_catagory"] != NULL) {
+                                echo "<option value='" . $value["ma_loai"] . "'>" . $value["ten_loai"] . "-</option>";
+                            }
+
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Xuất Xứ</label>
+                <div class="mt-1">
+                    <select id="ma_loai" name="ma_loai" autocomplete="country-name"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                        <?php
+                        foreach ($ds_loai_hang_parent as $key => $value) {
 
                             echo "<option value='" . $value["ma_loai"] . "'>" . $value["ten_loai"] . "</option>";
 

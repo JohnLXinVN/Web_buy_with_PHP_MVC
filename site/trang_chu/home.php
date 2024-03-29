@@ -2,7 +2,7 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <div class="row">
+        <div class="row !ml-0 mr-0">
             <!-- shop -->
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
@@ -90,26 +90,47 @@
                                     $userCookie = $_COOKIE['user'];
                                     $userLogin = unserialize($userCookie);
                                 }
-
-
+                                // var_dump($ds_hang_hoa);
+                                // die;
                                 foreach ($ds_hang_hoa as $hang_hoa) {
-                                    $thanh_tien = $hang_hoa['don_gia'] - ($hang_hoa['don_gia'] * $hang_hoa['giam_gia']);
+                                    $ds_bt = get_bt_by_ma_hh($hang_hoa["ma_hh"]);
+
+                                    $thanh_tien = $ds_bt[0]['gia'] - ($ds_bt[0]['gia'] * $hang_hoa['giam_gia']);
                                     $phan_tram = $hang_hoa['giam_gia'] * 100;
 
                                     $is_favorite = $check > 0 ? "fa-hearted" : '';
                                 ?>
+
                                     <div class="product">
+                                        <p class="tien hidden">
+                                            <?php echo $thanh_tien ?>
+                                        </p>
+                                        <p class="bien_the hidden">
+                                            <?php echo $ds_bt[0]["id"] ?>
+                                        </p>
                                         <div class="product-img">
                                             <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
                                             <div class="product-label">
-                                                <?php if ($hang_hoa['giam_gia'] > 0) echo '<span class="sale">' . $phan_tram . '%</span>' ?>
+                                                <?php if ($hang_hoa['giam_gia'] > 0)
+                                                    echo '<span class="sale">' . $phan_tram . '%</span>' ?>
                                                 <span class="new">NEW</span>
                                             </div>
                                         </div>
                                         <div class="product-body">
-                                            <p class="product-category"><?= $hang_hoa['ten_loai'] ?></p>
-                                            <h3 class="product-name"><a href="#"><?= $hang_hoa['ten_hh'] ?></a></h3>
-                                            <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del></h4>
+                                            <p class="product-category">
+                                                <?= $hang_hoa['ten_loai'] ?>
+                                            </p>
+                                            <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                                    <?= $hang_hoa['ten_hh'] ?>
+                                                </a></h3>
+                                            <h3 class="product-name text-yellow-500 text-xl">
+                                                <?= $ds_bt[0]['ten_loai'] ?>
+                                            </h3>
+                                            <h4 class="product-price">
+                                                <?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
+                                                    <?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
+                                                </del>
+                                            </h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -266,7 +287,7 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h3 class="title">Top Bán Chạy</h3>
-                    <div class="section-nav">
+                    <!-- <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
                             <li class="active"><a data-toggle="tab" href="#tab2">Phấn</a></li>
                             <li><a data-toggle="tab" href="#tab2">Son Môi</a></li>
@@ -274,7 +295,7 @@
                             <li><a data-toggle="tab" href="#tab2">Kem Nền</a></li>
                             <li><a data-toggle="tab" href="#tab2">Sữa Rửa Mặt</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- /section title -->
@@ -289,21 +310,39 @@
                                 <!-- product SẢN PHẨM Bán Chạy Nhất Theo Lượt Xem -->
                                 <?php
                                 foreach ($ds_hang_hoa_top_10 as $hang_hoa) {
-                                    $thanh_tien = $hang_hoa['don_gia'] - ($hang_hoa['don_gia'] * $hang_hoa['giam_gia']);
+                                    $ds_bt = get_bt_by_ma_hh($hang_hoa["ma_hh"]);
+                                    $thanh_tien = $ds_bt[0]['gia'] - ($ds_bt[0]['gia'] * $hang_hoa['giam_gia']);
                                     $phan_tram = $hang_hoa['giam_gia'] * 100;
                                 ?>
                                     <div class="product">
+                                        <p class="tien hidden">
+                                            <?php echo $thanh_tien ?>
+                                        </p>
+                                        <p class="bien_the hidden">
+                                            <?php echo $ds_bt[0]["id"] ?>
+                                        </p>
                                         <div class="product-img">
                                             <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
                                             <div class="product-label">
-                                                <?php if ($hang_hoa['giam_gia'] > 0) echo '<span class="sale">' . $phan_tram . '%</span>' ?>
+                                                <?php if ($hang_hoa['giam_gia'] > 0)
+                                                    echo '<span class="sale">' . $phan_tram . '%</span>' ?>
                                                 <span class="new">NEW</span>
                                             </div>
                                         </div>
                                         <div class="product-body">
-                                            <p class="product-category"><?= $hang_hoa['ten_loai'] ?></p>
-                                            <h3 class="product-name"><a href="#"><?= $hang_hoa['ten_hh'] ?></a></h3>
-                                            <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del>
+                                            <p class="product-category">
+                                                <?= $hang_hoa['ten_loai'] ?>
+                                            </p>
+                                            <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                                    <?= $hang_hoa['ten_hh'] ?>
+                                                </a></h3>
+                                            <h3 class="product-name text-yellow-500 text-xl">
+                                                <?= $ds_bt[0]['ten_loai'] ?>
+                                            </h3>
+                                            <h4 class="product-price">
+                                                <?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
+                                                    <?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
+                                                </del>
                                             </h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
@@ -356,13 +395,17 @@
                                                                 // Hiển thị modal Quickview
                                                                 $('#quick-view-modal').modal('show');
                                                             }
+
+
                                                         });
                                                     </script>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="add-to-cart">
-                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                                cart</button>
+
                                         </div>
                                     </div>
                                 <?php
@@ -417,4 +460,46 @@
     </div>
     <!-- /container -->
 </div>
+
+<script>
+    const btn_add_cart = document.querySelectorAll('.add-to-cart-btn');
+    const list_tien = document.querySelectorAll('.tien');
+    const list_bt = document.querySelectorAll('.bien_the');
+
+
+    // Xác định phương thức và URL yêu cầu
+    btn_add_cart.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '/site/hang_hoa/chi_tiet.php?addToCart', true);
+
+            // Thiết lập tiêu đề yêu cầu
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // Xử lý sự kiện khi yêu cầu hoàn thành
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Xử lý kết quả trả về từ yêu cầu IJAX
+                    console.log("connect oki")
+                    const response = xhr.responseText;
+                    // Tiếp tục xử lý kết quả theo logic của bạn
+                } else {
+                    // Xử lý khi có lỗi xảy ra trong yêu cầu IJAX
+                }
+            };
+
+            // Chuẩn bị dữ liệu để gửi đi
+
+            const selectedVariantPrice = list_tien[index].innerHTML;
+            const selectedVariantId = list_bt[index].innerHTML;
+            const data = 'VariantId=' + encodeURIComponent(selectedVariantId) +
+                '&variantPrice=' + encodeURIComponent(selectedVariantPrice) +
+                '&quantity=1';
+
+            // Gửi yêu cầu IJAX
+            xhr.send(data);
+        })
+    })
+</script>
 <!-- /NEWSLETTER -->

@@ -1,12 +1,27 @@
 <?php
 
-require_once("pdo.php");
+require_once ("pdo.php");
+
+function loai_select_parent()
+{
+    $sql = "SELECT * FROM loai_hang
+    WHERE parent_catagory IS NULL ";
+    return qdo_query($sql);
+}
+
+function loai_select_child()
+{
+    $sql = "SELECT * FROM loai_hang
+    WHERE parent_catagory IS NOT NULL ";
+    return qdo_query($sql);
+}
 
 function loai_selectall()
 {
     $sql = "SELECT * FROM loai_hang";
     return qdo_query($sql);
 }
+
 
 function them_loai_hang($tenloai)
 {
@@ -31,7 +46,7 @@ function edit_loai_hang($ten_loai, $ma_loai)
     pdo_execute($sql, $ten_loai, $ma_loai);
 }
 
-function get_one_item($edit_id)
+function get_one_item_loai_hang($edit_id)
 {
     $sql = "SELECT * From loai_hang WHERE ma_loai = $edit_id";
     return qdo_query_one($sql);

@@ -40,13 +40,13 @@
                                 class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 min-w-[150px]">
                                 Tên hàng hóa</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                Giá</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
 
                                 Giảm giá</th>
 
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Mô tả</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                Desc</th>
 
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Ngày nhập</th>
@@ -58,6 +58,8 @@
                                 Đặc biệt</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Hình</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                Số Lượng</th>
 
 
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -78,14 +80,16 @@
                                     </p>
                                 </td>
                                 <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                                    <?php echo $hang_hoa["don_gia"]; ?>
-                                </td>
-                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
                                     <?php echo $hang_hoa["giam_gia"]; ?>
                                 </td>
                                 <td class=' px-3 py-4 text-sm text-gray-500 w-[250px]'>
                                     <p class=''>
                                         <?php echo $hang_hoa["mo_ta"]; ?>
+                                    </p>
+                                </td>
+                                <td class=' px-3 py-4 text-sm text-gray-500 w-[250px]'>
+                                    <p class=''>
+                                        <?php echo $hang_hoa["desc"]; ?>
                                     </p>
                                 </td>
                                 <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>

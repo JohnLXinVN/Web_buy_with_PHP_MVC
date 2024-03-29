@@ -1,3 +1,67 @@
+<script>
+    $(document).ready(function () {
+        $("#checkout_bill").validate({
+            onfocusout: true,
+            onkeyup: true,
+            onclick: true,
+            rules: {
+                "first_name": {
+                    required: true,
+                    minlength: 1
+                },
+                "last_name": {
+                    required: true,
+                    minlength: 1
+                },
+                "email": {
+                    required: true,
+                    email: true
+                },
+                "address": {
+                    required: true,
+                    minlength: 2
+                },
+                "tel": {
+                    required: true,
+                    pattern: /^(\\+?84|0)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-46-8])[0-9]{7}$/
+                },
+                "payment": {
+                    required: true,
+                    minlength: 1
+                }
+            },
+            messages: {
+                "first_name": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                },
+                "last_name": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                },
+                "email": {
+                    required: "Trường bắt buộc",
+                    email: "Phải là email hợp lệ"
+                },
+                "address": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 2 ký tự"
+                },
+                "tel": {
+                    required: "Trường bắt buộc",
+                    pattern: "Số điện thoại Việt Nam không hợp lệ"
+                },
+                "payment": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                }
+            }
+        });
+    });
+
+</script>
+
+
 <!-- BREADCRUMB -->
 <div id="breadcrumb" class="section">
     <!-- container -->
@@ -23,178 +87,119 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <div class="row">
+        <form action="index.php?btn_order" method="post" id="checkout_bill">
+            <input type="hidden" name="ma_trang_thai" id="ma_trang_thai" value="1">
+            <input type="hidden" name="ma_kh" id="ma_kh" value="<?php echo $userLogin["ma_kh"] ?>">
+            <div class="row">
 
-            <div class="col-md-7">
-                <!-- Billing Details -->
-                <div class="billing-details">
-                    <div class="section-title">
-                        <h3 class="title">Billing address</h3>
+                <div class="col-md-7">
+                    <!-- Billing Details -->
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">Địa chỉ đặt hàng</h3>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="first_name" id="first_name" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="last_name" id="last_name" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="email" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="address" id="address" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="tel" name="tel" id="tel" placeholder="Telephone">
+                        </div>
+
                     </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="First Name">
+                    <!-- /Billing Details -->
+
+
+
+                    <!-- Order notes -->
+                    <div class="order-notes">
+                        <textarea class="input" name="notes" id="notes" placeholder="Order Notes"></textarea>
                     </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="last-name" placeholder="Last Name">
+                    <!-- /Order notes -->
+                </div>
+
+                <!-- Order Details -->
+                <div class="col-md-5 order-details">
+                    <div class="section-title text-center">
+                        <h3 class="title">Đơn hàng của bạn</h3>
                     </div>
-                    <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
+                    <div class="order-summary">
+                        <div class="order-col">
+                            <div><strong>Sản phẩm</strong></div>
+                            <div><strong>Tổng</strong></div>
+                        </div>
+                        <div class="order-products">
+                            <?php
+                            foreach ($ds_cart as $item) {
+
+                                ?>
+                                <input type="hidden" name="ds_cart_by_id[]" value="<?php echo $item["id"] ?>">
+                                <div class="order-col">
+                                    <div>
+                                        <?php echo $item["sl_hh_cart"] ?>x
+                                        <?php echo $item["ten_hh"] ?>
+                                    </div>
+                                    <div>VND
+                                        <?php echo number_format(round(floatval($item["tong_gia"]), 2), 2) ?>
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+
+                        </div>
+                        <div class="order-col">
+                            <div>Vận chuyển</div>
+                            <div><strong>FREE</strong></div>
+                        </div>
+                        <div class="order-col">
+                            <div><strong>Tổng</strong></div>
+                            <div><strong class="order-total">VND
+                                    <?php echo number_format(round(floatval($tong_gia), 2), 2) ?>
+                                </strong></div>
+                            <input type="hidden" name="tong_gia" id="tong_gia" value="<?php echo $tong_gia ?>">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Address">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="city" placeholder="City">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="country" placeholder="Country">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Telephone">
-                    </div>
-                    <div class="form-group">
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="create-account">
-                            <label for="create-account">
+                    <div class="payment-method">
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-1" value="Ship COD">
+                            <label for="payment-1">
                                 <span></span>
-                                Create Account?
+                                Ship COD
                             </label>
-                            <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt.</p>
-                                <input class="input" type="password" name="password" placeholder="Enter Your Password">
-                            </div>
+
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-2" value="Thanh toán thẻ">
+                            <label for="payment-2">
+                                <span></span>
+                                Thanh toán thẻ
+                            </label>
+
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-3" value="Thanh toán paypal">
+                            <label for="payment-3">
+                                <span></span>
+                                Thanh toán paypal
+                            </label>
+
                         </div>
                     </div>
-                </div>
-                <!-- /Billing Details -->
 
-                <!-- Shiping Details -->
-                <div class="shiping-details">
-                    <div class="section-title">
-                        <h3 class="title">Shiping address</h3>
-                    </div>
-                    <div class="input-checkbox">
-                        <input type="checkbox" id="shiping-address">
-                        <label for="shiping-address">
-                            <span></span>
-                            Ship to a diffrent address?
-                        </label>
-                        <div class="caption">
-                            <div class="form-group">
-                                <input class="input" type="text" name="first-name" placeholder="First Name">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="last-name" placeholder="Last Name">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Address">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="city" placeholder="City">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="country" placeholder="Country">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Telephone">
-                            </div>
-                        </div>
-                    </div>
+                    <button type="submit" class="primary-btn order-submit">Place order</button>
                 </div>
-                <!-- /Shiping Details -->
-
-                <!-- Order notes -->
-                <div class="order-notes">
-                    <textarea class="input" placeholder="Order Notes"></textarea>
-                </div>
-                <!-- /Order notes -->
+                <!-- /Order Details -->
             </div>
+        </form>
 
-            <!-- Order Details -->
-            <div class="col-md-5 order-details">
-                <div class="section-title text-center">
-                    <h3 class="title">Your Order</h3>
-                </div>
-                <div class="order-summary">
-                    <div class="order-col">
-                        <div><strong>PRODUCT</strong></div>
-                        <div><strong>TOTAL</strong></div>
-                    </div>
-                    <div class="order-products">
-                        <div class="order-col">
-                            <div>1x Product Name Goes Here</div>
-                            <div>$980.00</div>
-                        </div>
-                        <div class="order-col">
-                            <div>2x Product Name Goes Here</div>
-                            <div>$980.00</div>
-                        </div>
-                    </div>
-                    <div class="order-col">
-                        <div>Shiping</div>
-                        <div><strong>FREE</strong></div>
-                    </div>
-                    <div class="order-col">
-                        <div><strong>TOTAL</strong></div>
-                        <div><strong class="order-total">$2940.00</strong></div>
-                    </div>
-                </div>
-                <div class="payment-method">
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-1">
-                        <label for="payment-1">
-                            <span></span>
-                            Direct Bank Transfer
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-2">
-                        <label for="payment-2">
-                            <span></span>
-                            Cheque Payment
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-3">
-                        <label for="payment-3">
-                            <span></span>
-                            Paypal System
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-checkbox">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">
-                        <span></span>
-                        I've read and accept the <a href="#">terms & conditions</a>
-                    </label>
-                </div>
-                <a href="#" class="primary-btn order-submit">Place order</a>
-            </div>
-            <!-- /Order Details -->
-        </div>
         <!-- /row -->
     </div>
     <!-- /container -->

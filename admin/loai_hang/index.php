@@ -1,9 +1,9 @@
 <?php
-require_once("../../dao/loai_hang.php");
-require_once("../../dao/hang_hoa.php");
-require_once("../../dao/binh_luan.php");
-require_once("../../dao/pdo.php");
-require("../../global.php");
+require_once ("../../dao/loai_hang.php");
+require_once ("../../dao/hang_hoa.php");
+require_once ("../../dao/binh_luan.php");
+require_once ("../../dao/pdo.php");
+require ("../../global.php");
 // extract($_REQUEST);
 $error_message = "";
 
@@ -35,7 +35,7 @@ if (exist_param("add_loai_hang")) {
 
 } elseif (exist_param("edit_loai_hang")) {
     $edit_id = $_GET["ma_loai"];
-    $data_edit = get_one_item($edit_id);
+    $data_edit = get_one_item_loai_hang($edit_id);
 
 
     $VIEW_NAME = "loai_hang/edit_loai_hang.php";
@@ -70,6 +70,6 @@ if (exist_param("add_loai_hang")) {
 
 }
 
-require("../layout.php");
+require ("../layout.php");
 
 ?>

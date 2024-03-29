@@ -58,6 +58,14 @@ $url_action_add_bt = str_replace("edit_loai_bt", "btn_edit_loai_bt", $currentURL
                             class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
                     </div>
                 </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tổng số lượng</label>
+                    <div class="mt-1">
+                        <input type="text" id="tong_so_luong" name="tong_so_luong"
+                            value="<?php echo $data_edit["tong_so_luong"] ?>" autocomplete="family-name"
+                            class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
+                    </div>
+                </div>
             </div>
             <div class="flex flex-row mt-4">
                 <button type="submit"

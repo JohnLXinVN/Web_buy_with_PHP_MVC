@@ -54,6 +54,8 @@ if ($vi_tri !== false) {
                                     Tên loại biến thể</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                     Giá</th>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                    Tổng số lương</th>
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
 
                                     <span class="sr-only">Edit</s pan>
@@ -72,6 +74,8 @@ if ($vi_tri !== false) {
                                 echo $value["ten_loai"] . "</td>";
                                 echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>";
                                 echo $value["gia"] . "</td>";
+                                echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>";
+                                echo $value["tong_so_luong"] . "</td>";
                                 echo "<td class='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>";
                                 echo "<a href='" . $url_check . "ma_bien_the=" . $value["id"] . "&edit_loai_bt' type='button' class='mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
                                 echo "<i class='fa-solid fa-pencil'></i>";

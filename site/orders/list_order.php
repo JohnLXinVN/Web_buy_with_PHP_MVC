@@ -25,7 +25,7 @@
                             <p class="font-medium text-sm leading-7 text-black">Status
                             </p>
                             <p
-                                class="font-medium text-sm leading-6 whitespace-nowrap py-0.5 px-3 rounded-full lg:mt-3 bg-emerald-50 text-emerald-600">
+                                class="font-medium text-sm leading-6 whitespace-nowrap py-0.5 px-3 rounded-full lg:mt-3 <?php echo $value["ma_trang_thai"] == 4 ? "bg-red-400 text-white" : "bg-emerald-50 text-emerald-600" ?>">
                                 <?php echo $value["ten_trang_thai"] ?>
                             </p>
                         </div>

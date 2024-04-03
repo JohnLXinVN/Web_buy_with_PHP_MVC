@@ -2,24 +2,31 @@
 
 require_once ("pdo.php");
 
-function loai_select_parent()
+
+function loai_selectall($page, $soluongsp)
 {
-    $sql = "SELECT * FROM loai_hang
-    WHERE parent_catagory IS NULL ";
+    $start = ($page - 1) * $soluongsp;
+    $sql = "SELECT * FROM loai_hang";
+    $sql .= " LIMIT " . $start . "," . $soluongsp;
     return qdo_query($sql);
 }
 
-function loai_select_child()
-{
-    $sql = "SELECT * FROM loai_hang
-    WHERE parent_catagory IS NOT NULL ";
-    return qdo_query($sql);
-}
 
-function loai_selectall()
+function get_loai_selectall()
 {
     $sql = "SELECT * FROM loai_hang";
     return qdo_query($sql);
+}
+
+function hien_thi_so_trang_loai_hang($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?list_loai_hang&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
 }
 
 

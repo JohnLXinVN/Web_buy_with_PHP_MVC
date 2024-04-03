@@ -12,8 +12,18 @@ if (exist_param("add_loai_hang")) {
     $VIEW_NAME = "hang_hoa/add_hang_hoa.php";
 
 } else if (exist_param("list_hang_hoa")) {
-    $ds_loai_hang = loai_selectall();
-    $ds_hang_hoa = hang_hoa_select_all();
+
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+
+    $ds_loai_hang = get_dssp_all();
+    $ds_hang_hoa = hang_hoa_select_all($page, $soluongsp);
+    $tong_sp = get_dssp_all();
+    $hien_thi_so_trang = hien_thi_so_trang_ds_sp($tong_sp, $soluongsp);
 
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
 
@@ -31,7 +41,7 @@ if (exist_param("add_loai_hang")) {
     // $so_luong = $_POST["so_luong"];
     $hinh = save_file("hinh", $UPLOAD_URL);
 
-    hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai);
+    hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc);
     $ds_hang_hoa = hang_hoa_select_all();
 
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
@@ -80,7 +90,7 @@ if (exist_param("add_loai_hang")) {
 
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
 } else {
-    $ds_loai_hang = loai_selectall();
+    $ds_loai_hang = get_dssp_all();
     // $ds_loai_hang_parent = loai_select_parent();
     // $ds_loai_hang_child = loai_select_child();
     $VIEW_NAME = "hang_hoa/add_hang_hoa.php";

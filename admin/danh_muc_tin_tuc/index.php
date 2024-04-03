@@ -9,7 +9,17 @@ if (exist_param("add_danh_muc")) {
 
     $VIEW_NAME = "danh_muc_tin_tuc/add_danh_muc.php";
 } else if (exist_param("list_danh_muc")) {
-    $ds_dm = danh_muc_tin_tuc_sellect_all();
+
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+
+    $ds_dm = danh_muc_tin_tuc_sellect_all($page, $soluongsp);
+    $tong_sp=get_danh_muc_tin_tuc_sellect_all();
+    $hien_thi_so_trang = hien_thi_so_trang_ds_dm_tin_tuc($tong_sp, $soluongsp);
 
     $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
 } else if (exist_param("btn_add_danh_muc")) {
@@ -40,7 +50,7 @@ if (exist_param("add_danh_muc")) {
     $ds_dm = danh_muc_tin_tuc_sellect_all();
     $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
 } else {
-    $ds_dm = danh_muc_tin_tuc_sellect_all();
+    $ds_dm = get_danh_muc_tin_tuc_sellect_all();
 
     $VIEW_NAME = "danh_muc_tin_tuc/add_danh_muc.php";
 }

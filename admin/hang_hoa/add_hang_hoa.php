@@ -143,20 +143,7 @@
                         foreach ($ds_loai_hang as $loai_hang) { ?>
                             <option value="<?= $loai_hang['ma_loai'] ?>"><?= $loai_hang['ten_loai'] ?></option>
                         <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-
-            <!-- <div>
-                <label class="block text-sm font-medium text-gray-700">Xuất Xứ</label>
-                <div class="mt-1">
-                    <select id="ma_loai" name="ma_loai" autocomplete="country-name"
-                        class="block w-full rounded-md border-gray-300 shadow-sm focus-visible:outline-none border-2 px-1 py-2 sm:text-sm">
-                        <?php
-                        foreach ($ds_loai_hang_parent as $key => $value) {
-
+                        foreach ($ds_loai_hang as $key => $value) {
                             echo "<option value='" . $value["ma_loai"] . "'>" . $value["ten_loai"] . "</option>";
                         }
                         ?>

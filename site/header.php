@@ -113,10 +113,10 @@ if (isset($_COOKIE['user'])) {
                                 <a href="../favourite/favourite_product.php?yeu_thich">
                                     <i class="fa fa-heart-o"></i>
                                     <span>Danh Sách Yêu Thích</span>
-                                    <div class="qty">2</div>
+                                    <div class="qty"></div>
                                 </a>
                             </div>
-                            <?php
+                        <?php
                         }
                         ?>
                         <div class="dropdown">
@@ -151,8 +151,8 @@ if (isset($_COOKIE['user'])) {
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="../trang_chu/index.php">Trang chủ</a></li>
-                    <li><a href="../hang_hoa/store.php?my_pham">Sản phẩm</a></li>
-                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="../hang_hoa/store.php?san_pham">Sản phẩm</a></li>
+                    <li><a href="../trang_chu/index.php?lien_he">Liên hệ</a></li>
                     <li><a href="../tin_tuc/list_tin_tuc.php?list_tin_tuc">Tin tức</a></li>
                     <li><a href="">Giới thiệu</a></li>
 

@@ -62,15 +62,6 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h3 class="title">Sản Phẩm Mới</h3>
-                    <div class="section-nav">
-                        <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1">Phấn</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Son Môi</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Dưỡng Da</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Kem Nền</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Sữa Rửa Mặt</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <!-- /section title -->
@@ -90,8 +81,8 @@
                                     $userCookie = $_COOKIE['user'];
                                     $userLogin = unserialize($userCookie);
                                 }
-
-
+                                // var_dump($ds_hang_hoa);
+                                // die;
                                 foreach ($ds_hang_hoa as $hang_hoa) {
                                     $ds_bt = get_bt_by_ma_hh($hang_hoa["ma_hh"]);
 
@@ -147,7 +138,7 @@
                                                     <?php
                                                     if (isset($userLogin)) { ?>
                                                         <button class="add-to-wishlist">
-                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                            <i class="fa fa-heart"></i>
                                                             <span class="tooltipp">add to wishlist</span>
                                                         </button>
                                                         <?php
@@ -261,7 +252,7 @@
                                                     }).showToast();
 
                                                 }
-                        // Xác định phương thức và URL yêu cầu
+                            // Xác định phương thức và URL yêu cầu
 
 
 
@@ -386,7 +377,7 @@
                             <div class="products-slick" data-nav="#slick-nav-2">
                                 <!-- product SẢN PHẨM Bán Chạy Nhất Theo Lượt Xem -->
                                 <?php
-                                foreach ($ds_hang_hoa_top_10 as $key => $hang_hoa) {
+                                foreach ($ds_hang_hoa_top_10 as $hang_hoa) {
                                     $ds_bt = get_bt_by_ma_hh($hang_hoa["ma_hh"]);
                                     $thanh_tien = $ds_bt[0]['gia'] - ($ds_bt[0]['gia'] * $hang_hoa['giam_gia']);
                                     $phan_tram = $hang_hoa['giam_gia'] * 100;
@@ -436,12 +427,10 @@
                                                 <div class="product-btns">
                                                     <?php
                                                     if (isset($userLogin)) { ?>
-                                                        <button class="add-to-wishlist"
-                                                            onclick="window.location.href='../favourite/favourite_product.php?add_favourite'">
-                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                        <button class="add-to-wishlist">
+                                                            <i class="fa fa-heart"></i>
                                                             <span class="tooltipp">add to wishlist</span>
                                                         </button>
-
                                                         <?php
                                                     } else { ?>
                                                         <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
@@ -478,8 +467,6 @@
                                                                 // Hiển thị modal Quickview
                                                                 $('#quick-view-modal').modal('show');
                                                             }
-
-
                                                         });
                                                     </script>
                                                 </div>
@@ -552,7 +539,7 @@
                                                     }).showToast();
 
                                                 }
-    // Xác định phương thức và URL yêu cầu
+        // Xác định phương thức và URL yêu cầu
 
 
 
@@ -619,4 +606,34 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+xhr.open('POST', '/site/hang_hoa/chi_tiet.php?addToCart', true);
+
+// Thiết lập tiêu đề yêu cầu
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+// Xử lý sự kiện khi yêu cầu hoàn thành
+xhr.onload = function() {
+if (xhr.status === 200) {
+// Xử lý kết quả trả về từ yêu cầu IJAX
+console.log("connect oki")
+const response = xhr.responseText;
+// Tiếp tục xử lý kết quả theo logic của bạn
+} else {
+// Xử lý khi có lỗi xảy ra trong yêu cầu IJAX
+}
+};
+
+// Chuẩn bị dữ liệu để gửi đi
+
+const selectedVariantPrice = list_tien[index].innerHTML;
+const selectedVariantId = list_bt[index].innerHTML;
+const data = 'VariantId=' + encodeURIComponent(selectedVariantId) +
+'&variantPrice=' + encodeURIComponent(selectedVariantPrice) +
+'&quantity=1';
+
+// Gửi yêu cầu IJAX
+xhr.send(data);
+})
+})
+</script>
 <!-- /NEWSLETTER -->

@@ -10,8 +10,6 @@
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Địa chỉ email</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                Số điện thoại</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Thông điệp</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Ngày gửi</th>

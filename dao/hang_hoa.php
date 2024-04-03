@@ -24,9 +24,9 @@ function hang_hoa_select_newest()
     return qdo_query($sql);
 }
 
-function hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai)
+function hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai , $mo_ta_chi_tiet)
 {
-    $sql = "INSERT INTO hang_hoa(ten_hh, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai) VALUES ('$ten_hh','$giam_gia','$hinh', '$ngay_nhap' , '$mo_ta', '$dac_biet' , '$luot_xem' , '$ma_loai')";
+    $sql = "INSERT INTO hang_hoa(ten_hh, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai,mo_ta_chi_tiet) VALUES ('$ten_hh','$giam_gia','$hinh', '$ngay_nhap' , '$mo_ta', '$dac_biet' , '$luot_xem' , '$ma_loai' , '$mo_ta_chi_tiet')";
     pdo_execute($sql);
 }
 

@@ -6,12 +6,11 @@ require_once ("../../dao/pdo.php");
 require_once ("../../dao/favourite.php");
 
 require ("../../global.php");
-$ds_loai_hang = loai_selectall();
+$ds_loai_hang = get_loai_selectall();
 $ds_hang_hoa_top_10 = hang_hoa_select_top10();
 $hang_hoa_new = loadall_hang_hoa_store_all();
 // $hien_thi_so_trang = hien_thi_so_trang($tong_sp,$soluongsp);
 $userCookie = $_COOKIE['user'];
-
 $userLogin = unserialize($userCookie);
 if (exist_param("my_pham")) {
     $check = kiem_tra_hh_yt($userLogin["ma_kh"]);

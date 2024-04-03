@@ -10,7 +10,16 @@ if (exist_param("add_users")) {
 
 } else if (exist_param("list_users")) {
 
-    $ds_users = users_select_all();
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+
+    $ds_users = users_select_all($page, $soluongsp);
+    $tong_sp=get_users_all();
+    $hien_thi_so_trang = hien_thi_so_trang_ds_users($tong_sp, $soluongsp);
 
     $VIEW_NAME = "users/users.php";
 

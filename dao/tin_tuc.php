@@ -5,9 +5,32 @@ function tin_tuc_select_all()
     $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
     if (isset($_POST['danh_muc']) && $_POST['danh_muc'] != "all") {
         $danh_muc = $_POST['danh_muc'];
+        $start = ($page - 1) * $soluongsp;
+        $sql .= " WHERE tt.id_danh_muc = $danh_muc";
+        $sql .= " LIMIT " . $start . "," . $soluongsp;
+    }
+    return qdo_query($sql);
+}
+
+function get_tin_tuc_select_all()
+{
+    $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
+    if (isset($_POST['danh_muc']) && $_POST['danh_muc'] != "all") {
+        $danh_muc = $_POST['danh_muc'];
         $sql .= " WHERE tt.id_danh_muc = $danh_muc";
     }
     return qdo_query($sql);
+}
+
+function hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?list_tin_tuc&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
 }
 
 function tin_tuc_select_4()
@@ -54,10 +77,29 @@ function tin_tuc_load_danh_muc($id_danh_muc = 0)
 
 //  Danh Mục Tin Tức
 
-function danh_muc_tin_tuc_sellect_all()
+function danh_muc_tin_tuc_sellect_all($page, $soluongsp)
+{
+    $start = ($page - 1) * $soluongsp;
+    $sql = "SELECT * FROM danh_muc_tin_tuc";
+    $sql .= " LIMIT " . $start . "," . $soluongsp;
+    return qdo_query($sql);
+}
+
+function get_danh_muc_tin_tuc_sellect_all()
 {
     $sql = "SELECT * FROM danh_muc_tin_tuc";
     return qdo_query($sql);
+}
+
+function hien_thi_so_trang_ds_dm_tin_tuc($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?list_danh_muc&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
 }
 
 function danh_muc_tin_tuc_sellect_id($id)

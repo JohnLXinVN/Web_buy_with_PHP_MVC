@@ -17,8 +17,8 @@ if (exist_param("add_users")) {
     }
     $soluongsp = 5;
 
-    $ds_users = users_select_all($page, $soluongsp);
-    $tong_sp=get_users_all();
+    $ds_users = get_users_select_all($page, $soluongsp);
+    $tong_sp= users_all();
     $hien_thi_so_trang = hien_thi_so_trang_ds_users($tong_sp, $soluongsp);
 
     $VIEW_NAME = "users/users.php";

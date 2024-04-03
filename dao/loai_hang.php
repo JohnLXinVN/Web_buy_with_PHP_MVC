@@ -3,7 +3,7 @@
 require_once ("pdo.php");
 
 
-function loai_selectall($page, $soluongsp)
+function get_loai_selectall($page, $soluongsp)
 {
     $start = ($page - 1) * $soluongsp;
     $sql = "SELECT * FROM loai_hang";
@@ -12,7 +12,7 @@ function loai_selectall($page, $soluongsp)
 }
 
 
-function get_loai_selectall()
+function loai_selectall()
 {
     $sql = "SELECT * FROM loai_hang";
     return qdo_query($sql);

@@ -18,8 +18,8 @@ if (exist_param("add_tin_tuc")) {
     }
     $soluongsp = 5;
 
-    $ds_tin_tuc = tin_tuc_select_all($page, $soluongsp);
-    $tong_sp=get_tin_tuc_select_all();
+    $ds_tin_tuc = get_tin_tuc_select_all($page, $soluongsp);
+    $tong_sp= tin_tuc_select_all();
     $hien_thi_so_trang = hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp);
 
     $VIEW_NAME = "tin_tuc/tin_tuc.php";
@@ -74,7 +74,7 @@ if (exist_param("add_tin_tuc")) {
     $ds_tin_tuc = tin_tuc_select_all();
     $VIEW_NAME = "tin_tuc/tin_tuc.php";
 } else {
-    $ds_dm = get_danh_muc_tin_tuc_sellect_all();
+    $ds_dm = danh_muc_tin_tuc_sellect_all();
     $ds_tin_tuc = tin_tuc_select_all();
 
     $VIEW_NAME = "tin_tuc/add_tin_tuc.php";

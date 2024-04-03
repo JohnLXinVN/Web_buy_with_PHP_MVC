@@ -21,7 +21,7 @@ function thong_ke_hang_hoa_by_chi_tiet()
     return qdo_query($sql);
 }
 
-function thong_ke_binh_luan($page, $soluongsp)
+function get_thong_ke_binh_luan($page, $soluongsp)
 {
     $start = ($page - 1) * $soluongsp;
     $sql = "SELECT hh.ma_hh, hh.ten_hh, COUNT(*) so_luong,MIN(b.ngay_bl) cu_nhat, MAX(b.ngay_bl) moi_nhat FROM binh_luan b JOIN hang_hoa hh ON hh.ma_hh = b.ma_hh GROUP BY hh.ma_hh, hh.ten_hh HAVING so_luong >0";
@@ -30,7 +30,7 @@ function thong_ke_binh_luan($page, $soluongsp)
 }
 
 
-function get_thong_ke_binh_luan()
+function thong_ke_binh_luan()
 {
     $sql = "SELECT hh.ma_hh, hh.ten_hh, COUNT(*) so_luong,MIN(b.ngay_bl) cu_nhat, MAX(b.ngay_bl) moi_nhat FROM binh_luan b JOIN hang_hoa hh ON hh.ma_hh = b.ma_hh GROUP BY hh.ma_hh, hh.ten_hh HAVING so_luong >0";
     return qdo_query($sql);

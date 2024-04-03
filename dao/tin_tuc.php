@@ -1,6 +1,6 @@
 <?php
 require_once("pdo.php");
-function tin_tuc_select_all()
+function get_tin_tuc_select_all()
 {
     $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
     if (isset($_POST['danh_muc']) && $_POST['danh_muc'] != "all") {
@@ -12,7 +12,7 @@ function tin_tuc_select_all()
     return qdo_query($sql);
 }
 
-function get_tin_tuc_select_all()
+function tin_tuc_select_all()
 {
     $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
     if (isset($_POST['danh_muc']) && $_POST['danh_muc'] != "all") {
@@ -77,7 +77,7 @@ function tin_tuc_load_danh_muc($id_danh_muc = 0)
 
 //  Danh Mục Tin Tức
 
-function danh_muc_tin_tuc_sellect_all($page, $soluongsp)
+function get_danh_muc_tin_tuc_sellect_all($page, $soluongsp)
 {
     $start = ($page - 1) * $soluongsp;
     $sql = "SELECT * FROM danh_muc_tin_tuc";
@@ -85,7 +85,7 @@ function danh_muc_tin_tuc_sellect_all($page, $soluongsp)
     return qdo_query($sql);
 }
 
-function get_danh_muc_tin_tuc_sellect_all()
+function danh_muc_tin_tuc_sellect_all()
 {
     $sql = "SELECT * FROM danh_muc_tin_tuc";
     return qdo_query($sql);

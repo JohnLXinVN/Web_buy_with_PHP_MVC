@@ -9,7 +9,7 @@ if (exist_param("list_tin_tuc")) {
     $listt = tin_tuc_select_all();
 } else if (exist_param("id_danh_muc")) {
     $ds_dm = danh_muc_tin_tuc_sellect_all();
-    $id_danh_muc = $_GET['id_danh_muc'];
+    $id_danh_muc = $_POST['danh_muc'];
     $listt = tin_tuc_load_danh_muc($id_danh_muc);
 } else {
     $ds_dm = danh_muc_tin_tuc_sellect_all();

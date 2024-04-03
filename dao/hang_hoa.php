@@ -24,10 +24,10 @@ function hang_hoa_select_newest()
     return qdo_query($sql);
 }
 
-function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc)
+function hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai)
 {
-    $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai,desc) VALUES (?,?,?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc);
+    $sql = "INSERT INTO hang_hoa(ten_hh, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai) VALUES ('$ten_hh','$giam_gia','$hinh', '$ngay_nhap' , '$mo_ta', '$dac_biet' , '$luot_xem' , '$ma_loai')";
+    pdo_execute($sql);
 }
 
 function hang_hoa_delete($ma_hh)
@@ -52,15 +52,7 @@ function loadall_hang_hoa_store($page, $soluongsp)
 
 function loadall_hang_hoa_store_all()
 {
-
-    // if(($page="") || ($page=0)){
-    //     $page=1;
-    // }
-    // $start = ($page-1)*$soluongsp;
-
-    $sql = "SELECT * FROM hang_hoa WHERE 1";
-    $sql .= " ORDER BY ma_hh DESC";
-    $sql .= " LIMIT 0,9";
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai ORDER BY hh.ma_hh DESC LIMIT 0,9";
     return qdo_query($sql);
 }
 
@@ -154,11 +146,11 @@ function hang_hoa_delete_by_loai($ma_loai)
     pdo_execute($sql);
 }
 
-function hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh, $desc)
+function hang_hoa_update($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh)
 {
-    $sql = "UPDATE hang_hoa SET ten_hh = ?, don_gia = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ?, desc = ? WHERE ma_hh = ?";
+    $sql = "UPDATE hang_hoa SET ten_hh = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ? WHERE ma_hh = ?";
 
-    pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh, $desc);
+    pdo_execute($sql, $ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh);
 }
 
 function hang_hoa_select_by_id($id)
@@ -185,9 +177,12 @@ function hang_hoa_select_by_loai_all($loai_hang)
     return qdo_query($sql);
 }
 
-function hang_hoa_select_by_loai($loai_hang)
+function hang_hoa_select_by_loai($ma_loai)
 {
-    $sql = "SELECT * FROM hang_hoa where ma_loai = $loai_hang limit 6";
+    $sql = "SELECT * FROM hang_hoa";
+    if ($ma_loai > 0) {
+        $sql .= " WHERE 1 and ma_loai = $ma_loai";
+    }
     return qdo_query($sql);
 }
 

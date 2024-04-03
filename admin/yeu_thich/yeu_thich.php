@@ -12,17 +12,9 @@
 </style>
 <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold leading-6 text-gray-900">Tin Tức</h1>
-        <p class="mt-2 text-sm text-gray-700">Quản lý Tin Tức</p>
+        <h1 class="text-base font-semibold leading-6 text-gray-900">yêu thích</h1>
+        <p class="mt-2 text-sm text-gray-700">Quản lý yêu thích</p>
     </div>
-
-    <form class="mt-4 sm:mt-4 sm:flex-none" action="loai_hang.php" method="POST">
-        <div class="flex">
-            <a href="index.php?add_yeu_thich" type="button"
-                class="min-w-[100px]  rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                Thêm mới</a>
-        </div>
-    </form>
 </div>
 <div class="mt-8 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

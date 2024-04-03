@@ -62,15 +62,6 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h3 class="title">Sản Phẩm Mới</h3>
-                    <div class="section-nav">
-                        <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1">Phấn</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Son Môi</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Dưỡng Da</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Kem Nền</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Sữa Rửa Mặt</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <!-- /section title -->
@@ -145,7 +136,7 @@
                                                     <?php
                                                     if (isset($userLogin)) { ?>
                                                         <button class="add-to-wishlist">
-                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                            <i class="fa fa-heart"></i>
                                                             <span class="tooltipp">add to wishlist</span>
                                                         </button>
                                                     <?php
@@ -357,8 +348,8 @@
                                                 <div class="product-btns">
                                                     <?php
                                                     if (isset($userLogin)) { ?>
-                                                        <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite'">
-                                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                                        <button class="add-to-wishlist">
+                                                            <i class="fa fa-heart"></i>
                                                             <span class="tooltipp">add to wishlist</span>
                                                         </button>
                                                     <?php
@@ -395,8 +386,6 @@
                                                                 // Hiển thị modal Quickview
                                                                 $('#quick-view-modal').modal('show');
                                                             }
-
-
                                                         });
                                                     </script>
                                                 </div>

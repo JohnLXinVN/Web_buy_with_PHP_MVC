@@ -1,3 +1,19 @@
+<?php
+$userLogin = null;
+if (isset($_COOKIE['user'])) {
+    $userCookie = $_COOKIE['user'];
+    $userLogin = unserialize($userCookie);
+}
+$ma_kh = $userLogin !== null ? $userLogin['ma_kh'] : 0;
+
+// Kiểm tra xem liên hệ đã được gửi thành công hay chưa
+$lienHeDaGui = false;
+if (isset($_GET['btn_gui_lh'])) {
+    // Thực hiện xử lý gửi liên hệ ở đây
+    // Nếu thành công, đặt biến $lienHeDaGui thành true
+    $lienHeDaGui = true;
+}
+?>
 <section class="mb-4 padding" style="position: relative;">
     <div class="background-image" style="background-image: url('/content/images/content.jpg'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.5;"></div>
     <div class="container">
@@ -7,48 +23,52 @@
         <div class="row justify-content-center">
             <!--Grid column-->
             <div class="col-md-6 mb-md-0 mb-5">
-                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="name" class="text-black">Họ Tên</label>
-                                <input type="text" id="name" name="name" class="form-control">
+                <?php if ($lienHeDaGui) : ?>
+                    <p class="text-center text-success">Cảm ơn bạn đã liên hệ!</p>
+                <?php else : ?>
+                    <form id="lien_he" name="lien_he" action="index.php?btn_gui_lh" method="POST">
+                        <input type="hidden" id="ma_kh" name="ma_kh" value="<?= $ma_kh ?>">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="ho_ten" class="text-black">Họ Tên</label>
+                                    <input type="text" id="ho_ten" name="ho_ten" class="form-control">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="email" class="text-black">Email</label>
-                                <input type="email" id="email" name="email" class="form-control">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="email" class="text-black">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="message" class="text-black">Ý Kiến</label>
-                                <textarea id="message" name="message" rows="5" class="form-control"></textarea>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="message" class="text-black">Ý Kiến</label>
+                                    <textarea id="message" name="message" rows="5" class="form-control"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <input class="btn btn-primary" type="submit" value="Gửi">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input class="btn btn-primary" name="btn_gui_lh" type="submit" value="Gửi">
+                            </div>
                         </div>
-                    </div>
 
-                </form>
+                    </form>
+                <?php endif; ?>
             </div>
 
             <div class="col-md-6 text-center">
                 <ul class="list-unstyled mb-0">
                     <li><i class="fas fa-map-marker-alt fa-2x text-white"></i>
-                        <p class="text-white">San Francisco, CA 94126, USA</p>
+                        <p class="text-white">Trịnh Văn Bô</p>
                     </li>
 
                     <li><i class="fas fa-phone mt-4 fa-2x text-white"></i>

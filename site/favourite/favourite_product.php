@@ -2,6 +2,7 @@
 require_once("../../dao/hang_hoa.php");
 require_once("../../dao/loai_hang.php");
 require_once("../../dao/pdo.php");
+require_once("../../dao/bien_the.php");
 require_once("../../dao/favourite.php");
 require("../../global.php");
 
@@ -12,7 +13,11 @@ if (isset($_COOKIE['user'])) {
 }
 
 if (exist_param("yeu_thich")) {
-    $ma_kh = $userLogin['ma_kh'];
+    if ($userLogin !== null && isset($userLogin['ma_kh'])) {
+        $ma_kh = $userLogin['ma_kh'];
+    } else {
+        $ma_kh = null; // Hoặc giá trị mặc định khác nếu cần thiết
+    }
 
     $check = kiem_tra_hh_yt($ma_kh);
     $ds_yt = hang_hoa_yt_select_ma_kh($ma_kh);
@@ -32,7 +37,13 @@ if (exist_param("yeu_thich")) {
 
     remove_hang_hoa_yt($id);
 
-    $ma_kh = $userLogin['ma_kh'];
+    
+
+    if ($userLogin !== null && isset($userLogin['ma_kh'])) {
+        $ma_kh = $userLogin['ma_kh'];
+    } else {
+        $ma_kh = null; // Hoặc giá trị mặc định khác nếu cần thiết
+    }
 
     $check = kiem_tra_hh_yt($ma_kh);
     $ds_yt = hang_hoa_yt_select_ma_kh($ma_kh);
@@ -56,3 +67,11 @@ if (exist_param("yeu_thich")) {
 }
 
 require("../layout.php");
+
+
+
+
+
+
+
+

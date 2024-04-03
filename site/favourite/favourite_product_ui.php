@@ -12,23 +12,42 @@
                         // var_dump($check);
                         // die;
                         foreach ($ds_yt as $hang_hoa) {
-                            $thanh_tien = $hang_hoa['don_gia'] - ($hang_hoa['don_gia'] * $hang_hoa['giam_gia']);
+                            $ds_bt = get_bt_by_ma_hh($hang_hoa['ma_hh']);
+                            $thanh_tien = $ds_bt[0]['gia'] - ($ds_bt[0]['gia'] * $hang_hoa['giam_gia']);
                             $phan_tram = $hang_hoa['giam_gia'] * 100;
 
                             $is_favorite = $check > 0 ? "fa-hearted" : '';
                         ?>
                             <div class="product">
+                                <p class="tien hidden">
+                                    <?php echo $thanh_tien ?>
+                                </p>
+                                <p class="bien_the hidden">
+                                    <?php echo $ds_bt[0]["id"] ?>
+                                </p>
                                 <div class="product-img">
                                     <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
                                     <div class="product-label">
-                                        <?php if ($hang_hoa['giam_gia'] > 0) echo '<span class="sale">' . $phan_tram . '%</span>' ?>
+                                        <?php if ($hang_hoa['giam_gia'] > 0)
+                                            echo '<span class="sale">' . $phan_tram . '%</span>' ?>
                                         <span class="new">NEW</span>
                                     </div>
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category"><?= $hang_hoa['ten_loai'] ?></p>
-                                    <h3 class="product-name"><a href="#"><?= $hang_hoa['ten_hh'] ?></a></h3>
-                                    <h4 class="product-price"><?= $thanh_tien ?>VND<del class="product-old-price"><?= $hang_hoa['don_gia'] ?>VND</del></h4>
+                                    <p class="product-category">
+                                        <?= $hang_hoa['ten_loai'] ?>
+                                    </p>
+                                    <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                            <?= $hang_hoa['ten_hh'] ?>
+                                        </a></h3>
+                                    <h3 class="product-name text-yellow-500 text-xl">
+                                        <?= $ds_bt[0]['ten_loai'] ?>
+                                    </h3>
+                                    <h4 class="product-price">
+                                        <?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
+                                            <?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
+                                        </del>
+                                    </h4>
                                     <div class="product-rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -37,14 +56,41 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <div class="product-btns">
-                                            <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?remove_favourite&id=<?=$hang_hoa['id']?>'">
-                                                <i class="fa fa-heart <?=$is_favorite?>"></i>
-                                                <span class="tooltipp">remove to wishlist</span>
-                                        <button class="quick-view">
+                                        <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?remove_favourite&id=<?= $hang_hoa['id'] ?>'">
+                                            <i class="fa fa-heart <?= $is_favorite ?>"></i>
+                                            <span class="tooltipp">remove to wishlist</span>
+                                        </button>
+
+                                        <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
                                             <i class="fa fa-eye"></i>
                                             <span class="tooltipp">quick view</span>
                                         </button>
+                                        <script>
+                                            $(document).ready(function() {
+                                                // Xử lý sự kiện nhấp vào nút Quickview
+                                                $('.quick-view').click(function(e) {
+                                                    e.preventDefault();
+                                                    // Lấy thông tin sản phẩm từ thuộc tính data
+                                                    var tenHH = $(this).data('tenhh');
+                                                    var moTa = $(this).data('mota');
+                                                    var hinhAnh = $(this).data("anh");
 
+                                                    // Gọi hàm showQuickViewModal với thông tin sản phẩm
+                                                    showQuickViewModal(tenHH, moTa, hinhAnh);
+                                                });
+
+                                                // Hiển thị modal Quickview với thông tin sản phẩm
+                                                function showQuickViewModal(tenHH, moTa, hinhAnh) {
+                                                    // Điền thông tin sản phẩm vào modal Quickview
+                                                    $('#quick-view-title').text(tenHH);
+                                                    $('#quick-view-description').text(moTa);
+                                                    $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
+
+                                                    // Hiển thị modal Quickview
+                                                    $('#quick-view-modal').modal('show');
+                                                }
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                                 <div class="add-to-cart">
@@ -56,6 +102,29 @@
                         <?php
                         }
                         ?>
+                    </div>
+                    <div id="quick-view-modal" class="modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="quick-view-title"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img id="quick-view-image" src="" alt="Product Image">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="quick-view-description"></p>
+                                            <!-- Thêm các thông tin khác của sản phẩm vào modal -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="slick-nav-1" class="products-slick-nav"></div>
                 </div>

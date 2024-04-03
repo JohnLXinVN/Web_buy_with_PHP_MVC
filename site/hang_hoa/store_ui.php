@@ -8,28 +8,14 @@
 
 			<div class="side-bar col-md-3">
 				<div class="menu">
-
 					<div class="item">
 						<a href="store.php?my_pham">Tất Cả Sản Phẩm</a>
-					</div>
-
-					<div class="item">
-						<a href="#" class="sub-btn">Mỹ Phẩm Hàn<i class="fas fa-angle-right dropdown"></i></a>
-						<div class="sub-menu">
-							<a href="store.php?my_pham_han" class="sub-item">Mỹ Phẩm Hàn</a>
-							<a href="#" class="sub-item">Son</a>
-							<a href="#" class="sub-item">Phấn</a>
-							<a href="#" class="sub-item">Kem Nền</a>
-						</div>
-					</div>
-					<div class="item">
-						<a href="#" class="sub-btn">Mỹ Phẩm Nhật<i class="fas fa-angle-right dropdown"></i></a>
-						<div class="sub-menu">
-							<a href="store.php?my_pham_nhat" class="sub-item">Mỹ Phẩm Nhật</a>
-							<a href="#" class="sub-item">Son</a>
-							<a href="#" class="sub-item">Phấn</a>
-							<a href="#" class="sub-item">Kem Nền</a>
-						</div>
+						<?php
+						foreach ($ds_loai_hang as $loai) { ?>
+							<a href="store.php?ma_loai=<?= $loai['ma_loai'] ?>" class="sub-item"><?= $loai['ten_loai'] ?></a>
+						<?php
+						}
+						?>
 					</div>
 				</div>
 			</div>
@@ -57,7 +43,7 @@
 						$phan_tram = $hang_hoa['giam_gia'] * 100;
 
 						$is_favorite = $check > 0 ? "fa-hearted" : '';
-						?>
+					?>
 						<div class="product col-span-1 ">
 							<p class="tien hidden">
 								<?php echo $thanh_tien ?>
@@ -69,26 +55,23 @@
 								<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
 								<div class="product-label">
 									<?php if ($hang_hoa['giam_gia'] > 0)
-										echo '<span class="sale">' . $phan_tram . '%</span>' ?>
-
-
-										<span class="new">NEW</span>
-									</div>
+										echo '<span class="sale">' . $phan_tram . '%</span>' 
+									?>
+									<span class="new">NEW</span>
 								</div>
-								<div class="product-body">
-									<!-- <p class="product-category">
+							</div>
+							<div class="product-body">
+								<!-- <p class="product-category">
 									<?= $hang_hoa['ten_loai'] ?>
 								</p> -->
-								<h3 class="product-name"><a
-										href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+								<h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
 										<?= $hang_hoa['ten_hh'] ?>
 									</a></h3>
 								<h3 class="product-name text-yellow-500 text-xl">
 									<?= $ds_bt[0]['ten_loai'] ?>
 								</h3>
 								<h4 class="product-price">
-									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del
-										class="product-old-price">
+									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
 										<?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
 									</del>
 								</h4>
@@ -109,21 +92,20 @@
 												<i class="fa fa-heart <?= $is_favorite ?>"></i>
 												<span class="tooltipp">add to wishlist</span>
 											</button>
-											<?php
+										<?php
 										} else { ?>
 											<p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-											<?php
+										<?php
 										}
 										?>
-										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
-											data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
 											<i class="fa fa-eye"></i>
 											<span class="tooltipp">quick view</span>
 										</button>
 										<script>
-											$(document).ready(function () {
+											$(document).ready(function() {
 												// Xử lý sự kiện nhấp vào nút Quickview
-												$('.quick-view').click(function (e) {
+												$('.quick-view').click(function(e) {
 													e.preventDefault();
 													// Lấy thông tin sản phẩm từ thuộc tính data
 													var tenHH = $(this).data('tenhh');
@@ -154,8 +136,32 @@
 									<i class="fa fa-shopping-cart"></i> add to cart
 								</button>
 							</div>
+
+							<div id="quick-view-modal" class="modal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="quick-view-title"></h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-6">
+													<img id="quick-view-image" src="" alt="Product Image">
+												</div>
+												<div class="col-md-6">
+													<p id="quick-view-description"></p>
+													<!-- Thêm các thông tin khác của sản phẩm vào modal -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<?php
+					<?php
 					}
 					?>
 
@@ -167,12 +173,9 @@
 				<div class="store-filter clearfix">
 					<span class="store-qty">Showing 20-100 products</span>
 					<ul class="store-pagination">
-
 						<?php
-						echo $hien_thi_so_trang;
+						// echo $hien_thi_so_trang;
 						?>
-
-
 					</ul>
 				</div>
 				<!-- /store bottom filter -->

@@ -26,11 +26,14 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">All Categories</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Headphones</a></li>
-                    <li class="active">Product name goes here</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/site/hang_hoa/store.php?ma_loai=<?php echo $item_hh["ma_loai"] ?>">
+                            <?php echo $item_hh["ten_loai"] ?>
+                        </a></li>
+
+                    <li class="active">
+                        <?php echo $item_hh["ten_hh"] ?>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -160,7 +163,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <?php echo $item_hh["desc"] ?>
+                                        <?php echo $item_hh["description"] ?>
                                     </p>
                                 </div>
                             </div>

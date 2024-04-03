@@ -1,9 +1,23 @@
 <?php
-require_once("pdo.php");
+require_once ("pdo.php");
 
-function thong_ke_hang_hoa()
+// function thong_ke_hang_hoa_by_chi_tiet()
+// {
+//     $sql = "SELECT lh.ma_loai, lh.ten_loai, COUNT(*) so_luong,MIN(hh.don_gia) gia_min, MAX(hh.don_gia) gia_max, AVG(hh.don_gia) gia_tb FROM loai_hang lh JOIN hang_hoa hh ON lh.ma_loai = hh.ma_loai GROUP BY lh.ten_loai, lh.ma_loai";
+//     return qdo_query($sql);
+// }
+
+function thong_ke_hang_hoa_by_chi_tiet()
 {
-    $sql = "SELECT lh.ma_loai, lh.ten_loai, COUNT(*) so_luong,MIN(hh.don_gia) gia_min, MAX(hh.don_gia) gia_max, AVG(hh.don_gia) gia_tb FROM loai_hang lh JOIN hang_hoa hh ON lh.ma_loai = hh.ma_loai GROUP BY lh.ten_loai, lh.ma_loai";
+    $sql = "SELECT loai_hang.ten_loai, loai_hang.ma_loai, sum(chi_tiet_don_hang.so_luong) AS so_luong, SUM(chi_tiet_don_hang.don_gia) AS doanh_thu
+    FROM chi_tiet_don_hang
+    INNER JOIN don_hang ON chi_tiet_don_hang.ma_dh = don_hang.ma_dh
+    INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
+    INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
+    INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
+    WHERE don_hang.ma_trang_thai = 4
+    GROUP BY loai_hang.ma_loai;
+    ";
     return qdo_query($sql);
 }
 

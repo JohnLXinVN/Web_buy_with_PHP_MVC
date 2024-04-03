@@ -24,13 +24,7 @@
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 Số lượng</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-
-                                Giá cao nhất</th>
-
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                Giá thấp nhất</th>
-                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                Giá trung bình</th>
+                                Doanh thu</th>
 
 
 
@@ -45,9 +39,7 @@
                             echo "<tr>";
                             echo "<td class='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>" . $value["ten_loai"] . "</td>";
                             echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["so_luong"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["gia_min"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["gia_max"] . "</td>";
-                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["gia_tb"] . "</td>";
+                            echo "<td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>" . $value["doanh_thu"] . "</td>";
 
                             echo "</tr>";
                         }

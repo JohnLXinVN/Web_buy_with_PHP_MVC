@@ -2,12 +2,18 @@
 
 require_once ("pdo.php");
 // Bảo Sửa inner join bảng loại hàng
-function hang_hoa_select_all($page, $soluongsp)
+// function hang_hoa_select_all($page, $soluongsp)
+// {
+//     $start = ($page - 1) * $soluongsp;
+//     $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
+//         inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
+//     $sql .= " LIMIT " . $start . "," . $soluongsp;
+//     return qdo_query($sql);
+// }
+
+function hang_hoa_select_all()
 {
-    $start = ($page - 1) * $soluongsp;
-    $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
-        inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
-    $sql .= " LIMIT " . $start . "," . $soluongsp;
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
     return qdo_query($sql);
 }
 

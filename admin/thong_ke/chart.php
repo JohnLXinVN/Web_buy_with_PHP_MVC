@@ -10,12 +10,27 @@ $backgroundColor = [
     'rgba(255, 206, 86, 0.2)',
     'rgba(75, 192, 192, 0.2)',
     'rgba(153, 102, 255, 0.2)',
-    'rgba(255, 159, 64, 0.2)'
+    'rgba(255, 159, 64, 0.2)',
+    "rgba(0, 128, 0, 0.8)",
+    "rgba(255, 0, 0, 0.7)",
+    "rgba(0, 0, 255, 0.3)",
+    "rgba(255, 255, 0, 0.4)",
+    "rgba(0, 255, 255, 0.6)",
+    "rgba(128, 128, 0, 0.9)",
+    "rgba(255, 0, 255, 0.1)",
+    "rgba(0, 128, 128, 0.7)",
+    "rgba(128, 0, 0, 0.4)",
+    "rgba(0, 0, 128, 0.2)",
+    "rgba(128, 128, 128, 0.6)",
+    "rgba(255, 255, 255, 0.8)",
+    "rgba(0, 255, 0, 0.3)",
+    "rgba(192, 192, 192, 0.5)",
+    "rgba(255, 0, 0, 0.2)",
 ];
 
 foreach ($ds_loai_hang_thong_ke as $value) {
     array_push($labels, $value["ten_loai"]);
-    array_push($data, $value["so_luong"]);
+    array_push($data, $value["doanh_thu"]);
 }
 ?>
 

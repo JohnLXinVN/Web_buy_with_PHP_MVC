@@ -5,7 +5,8 @@ require ("../../global.php");
 // extract($_REQUEST);
 
 
-// $ds_loai_hang_thong_ke = thong_ke_hang_hoa();
+$ds_loai_hang_thong_ke = thong_ke_hang_hoa_by_chi_tiet();
+print_r($ds_loai_hang_thong_ke);
 $VIEW_NAME = "thong_ke/thong_ke.php";
 
 

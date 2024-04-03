@@ -372,6 +372,20 @@
         // Gửi yêu cầu IJAX
         xhr.send(data);
 
+        Toastify({
+            text: "Thêm vào giỏ hàng thành công",
+            duration: 2000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
+
         // Tiếp tục xử lý yêu cầu theo logic của bạn, ví dụ: thêm vào giỏ hàng, lưu vào cơ sở dữ liệu, vv.
     });
 </script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

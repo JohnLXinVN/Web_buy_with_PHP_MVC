@@ -112,9 +112,79 @@
                             </form>
                         </div>
                         <div class="add-to-cart">
-                            <button class="add-to-cart-btn">
-                                <i class="fa fa-shopping-cart"></i> add to cart
-                            </button>
+                            <?php
+                            if ($userLogin) {
+
+                                ?>
+                                <button class="add-to-cart-btn"
+                                    onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i
+                                        class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+
+                            <?php } else { ?>
+                                <a href="/site/tai_khoan/index.php?login"
+                                    class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
+                                    Đăng nhập để
+                                    thêm
+                                    vào
+                                    giỏ
+                                    hàng
+                                </a>
+                            <?php } ?>
+                            <script>
+
+
+                                const addToCart = (selectedVariantPrice, selectedVariantId) => {
+
+                                    console.log(selectedVariantPrice);
+                                    const xhr = new XMLHttpRequest();
+
+                                    xhr.open('POST', '/site/hang_hoa/chi_tiet.php?addToCart', true);
+
+                                    // Thiết lập tiêu đề yêu cầu
+                                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                                    // Xử lý sự kiện khi yêu cầu hoàn thành
+                                    xhr.onload = function () {
+                                        if (xhr.status === 200) {
+                                            // Xử lý kết quả trả về từ yêu cầu IJAX
+                                            console.log("connect oki")
+                                            const response = xhr.responseText;
+                                            // Tiếp tục xử lý kết quả theo logic của bạn
+                                        } else {
+                                            // Xử lý khi có lỗi xảy ra trong yêu cầu IJAX
+                                        }
+                                    };
+
+                                    // Chuẩn bị dữ liệu để gửi đi
+
+                                    const data = 'VariantId=' + encodeURIComponent(selectedVariantId) +
+                                        '&variantPrice=' + encodeURIComponent(selectedVariantPrice) +
+                                        '&quantity=1';
+
+                                    // Gửi yêu cầu IJAX
+                                    xhr.send(data);
+
+                                    Toastify({
+                                        text: "Thêm vào giỏ hàng thành công",
+                                        duration: 2000,
+                                        close: true,
+                                        gravity: "top", // `top` or `bottom`
+                                        position: "right", // `left`, `center` or `right`
+                                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                                        style: {
+                                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                                        },
+                                    }).showToast();
+
+                                }
+        // Xác định phương thức và URL yêu cầu
+
+
+
+
+
+                            </script>
                         </div>
                     </div>
                     <?php
@@ -124,3 +194,4 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

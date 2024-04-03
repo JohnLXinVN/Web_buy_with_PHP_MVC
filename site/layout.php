@@ -36,6 +36,8 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="/content/css/style.css" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 
 </head>
 

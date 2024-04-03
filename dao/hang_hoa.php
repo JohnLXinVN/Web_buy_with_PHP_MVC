@@ -145,9 +145,6 @@ function hien_thi_so_trang_nhat($soluongsp)
     return $html_so_trang_nhat;
 }
 
-
-
-
 function hang_hoa_delete_by_loai($ma_loai)
 {
     $sql = "DELETE FROM hang_hoa WHERE ma_loai= $ma_loai";
@@ -157,7 +154,6 @@ function hang_hoa_delete_by_loai($ma_loai)
 function hang_hoa_update($ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh, $desc)
 {
     $sql = "UPDATE hang_hoa SET ten_hh = ?, don_gia = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ?, desc = ? WHERE ma_hh = ?";
-
     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh, $desc);
 }
 

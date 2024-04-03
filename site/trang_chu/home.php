@@ -11,7 +11,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Mỹ Phẩm<br>Hàn Quốc</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Mỹ Phẩm<br>Nhật Bản</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Mỹ Phẩm<br>Pháp</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+
                     </div>
                 </div>
             </div>
@@ -252,7 +252,7 @@
                                                     }).showToast();
 
                                                 }
-                            // Xác định phương thức và URL yêu cầu
+                                    // Xác định phương thức và URL yêu cầu
 
 
 
@@ -336,7 +336,7 @@
                     </ul>
                     <h2 class="text-uppercase">hot deal this week</h2>
                     <p>New Collection Up to 50% OFF</p>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    <a class="primary-btn cta-btn" href="/site/hang_hoa/store.php?san_pham">Shop now</a>
                 </div>
             </div>
         </div>
@@ -539,7 +539,7 @@
                                                     }).showToast();
 
                                                 }
-        // Xác định phương thức và URL yêu cầu
+                // Xác định phương thức và URL yêu cầu
 
 
 

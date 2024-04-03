@@ -21,6 +21,9 @@
                 "mo_ta": {
                     required: true,
                 },
+                "desc": {
+                    required: true,
+                },
                 "giam_gia": {
                     required: true,
                     pattern: /^(0(\.\d+)?|1(\.0+)?)$/,
@@ -44,6 +47,9 @@
                     pattern: "Vui lòng chỉ nhập số dương",
                 },
                 "mo_ta": {
+                    required: "Bắt buộc nhập",
+                },
+                "desc": {
                     required: "Bắt buộc nhập",
                 },
                 "giam_gia": {

@@ -44,22 +44,29 @@
         </div>
 
         <div class="row">
-            <div class="tin-tuc">
+            <div class="grid grid-cols-3 gap-4">
                 <?php
                 foreach ($listt as $tintuc) {
-                ?>
-                    <div class="o1">
+                    ?>
+                    <div class="col-span-1">
                         <a href="../tin_tuc/list_tin_tuc.php?id_danh_muc=<?= $tintuc['id_danh_muc'] ?>">
-                            <p id="dmtt" name="id_danh_muc"><?= $tintuc['ten_danh_muc'] ?></p>
+                            <p id="dmtt" name="id_danh_muc">
+                                <?= $tintuc['ten_danh_muc'] ?>
+                            </p>
                         </a>
                         <a href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">
                             <img src="/upload/<?= $tintuc['hinh'] ?>" alt="">
                         </a>
-                        <h3><?= $tintuc['tieu_de'] ?></h3>
-                        <p><?= $tintuc['mo_ta'] ?></p>
-                        <a class="primary-btn cta-btn" href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">Xem thêm</a>
+                        <h3>
+                            <?= $tintuc['tieu_de'] ?>
+                        </h3>
+                        <p>
+                            <?= $tintuc['mo_ta'] ?>
+                        </p>
+                        <a class="primary-btn cta-btn mt-4 block"
+                            href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">Xem thêm</a>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
             </div>

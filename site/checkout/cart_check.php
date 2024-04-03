@@ -134,7 +134,7 @@
                         vnd
                     </div>
                 </div>
-                <a href="index.php"
+                <a href="index.php" <?php echo count($ds_cart) == 0 ? "onclick='return false;'" : "" ?>
                     class="bg-[#ff00d9] block text-center font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
                     Checkout
                 </a>

@@ -2,7 +2,7 @@
 
 require_once ("pdo.php");
 // Bảo Sửa inner join bảng loại hàng
-function hang_hoa_select_all($page, $soluongsp)
+function get_dssp_all($page, $soluongsp)
 {
     $start = ($page - 1) * $soluongsp;
     $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
@@ -11,7 +11,7 @@ function hang_hoa_select_all($page, $soluongsp)
     return qdo_query($sql);
 }
 
-function get_dssp_all()
+function hang_hoa_select_all()
 {
     $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
         inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";

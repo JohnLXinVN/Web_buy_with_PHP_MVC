@@ -20,9 +20,9 @@ $ds_hang_hoa_top_10 = hang_hoa_select_top10();
 
 $listt = tin_tuc_select_all();
 
-$ds_loai_hang = get_loai_selectall();
+$ds_loai_hang = loai_selectall();
 
-$ds_hang_hoa = get_dssp_all();
+$ds_hang_hoa = hang_hoa_select_all();
 
 
 

@@ -2,7 +2,7 @@
 
 require_once("pdo.php");
 
-function users_select_all($page, $soluongsp)
+function get_users_select_all($page, $soluongsp)
 {
 
     $start = ($page - 1) * $soluongsp;
@@ -11,7 +11,7 @@ function users_select_all($page, $soluongsp)
     return qdo_query($sql);
 }
 
-function get_users_all()
+function users_all()
 {
 
     $sql = "SELECT * FROM users";

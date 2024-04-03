@@ -35,8 +35,8 @@ if (exist_param("detail")) {
     }
     $soluongsp = 5;
 
-    $thong_ke_bl = thong_ke_binh_luan($page, $soluongsp);
-    $tong_sp=get_thong_ke_binh_luan();
+    $thong_ke_bl = get_thong_ke_binh_luan($page, $soluongsp);
+    $tong_sp=thong_ke_binh_luan();
     $hien_thi_so_trang = hien_thi_so_trang_ds_bl($tong_sp, $soluongsp);
     $VIEW_NAME = "binh_luan/binh_luan.php";
 

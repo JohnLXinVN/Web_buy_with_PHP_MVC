@@ -19,8 +19,8 @@ if (exist_param("add_loai_hang")) {
         $page = $_GET['page'];
     }
     $soluongsp = 5;
-    $ds_loai_hang = loai_selectall($page, $soluongsp);
-    $tong_sp=get_loai_selectall();
+    $ds_loai_hang = get_loai_selectall($page, $soluongsp);
+    $tong_sp=loai_selectall();
     $hien_thi_so_trang = hien_thi_so_trang_loai_hang($tong_sp, $soluongsp);
 
     $VIEW_NAME = "loai_hang/loai_hang.php";
@@ -73,7 +73,7 @@ if (exist_param("add_loai_hang")) {
 
     $VIEW_NAME = "loai_hang/loai_hang.php";
 } else {
-    $ds_loai_hang = get_loai_selectall();
+    $ds_loai_hang = loai_selectall();
     $VIEW_NAME = "loai_hang/add_loai_hang.php";
 
 }

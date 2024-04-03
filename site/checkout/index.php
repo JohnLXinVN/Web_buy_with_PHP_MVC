@@ -105,7 +105,6 @@ if (exist_param("cart_check")) {
     // echo "</pre>";
     foreach ($ds_item_cart as $key => $value) {
 
-
         foreach ($ds_item_cart[$key] as $item) {
 
 

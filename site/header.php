@@ -23,7 +23,7 @@ if (isset($_COOKIE['user'])) {
                 <?php
                 if ($userLogin) {
                     if ($userLogin["vai_tro"] == 1) {
-                        echo "<a href='/admin/thong_ke'
+                        echo "<a href='/admin/don_hang'
                         class='inline-block rounded-md border border-transparent bg-indigo-400 px-4 py-2 text-base font-medium text-white hover:bg-opacity-75'>Admin Manager</a>";
                     }
                     echo "<div class='relative ml-3'>

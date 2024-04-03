@@ -1,5 +1,5 @@
 <script>
-    $(document).ready(function () {
+    $().ready(function () {
         $("#checkout_bill").validate({
             onfocusout: true,
             onkeyup: true,
@@ -62,6 +62,70 @@
 </script>
 
 
+<script>
+    $().ready(function () {
+
+        $("#checkout_bill").validate({
+            onfocusout: true,
+            onkeyup: true,
+            onclick: true,
+            rules: {
+                "first_name": {
+                    required: true,
+                    minlength: 1
+                },
+                "last_name": {
+                    required: true,
+                    minlength: 1
+                },
+                "email": {
+                    required: true,
+                    email: true
+                },
+                "address": {
+                    required: true,
+                    minlength: 2
+                },
+                "tel": {
+                    required: true,
+                    pattern: /^(\\+?84|0)(3[2-9]|5[2689]|7[06789]|8[1-689]|9[0-46-8])[0-9]{7}$/
+                },
+                "payment": {
+                    required: true,
+                    minlength: 1
+                }
+            },
+            messages: {
+                "first_name": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                },
+                "last_name": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                },
+                "email": {
+                    required: "Trường bắt buộc",
+                    email: "Phải là email hợp lệ"
+                },
+                "address": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 2 ký tự"
+                },
+                "tel": {
+                    required: "Trường bắt buộc",
+                    pattern: "Số điện thoại Việt Nam không hợp lệ"
+                },
+                "payment": {
+                    required: "Trường bắt buộc",
+                    minlength: "Tối thiểu 1 ký tự"
+                }
+            }
+        });
+    });
+</script>
+
+
 <!-- BREADCRUMB -->
 <div id="breadcrumb" class="section">
     <!-- container -->
@@ -99,6 +163,8 @@
                             <h3 class="title">Địa chỉ đặt hàng</h3>
                         </div>
                         <div class="form-group">
+                            <label class="block text-sm font-medium text-gray-700">First Name</label>
+
                             <input class="input" type="text" name="first_name" id="first_name" placeholder="First Name">
                         </div>
                         <div class="form-group">
@@ -194,7 +260,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="primary-btn order-submit">Place order</button>
+                    <button type="submit" name="" class="primary-btn order-submit">Place order</button>
                 </div>
                 <!-- /Order Details -->
             </div>

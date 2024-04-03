@@ -13,7 +13,15 @@ if (exist_param("add_loai_hang")) {
 
 } else if (exist_param("list_loai_hang")) {
 
-    $ds_loai_hang = loai_selectall();
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+    $ds_loai_hang = get_loai_selectall($page, $soluongsp);
+    $tong_sp=loai_selectall();
+    $hien_thi_so_trang = hien_thi_so_trang_loai_hang($tong_sp, $soluongsp);
 
     $VIEW_NAME = "loai_hang/loai_hang.php";
 

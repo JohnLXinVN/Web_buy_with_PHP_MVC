@@ -10,7 +10,17 @@ if (exist_param("add_tin_tuc")) {
 
     $VIEW_NAME = "tin_tuc/add_tin_tuc.php";
 } elseif (exist_param("list_tin_tuc")) {
-    $ds_tin_tuc = tin_tuc_select_all();
+
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+
+    $ds_tin_tuc = get_tin_tuc_select_all($page, $soluongsp);
+    $tong_sp= tin_tuc_select_all();
+    $hien_thi_so_trang = hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp);
 
     $VIEW_NAME = "tin_tuc/tin_tuc.php";
 } elseif (exist_param("btn_add_tin_tuc")) {

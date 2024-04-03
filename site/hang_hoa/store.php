@@ -1,11 +1,11 @@
 <?php
-require_once("../../dao/hang_hoa.php");
-require_once("../../dao/loai_hang.php");
-require_once("../../dao/bien_the.php");
-require_once("../../dao/pdo.php");
-require_once("../../dao/favourite.php");
+require_once ("../../dao/hang_hoa.php");
+require_once ("../../dao/loai_hang.php");
+require_once ("../../dao/bien_the.php");
+require_once ("../../dao/pdo.php");
+require_once ("../../dao/favourite.php");
 
-require("../../global.php");
+require ("../../global.php");
 $ds_loai_hang = loai_selectall();
 $ds_hang_hoa_top_10 = hang_hoa_select_top10();
 $hang_hoa_new = loadall_hang_hoa_store_all();
@@ -40,7 +40,7 @@ if (exist_param("san_pham")) {
     // $hien_thi_right = hien_thi_right($tong_sp,$soluongsp);
     $VIEW_NAME = "hang_hoa/store_ui.php";
 
-} else if(exist_param("ma_loai")) {
+} else if (exist_param("ma_loai")) {
     if ($userLogin !== null && isset($userLogin['ma_kh'])) {
         $ma_kh = $userLogin['ma_kh'];
     } else {
@@ -69,4 +69,4 @@ if (exist_param("san_pham")) {
 
 // $ds_loai_hang = loai_selectall();
 
-require("../layout.php");
+require ("../layout.php");

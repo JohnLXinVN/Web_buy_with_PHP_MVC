@@ -4,14 +4,19 @@ require_once ("pdo.php");
 
 function get_all_order()
 {
-    $sql = "SELECT * FROM don_hang inner join trang_thai_don_hang on don_hang.ma_trang_thai = trang_thai_don_hang.id order by ma_dh desc";
+    $sql = "SELECT * FROM don_hang inner join trang_thai_don_hang on don_hang.ma_trang_thai = trang_thai_don_hang.id  order by ma_dh desc";
     return qdo_query($sql);
+}
 
+function get_all_order_filter($ma_tt)
+{
+    $sql = "SELECT * FROM don_hang inner join trang_thai_don_hang on don_hang.ma_trang_thai = trang_thai_don_hang.id where don_hang.ma_trang_thai = $ma_tt order by ma_dh desc";
+    return qdo_query($sql);
 }
 
 function get_order_by_ma_kh($ma_kh)
 {
-    $sql = "SELECT * FROM don_hang inner join trang_thai_don_hang on don_hang.ma_trang_thai = trang_thai_don_hang.id WHERE ma_kh = $ma_kh ORDER BY don_hang.ma_dh DESC";
+    $sql = "SELECT * FROM don_hang inner join trang_thai_don_hang on don_hang.ma_trang_thai = trang_thai_don_hang.id WHERE ma_kh = $ma_kh and don_hang.status = 1 ORDER BY don_hang.ma_dh DESC";
     return qdo_query($sql);
 }
 
@@ -24,10 +29,14 @@ function get_product_by_ma_dh($ma_dh)
 
 function delete_order_by_id($ma_order)
 {
-    $sql = "DELETE FROM chi_tiet_don_hang where ma_dh = $ma_order";
-    $sql1 = "DELETE FROM don_hang where ma_dh = $ma_order";
+    $sql = "UPDATE don_hang SET status = 0 where ma_dh = $ma_order";
     pdo_execute($sql);
-    pdo_execute($sql1);
+}
+
+function get_order_by_ma_dh($ma_order)
+{
+    $sql = "SELECT * FROM don_hang WHERE ma_dh = $ma_order";
+    return qdo_query_one($sql);
 }
 
 function list_trang_thai_don()

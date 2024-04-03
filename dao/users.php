@@ -2,11 +2,31 @@
 
 require_once("pdo.php");
 
-function users_select_all()
+function get_users_select_all($page, $soluongsp)
+{
+
+    $start = ($page - 1) * $soluongsp;
+    $sql = "SELECT * FROM users";
+    $sql .= " LIMIT " . $start . "," . $soluongsp;
+    return qdo_query($sql);
+}
+
+function users_all()
 {
 
     $sql = "SELECT * FROM users";
     return qdo_query($sql);
+}
+
+function hien_thi_so_trang_ds_users($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?list_users&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
 }
 
 function users_insert($user_name, $mat_khau, $ho_ten, $email, $vai_tro, $kich_hoat, $hinh)

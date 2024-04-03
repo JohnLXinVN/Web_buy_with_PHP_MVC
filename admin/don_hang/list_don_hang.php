@@ -1,3 +1,23 @@
+<div>
+    <button type="button"
+        class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a
+            href="index.php">Tất cả</a></button>
+    <button type="button"
+        class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a
+            href="index.php?filter&ma_tt=1">Chờ xác nhận</a></button>
+    <button type="button"
+        class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a
+            href="index.php?filter&ma_tt=2">Đóng gói</a></button>
+    <button type="button"
+        class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a
+            href="index.php?filter&ma_tt=3">Vận chuyển</a></button>
+    <button type="button"
+        class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a
+            href="index.php?filter&ma_tt=4">Hoàn thành</a></button>
+
+</div>
+
+
 <div class="container">
     <?php
     if (count($ds_order) == 0) {
@@ -9,7 +29,7 @@
     foreach ($ds_order as $value) {
 
         ?>
-        <div class="main-box border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
+        <div class="main-box mt-4 border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
                 <div class="data">
                     <p class="font-semibold text-base leading-7 text-black">Order Id: <span
@@ -25,7 +45,7 @@
                             <p class="font-medium text-sm leading-7 text-black">Status
                             </p>
                             <p
-                                class="font-medium text-sm leading-6 whitespace-nowrap py-0.5 px-3 rounded-full lg:mt-3 bg-emerald-50 text-emerald-600">
+                                class="font-medium text-sm leading-6 <?php echo $value["ma_trang_thai"] == 4 ? "bg-red-400 text-white" : "bg-emerald-50 text-emerald-600" ?> whitespace-nowrap py-0.5 px-3 rounded-full lg:mt-3  ">
                                 <?php echo $value["ten_trang_thai"] ?>
                             </p>
                         </div>
@@ -33,13 +53,26 @@
                     </div>
                 </div>
                 <div>
+                    <div class="mb-3">
+                        <button type="button"
+                            class="rounded-full bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><a
+                                href="index.php?chi_tiet&ma_dh=<?php echo $value["ma_dh"] ?>">Xem chi tiết</a></button>
+                    </div>
+                    <?php
+                    if ($value["status"] == 0) {
 
+
+                        ?>
+                        <div class="px-2 py-2 bg-red-600 text-white rounded-lg">
+                            <?php echo $value["status"] == 0 ? "Khách hàng đã hủy" : "" ?>
+                        </div>
+                    <?php } ?>
                     <select class="ma_trang_thai" name="ma_trang_thai" id="ma_trang_thai"
                         value="<?php echo $value["ma_trang_thai"] ?>">
                         <?php foreach ($list_trang_thai as $key => $value1) {
 
                             ?>
-                            <option value="<?php echo $value1["id"] ?>">
+                            <option value="<?php echo $value1["id"] ?>" <?php echo $value1["id"] == $value["ma_trang_thai"] ? "selected" : "" ?>>
                                 <?php echo $value1["ten_trang_thai"] ?>
                             </option>
                         <?php } ?>
@@ -105,7 +138,7 @@
             </div>
             <div class="w-full border-t border-gray-200 px-6 flex flex-col lg:flex-row items-center justify-between ">
                 <div class="flex flex-col sm:flex-row items-center max-lg:border-b border-gray-200">
-                    <a href="index.php?deteteItemDH&ma_dh=<?php echo $value["ma_dh"] ?>" onclick='return confirmDelete()'
+                    <!-- <a href="index.php?deteteItemDH&ma_dh=<?php echo $value["ma_dh"] ?>" onclick='return confirmDelete()'
                         class="flex outline-0 py-6 sm:pr-6  sm:border-r border-gray-200 whitespace-nowrap gap-2 items-center justify-center font-semibold group text-lg text-black bg-white transition-all duration-500 hover:text-indigo-600">
                         <svg class="stroke-black transition-all duration-500 group-hover:stroke-indigo-600"
                             xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -113,7 +146,7 @@
                                 stroke-linecap="round" />
                         </svg>
                         Delete Order
-                    </a>
+                    </a> -->
                     <p class="font-medium text-lg text-gray-900 pl-6 py-3 max-lg:text-center">
                         <?php echo $value["thanh_toan"] ?>
                     </p>
@@ -144,6 +177,9 @@
         select.addEventListener('change', function () {
             const selectedValue = select.value; // Lấy giá trị của option đã chọn
             const ma_dh = listMaDonHang[index].innerText;
+
+            console.log("selectedValue: ", selectedValue);
+            console.log("ma_dh: ", ma_dh);
             const xhr = new XMLHttpRequest();
 
             // Xác định phương thức và URL yêu cầu
@@ -168,8 +204,12 @@
             const data = 'ma_trang_thai=' + encodeURIComponent(selectedValue) + '&ma_dh=' + encodeURIComponent(ma_dh);
 
             // Gửi yêu cầu AJAX
-            console.log("data: ", data);
+
             xhr.send(data);
+            setTimeout(() => {
+                location.reload();
+
+            }, 200)
         });
     });
 

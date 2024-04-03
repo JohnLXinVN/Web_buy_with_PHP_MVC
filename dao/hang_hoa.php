@@ -1,13 +1,45 @@
 <?php
 
 require_once ("pdo.php");
-// Bảo Sửa inner join bảng loại hàng
-function hang_hoa_select_all()
+// phan trang 
+
+function get_dssp_all($page, $soluongsp)
 {
+    $start = ($page - 1) * $soluongsp;
     $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
         inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
+    $sql .= " LIMIT " . $start . "," . $soluongsp;
     return qdo_query($sql);
 }
+function hang_hoa_select_all()
+{
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
+    return qdo_query($sql);
+}
+
+
+
+
+function hien_thi_so_trang_ds_sp($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?list_hang_hoa&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
+}
+
+// function load_page_ds_hang_hoa()
+// {
+//     $start = ($page - 1) * $soluongsp;
+
+//     $sql = "SELECT * FROM hang_hoa where 1";
+//     $sql .= " ORDER BY ma_hh DESC";
+//     $sql .= " LIMIT " . $start . "," . $soluongsp;
+//     return qdo_query($sql);
+// }
 
 function hang_hoa_select_all_by_key($key_word)
 {
@@ -24,10 +56,11 @@ function hang_hoa_select_newest()
     return qdo_query($sql);
 }
 
-function hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai , $mo_ta_chi_tiet)
+
+function hang_hoa_insert($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc)
 {
-    $sql = "INSERT INTO hang_hoa(ten_hh, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai,mo_ta_chi_tiet) VALUES ('$ten_hh','$giam_gia','$hinh', '$ngay_nhap' , '$mo_ta', '$dac_biet' , '$luot_xem' , '$ma_loai' , '$mo_ta_chi_tiet')";
-    pdo_execute($sql);
+    $sql = "INSERT INTO hang_hoa(ten_hh, giam_gia, hinh, ngay_nhap, mo_ta, dac_biet,luot_xem,ma_loai,description) VALUES (?,?,?,?,?,?,?,?,?)";
+    pdo_execute($sql, $ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $desc);
 }
 
 function hang_hoa_delete($ma_hh)
@@ -85,17 +118,17 @@ function loadall_hang_hoa_nhat($page, $soluongsp)
     return qdo_query($sql);
 }
 
-function get_dssp_han()
-{
-    $sql = "SELECT * FROM hang_hoa WHERE ma_loai=46";
-    return qdo_query($sql);
-}
+// function get_dssp_han()
+// {
+//     $sql = "SELECT * FROM hang_hoa WHERE ma_loai=46";
+//     return qdo_query($sql);
+// }
 
-function get_dssp_nhat()
-{
-    $sql = "SELECT * FROM hang_hoa WHERE ma_loai=55";
-    return qdo_query($sql);
-}
+// function get_dssp_nhat()
+// {
+//     $sql = "SELECT * FROM hang_hoa WHERE ma_loai=55";
+//     return qdo_query($sql);
+// }
 
 
 function get_dssp()
@@ -115,29 +148,6 @@ function hien_thi_so_trang($tong_sp, $soluongsp)
     return $html_so_trang;
 }
 
-function hien_thi_so_trang_han($soluongsp)
-{
-    $tongsphan = count(get_dssp_han());
-    $so_trang_han = ceil($tongsphan / $soluongsp);
-    $html_so_trang_han = "";
-    for ($i = 1; $i <= $so_trang_han; $i++) {
-        $html_so_trang_han .= '<li><a href="store.php?my_pham_han&page=' . $i . '">' . $i . '</a></li>';
-    }
-    return $html_so_trang_han;
-}
-
-function hien_thi_so_trang_nhat($soluongsp)
-{
-    $tongspnhat = count(get_dssp_nhat());
-    $so_trang_nhat = ceil($tongspnhat / $soluongsp);
-    $html_so_trang_nhat = "";
-    for ($i = 1; $i <= $so_trang_nhat; $i++) {
-        $html_so_trang_nhat .= '<li><a href="store.php?my_pham_nhat&page=' . $i . '">' . $i . '</a></li>';
-    }
-    return $html_so_trang_nhat;
-}
-
-
 
 
 function hang_hoa_delete_by_loai($ma_loai)
@@ -146,11 +156,11 @@ function hang_hoa_delete_by_loai($ma_loai)
     pdo_execute($sql);
 }
 
-function hang_hoa_update($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh)
+function hang_hoa_update($ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, $dac_biet, $luot_xem, $ma_loai, $ma_hh, $desc)
 {
-    $sql = "UPDATE hang_hoa SET ten_hh = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ? WHERE ma_hh = ?";
+    $sql = "UPDATE hang_hoa SET ten_hh = ?, giam_gia =?, hinh =?, ngay_nhap =?, mo_ta =?, dac_biet =?,luot_xem =?,ma_loai = ?,description=? WHERE ma_hh = ?";
 
-    pdo_execute($sql, $ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh);
+    pdo_execute($sql, $ten_hh, $giam_gia, $hinh, $ngay_nhap, $mo_ta, intval($dac_biet), $luot_xem, $ma_loai, $ma_hh, $desc);
 }
 
 function hang_hoa_select_by_id($id)

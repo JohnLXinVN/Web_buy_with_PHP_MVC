@@ -7,12 +7,7 @@ require ("../../global.php");
 // extract($_REQUEST);
 
 if (exist_param("add_loai_hang")) {
-<<<<<<< HEAD
-    $ds_loai_hang = loai_selectall();
-    $ds_hang_hoa = hang_hoa_select_all();
-=======
-    $ds_loai_hang = hang_hoa_select_all();
->>>>>>> origin/duong
+    $ds_loai_hang = loai_select_all();
     $VIEW_NAME = "hang_hoa/add_hang_hoa.php";
 
 } else if (exist_param("list_hang_hoa")) {
@@ -24,14 +19,8 @@ if (exist_param("add_loai_hang")) {
     }
     $soluongsp = 5;
 
-<<<<<<< HEAD
-    $ds_loai_hang = get_dssp_all();
-    $ds_hang_hoa = hang_hoa_select_all($page, $soluongsp);
-    $tong_sp = get_dssp_all();
-=======
     $ds_hang_hoa = get_dssp_all($page, $soluongsp);
-    $tong_sp= hang_hoa_select_all();
->>>>>>> origin/duong
+    $tong_sp = hang_hoa_select_all();
     $hien_thi_so_trang = hien_thi_so_trang_ds_sp($tong_sp, $soluongsp);
 
     $VIEW_NAME = "hang_hoa/hang_hoa.php";

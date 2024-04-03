@@ -23,7 +23,7 @@ $listt = tin_tuc_select_all();
 
 $ds_loai_hang = loai_selectall();
 
-$ds_hang_hoa = get_hang_hoa_select_all();
+$ds_hang_hoa = hang_hoa_select_all();
 
 
 
@@ -67,7 +67,7 @@ if (exist_param("gioi_thieu")) {
     $check = kiem_tra_hh_yt($ma_kh);
 
     $ds_hang_hoa_top_10 = hang_hoa_select_top10();
-    $ds_hang_hoa = get_hang_hoa_select_all();
+    $ds_hang_hoa = hang_hoa_select_all();
 
     $VIEW_NAME = "trang_chu/home.php";
 }

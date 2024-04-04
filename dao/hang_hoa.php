@@ -1,7 +1,7 @@
 <?php
 
 require_once ("pdo.php");
-// Bảo Sửa inner join bảng loại hàng
+// phan trang 
 
 function get_dssp_all($page, $soluongsp)
 {

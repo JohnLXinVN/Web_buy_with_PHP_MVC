@@ -12,8 +12,10 @@
 						<a href="store.php?my_pham">Tất Cả Sản Phẩm</a>
 						<?php
 						foreach ($ds_loai_hang as $loai) { ?>
-							<a href="store.php?ma_loai=<?= $loai['ma_loai'] ?>" class="sub-item"><?= $loai['ten_loai'] ?></a>
-						<?php
+							<a href="store.php?ma_loai=<?= $loai['ma_loai'] ?>" class="sub-item">
+								<?= $loai['ten_loai'] ?>
+							</a>
+							<?php
 						}
 						?>
 					</div>
@@ -43,7 +45,7 @@
 						$phan_tram = $hang_hoa['giam_gia'] * 100;
 
 						$is_favorite = $check > 0 ? "fa-hearted" : '';
-					?>
+						?>
 						<div class="product col-span-1 ">
 							<p class="tien hidden">
 								<?php echo $thanh_tien ?>
@@ -55,23 +57,25 @@
 								<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
 								<div class="product-label">
 									<?php if ($hang_hoa['giam_gia'] > 0)
-										echo '<span class="sale">' . $phan_tram . '%</span>' 
-									?>
-									<span class="new">NEW</span>
+										echo '<span class="sale">' . $phan_tram . '%</span>'
+											?>
+										<span class="new">NEW</span>
+									</div>
 								</div>
-							</div>
-							<div class="product-body">
-								<!-- <p class="product-category">
+								<div class="product-body">
+									<!-- <p class="product-category">
 									<?= $hang_hoa['ten_loai'] ?>
 								</p> -->
-								<h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+								<h3 class="product-name"><a
+										href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
 										<?= $hang_hoa['ten_hh'] ?>
 									</a></h3>
 								<h3 class="product-name text-yellow-500 text-xl">
 									<?= $ds_bt[0]['ten_loai'] ?>
 								</h3>
 								<h4 class="product-price">
-									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
+									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del
+										class="product-old-price">
 										<?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
 									</del>
 								</h4>
@@ -92,20 +96,21 @@
 												<i class="fa fa-heart <?= $is_favorite ?>"></i>
 												<span class="tooltipp">add to wishlist</span>
 											</button>
-										<?php
+											<?php
 										} else { ?>
 											<p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-										<?php
+											<?php
 										}
 										?>
-										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
+											data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
 											<i class="fa fa-eye"></i>
 											<span class="tooltipp">quick view</span>
 										</button>
 										<script>
-											$(document).ready(function() {
+											$(document).ready(function () {
 												// Xử lý sự kiện nhấp vào nút Quickview
-												$('.quick-view').click(function(e) {
+												$('.quick-view').click(function (e) {
 													e.preventDefault();
 													// Lấy thông tin sản phẩm từ thuộc tính data
 													var tenHH = $(this).data('tenhh');
@@ -132,9 +137,22 @@
 								</form>
 							</div>
 							<div class="add-to-cart">
-								<button class="add-to-cart-btn">
-									<i class="fa fa-shopping-cart"></i> add to cart
-								</button>
+								<?php
+								if ($userLogin) {
+
+									?>
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+
+								<?php } else { ?>
+									<a href="/site/tai_khoan/index.php?login"
+										class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2"> Đăng
+										nhập để
+										thêm
+										vào
+										giỏ
+										hàng
+									</a>
+								<?php } ?>
 							</div>
 
 							<div id="quick-view-modal" class="modal">
@@ -161,7 +179,7 @@
 								</div>
 							</div>
 						</div>
-					<?php
+						<?php
 					}
 					?>
 

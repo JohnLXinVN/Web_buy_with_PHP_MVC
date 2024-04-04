@@ -93,6 +93,7 @@
                         </label>
 
                     </div>
+
                     <h2 class="flex flex-row mb-2 items-center">
                         Số lượng:
                         <p class="so_luong_view"></p>
@@ -101,7 +102,7 @@
                         <div class="qty-label">
                             Tổng
                             <div class="input-number">
-                                <input type="number" min="1" value="1" step="1">
+                                <input id="myInput" type="number" min="1" value="1" step="1">
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>
@@ -289,6 +290,8 @@
     const quantityInput = document.querySelector('.input-number input');
     const so_luong_view = document.querySelector('.so_luong_view');
 
+    const inputElement = document.getElementById("myInput");
+
 
 
     updatePrice();
@@ -296,7 +299,9 @@
     function updatePrice() {
         // Thực hiện cập nhật số tiền tương ứng với biến thể đã chọn
         var selectedVariant = list_variant[0];
-        so_luong_view.textContent = list_variant[0].tong_so_luong
+        so_luong_view.textContent = list_variant[0].tong_so_luong;
+        inputElement.max = list_variant[0].tong_so_luong;
+
         // Cập nhật giá tiền hiển thị
 
         // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
@@ -318,7 +323,8 @@
         var selectedVariantIndex = variantSelect.selectedIndex;
         var selectedVariant = list_variant[selectedVariantIndex];
         // Cập nhật giá tiền hiển thị
-        so_luong_view.textContent = list_variant[selectedVariantIndex].tong_so_luong
+        so_luong_view.textContent = list_variant[selectedVariantIndex].tong_so_luong;
+        inputElement.max = list_variant[selectedVariantIndex].tong_so_luong;
 
         // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
         if (item_hh.giam_gia > 0) {

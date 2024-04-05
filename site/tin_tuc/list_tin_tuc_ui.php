@@ -30,20 +30,15 @@
                 ?>
                     <div class="col-span-1 flex flex-col justify-between">
                         <div>
-                        <a href="../tin_tuc/list_tin_tuc.php?id_danh_muc=<?= $tintuc['id_danh_muc'] ?>">
-                            <p id="dmtt" name="id_danh_muc">
-                                <?= $tintuc['ten_danh_muc'] ?>
+                            <a href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">
+                                <img src="/upload/<?= $tintuc['hinh'] ?>" alt="">
+                            </a>
+                            <h3>
+                                <?= $tintuc['tieu_de'] ?>
+                            </h3>
+                            <p>
+                                <?= $tintuc['mo_ta'] ?>
                             </p>
-                        </a>
-                        <a href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">
-                            <img src="/upload/<?= $tintuc['hinh'] ?>" alt="">
-                        </a>
-                        <h3>
-                            <?= $tintuc['tieu_de'] ?>
-                        </h3>
-                        <p>
-                            <?= $tintuc['mo_ta'] ?>
-                        </p>
                         </div>
                         <a class="primary-btn cta-btn mt-4 block" href="../tin_tuc/tin_tuc.php?id_tin_tuc=<?= $tintuc['id_tin_tuc'] ?>">Xem thêm</a>
                     </div>

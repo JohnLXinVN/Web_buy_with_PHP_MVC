@@ -27,7 +27,7 @@
 			<!-- STORE -->
 			<div id="store" class="col-md-8 ">
 
-				<div class="grid grid-cols-3 gap-x-4 gap-y-[30px]">
+				<div class="grid grid-cols-3 gap-x-8 gap-y-[80px]">
 
 					<?php
 					// đăng nhập 

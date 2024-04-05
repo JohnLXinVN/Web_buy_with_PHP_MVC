@@ -13,6 +13,7 @@
             rules: {
                 "ten_hh": {
                     required: true,
+                    maxlength: 200,
                 },
                 "mo_ta": {
                     required: true,
@@ -37,6 +38,7 @@
             messages: {
                 "ten_hh": {
                     required: "Bắt buộc nhập",
+                    maxlength: "Tối đa 200 ký tự"
                 },
                 "mo_ta": {
                     required: "Bắt buộc nhập",
@@ -174,3 +176,5 @@
             class="mt-4 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             Danh sách</a>
 </form>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>

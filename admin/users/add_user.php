@@ -7,6 +7,8 @@
             rules: {
                 "user_name": {
                     required: true,
+                    minlength: 3,
+                    maxlength: 16,
                 },
                 "mat_khau": {
                     required: true,
@@ -29,6 +31,8 @@
             messages: {
                 "user_name": {
                     required: "Bắt buộc nhập",
+                    minlength: "Nhập ít nhất 3 ký tự",
+                    maxlength: "Nhập ít hơn 16 ký tự"
                 },
                 "mat_khau": {
                     required: "Bắt buộc nhập",

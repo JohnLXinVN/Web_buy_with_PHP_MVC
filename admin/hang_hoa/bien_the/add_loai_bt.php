@@ -1,12 +1,22 @@
-<!-- <script>
+<script>
     $().ready(function () {
-        $("#add_loai_hang").validate({
+        $("#add_bt").validate({
             onfocusout: true,
             onkeyup: true,
             onclick: true,
             rules: {
                 "ten_loai": {
                     required: true,
+                },
+                "don_gia": {
+                    required: true,
+                    number: true,
+                    min: 0.01
+                },
+                "tong_so_luong": {
+                    required: true,
+                    digits: true,
+                    min: 1
                 }
 
 
@@ -15,12 +25,22 @@
                 "ten_loai": {
                     required: "Bắt buộc nhập tên hàng hóa",
                 },
+                "don_gia": {
+                    required: "Vui lòng nhập đơn giá",
+                    number: "Vui lòng nhập một số hợp lệ",
+                    min: "Đơn giá phải lớn hơn 0"
+                },
+                "tong_so_luong": {
+                    required: "Vui lòng nhập tổng số lượng",
+                    digits: "Vui lòng nhập số nguyên hợp lệ",
+                    min: "Tổng số lượng phải lớn hơn 0"
+                }
 
             }
         });
     });
 
-</script> -->
+</script>
 
 <?php
 $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -37,7 +57,7 @@ $url_action_add_bt = str_replace("add_bien_the", "btn_add_loai_bt", $currentURL)
     </div>
 
 </div>
-<form class="mt-4 sm:mt-4 sm:flex-none" method="POST" id="add_loai_hang" action="<?php echo $url_action_add_bt ?>">
+<form class="mt-4 sm:mt-4 sm:flex-none" method="POST" id="add_bt" action="<?php echo $url_action_add_bt ?>">
     <input type="hidden" name="ma_hh" id="ma_hh" value="<?php echo $ds_loai_bt[0]["ma_hh"] ?>">
     <span>Thêm mới</span>
     <div class="flex flex-col">
@@ -81,3 +101,6 @@ $url_action_add_bt = str_replace("add_bien_the", "btn_add_loai_bt", $currentURL)
 
 
 </form>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>

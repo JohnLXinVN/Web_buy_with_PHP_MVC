@@ -1,3 +1,41 @@
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script src="demoValidation.js" type="text/javascript"></script>
+<script>
+    $().ready(function () {
+        $("#login_user").validate({
+            onfocusout: true,
+            onkeyup: true,
+            onclick: true,
+            rules: {
+
+                "email": {
+                    required: true,
+                    email: true
+                }, "ho_ten": {
+                    required: true,
+                    minlength: 3,
+                }
+
+
+            },
+            messages: {
+                "email": {
+                    required: "Trường bắt buộc",
+                    email: "Phải là email hợp lệ"
+                },
+                "ho_ten": {
+                    required: "Trường bắt buộc",
+
+                    minlength: "Tối thiểu 3 ký tự",
+                }
+
+
+            }
+        });
+    });
+</script>
+
 <form action="index.php?edit_user_login" id="login_user" method="post" enctype="multipart/form-data">
     <div class="w-full flex justify-center">
         <img src="../../upload/<?php echo $userLogin['hinh'] ?>" alt="" class="w-[50px] h-[50px]">

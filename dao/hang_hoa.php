@@ -17,6 +17,12 @@ function hang_hoa_select_all()
     return qdo_query($sql);
 }
 
+function hang_hoa_select_ma_loai_4($ma_loai)
+{
+    $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai where hh.ma_loai = $ma_loai LIMIT 4";
+    return qdo_query($sql);
+}
+
 
 
 

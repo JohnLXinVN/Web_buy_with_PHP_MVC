@@ -14,10 +14,6 @@
                 "ten_hh": {
                     required: true,
                 },
-                "don_gia": {
-                    required: true,
-                    pattern: /^[1-9][0-9]*$/,
-                },
                 "mo_ta": {
                     required: true,
                 },
@@ -41,10 +37,6 @@
             messages: {
                 "ten_hh": {
                     required: "Bắt buộc nhập",
-                },
-                "don_gia": {
-                    required: "Bắt buộc nhập",
-                    pattern: "Vui lòng chỉ nhập số dương",
                 },
                 "mo_ta": {
                     required: "Bắt buộc nhập",

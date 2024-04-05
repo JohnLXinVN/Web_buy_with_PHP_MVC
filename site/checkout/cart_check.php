@@ -66,8 +66,6 @@
                                 </p>
                                 <div class="flex items-center justify-between pt-5">
                                     <div class="flex itemms-center">
-                                        <p class="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites
-                                        </p>
                                         <a href="/site/checkout/index.php?delete_item_in_cart&ma_bt=<?php echo $value["ma_bt"] ?>"
                                             class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</a>
                                     </div>

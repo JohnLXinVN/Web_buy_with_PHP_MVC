@@ -252,7 +252,7 @@
                                                     }).showToast();
 
                                                 }
-                                    // Xác định phương thức và URL yêu cầu
+                                            // Xác định phương thức và URL yêu cầu
 
 
 
@@ -539,7 +539,7 @@
                                                     }).showToast();
 
                                                 }
-                // Xác định phương thức và URL yêu cầu
+                        // Xác định phương thức và URL yêu cầu
 
 
 
@@ -606,34 +606,4 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-xhr.open('POST', '/site/hang_hoa/chi_tiet.php?addToCart', true);
-
-// Thiết lập tiêu đề yêu cầu
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-// Xử lý sự kiện khi yêu cầu hoàn thành
-xhr.onload = function() {
-if (xhr.status === 200) {
-// Xử lý kết quả trả về từ yêu cầu IJAX
-console.log("connect oki")
-const response = xhr.responseText;
-// Tiếp tục xử lý kết quả theo logic của bạn
-} else {
-// Xử lý khi có lỗi xảy ra trong yêu cầu IJAX
-}
-};
-
-// Chuẩn bị dữ liệu để gửi đi
-
-const selectedVariantPrice = list_tien[index].innerHTML;
-const selectedVariantId = list_bt[index].innerHTML;
-const data = 'VariantId=' + encodeURIComponent(selectedVariantId) +
-'&variantPrice=' + encodeURIComponent(selectedVariantPrice) +
-'&quantity=1';
-
-// Gửi yêu cầu IJAX
-xhr.send(data);
-})
-})
-</script>
 <!-- /NEWSLETTER -->

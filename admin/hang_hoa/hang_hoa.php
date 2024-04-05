@@ -137,7 +137,7 @@
                                 </td>
                                 <td class=' px-3 py-4 text-sm text-gray-500 w-[250px]'>
                                     <p class=''>
-                                        <?php echo $hang_hoa["desc"]; ?>
+                                        <?php echo $hang_hoa["description"]; ?>
                                     </p>
                                 </td>
                                 <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>

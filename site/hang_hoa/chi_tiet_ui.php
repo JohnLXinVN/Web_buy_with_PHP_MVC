@@ -160,7 +160,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <?php echo $item_hh["desc"] ?>
+                                        <?php echo $item_hh["description"] ?>
                                     </p>
                                 </div>
                             </div>

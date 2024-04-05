@@ -7,7 +7,7 @@ require ("../../global.php");
 // extract($_REQUEST);
 
 if (exist_param("add_loai_hang")) {
-    $ds_loai_hang = hang_hoa_select_all();
+    $ds_loai_hang = loai_selectall();
     $VIEW_NAME = "hang_hoa/add_hang_hoa.php";
 
 } else if (exist_param("list_hang_hoa")) {

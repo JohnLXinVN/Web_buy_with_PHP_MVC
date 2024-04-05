@@ -1,3 +1,14 @@
+<style>
+	.product-name p {
+
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+
+
+	}
+</style>
 <!-- SECTION -->
 <div class="section">
 	<!-- container -->
@@ -54,7 +65,9 @@
 								<?php echo $ds_bt[0]["id"] ?>
 							</p>
 							<div class="product-img">
-								<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
+								<div class="w-full h-[200px]">
+									<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
+								</div>
 								<div class="product-label">
 									<?php if ($hang_hoa['giam_gia'] > 0)
 										echo '<span class="sale">' . $phan_tram . '%</span>'
@@ -68,7 +81,9 @@
 								</p> -->
 								<h3 class="product-name"><a
 										href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
-										<?= $hang_hoa['ten_hh'] ?>
+										<p>
+											<?= $hang_hoa['ten_hh'] ?>
+										</p>
 									</a></h3>
 								<h3 class="product-name text-yellow-500 text-xl">
 									<?= $ds_bt[0]['ten_loai'] ?>

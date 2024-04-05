@@ -38,16 +38,13 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 
     <link href="../content/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="../content/css/style.css" rel='stylesheet' type='text/css' media="all" />
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
-        type="text/javascript"></script>
-    <script src="demoValidation.js" type="text/javascript"></script>
+
+
 
 
 

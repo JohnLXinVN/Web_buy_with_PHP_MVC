@@ -17,7 +17,7 @@
                             $phan_tram = $hang_hoa['giam_gia'] * 100;
 
                             $is_favorite = $check > 0 ? "fa-hearted" : '';
-                        ?>
+                            ?>
                             <div class="product">
                                 <p class="tien hidden">
                                     <?php echo $thanh_tien ?>
@@ -26,25 +26,27 @@
                                     <?php echo $ds_bt[0]["id"] ?>
                                 </p>
                                 <div class="product-img">
-                                    <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
+
                                     <div class="product-label">
                                         <?php if ($hang_hoa['giam_gia'] > 0)
                                             echo '<span class="sale">' . $phan_tram . '%</span>' ?>
-                                        <span class="new">NEW</span>
+                                            <span class="new">NEW</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">
+                                    <div class="product-body">
+                                        <p class="product-category">
                                         <?= $hang_hoa['ten_loai'] ?>
                                     </p>
-                                    <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                    <h3 class="product-name"><a
+                                            href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
                                             <?= $hang_hoa['ten_hh'] ?>
                                         </a></h3>
                                     <h3 class="product-name text-yellow-500 text-xl">
                                         <?= $ds_bt[0]['ten_loai'] ?>
                                     </h3>
                                     <h4 class="product-price">
-                                        <?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
+                                        <?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del
+                                            class="product-old-price">
                                             <?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
                                         </del>
                                     </h4>
@@ -56,19 +58,21 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <div class="product-btns">
-                                        <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?remove_favourite&id=<?= $hang_hoa['id'] ?>'">
+                                        <button class="add-to-wishlist"
+                                            onclick="window.location.href='../favourite/favourite_product.php?remove_favourite&id=<?= $hang_hoa['id'] ?>'">
                                             <i class="fa fa-heart <?= $is_favorite ?>"></i>
                                             <span class="tooltipp">remove to wishlist</span>
                                         </button>
 
-                                        <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+                                        <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
+                                            data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
                                             <i class="fa fa-eye"></i>
                                             <span class="tooltipp">quick view</span>
                                         </button>
                                         <script>
-                                            $(document).ready(function() {
+                                            $(document).ready(function () {
                                                 // Xử lý sự kiện nhấp vào nút Quickview
-                                                $('.quick-view').click(function(e) {
+                                                $('.quick-view').click(function (e) {
                                                     e.preventDefault();
                                                     // Lấy thông tin sản phẩm từ thuộc tính data
                                                     var tenHH = $(this).data('tenhh');
@@ -99,7 +103,7 @@
                                     </button>
                                 </div>
                             </div>
-                        <?php
+                            <?php
                         }
                         ?>
                     </div>

@@ -49,7 +49,7 @@ if (exist_param("ma_hh")) {
     $VIEW_NAME = "chi_tiet_ui.php";
 }
 
-
+$VIEW_NAME = "chi_tiet_ui.php";
 require ("../layout.php");
 
 

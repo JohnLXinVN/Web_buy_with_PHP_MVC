@@ -13,12 +13,14 @@
                 },
                 "mat_khau": {
                     required: true,
-                    minlength: 3
+                    minlength: 3,
+                    maxlength: 16
                 },
 
                 "re_mat_khau": {
                     equalTo: "#mat_khau",
-                    minlength: 3
+                    minlength: 3,
+                    maxlength: 16
                 },
                 "email": {
                     required: true,
@@ -27,6 +29,8 @@
                 "ho_ten": {
                     required: true,
                     pattern: /^[A-Za-z\s]+$/,
+                    minlength: 3,
+                    maxlength: 30
                 }
 
 
@@ -37,11 +41,14 @@
                 },
                 "mat_khau": {
                     required: "Bắt buộc nhập",
-                    minlength: "Nhập ít nhất 3 ký tự"
+                    minlength: "Nhập ít nhất 3 ký tự",
+                    maxlength: "Nhập ít hơn 16 ký tự"
                 },
                 "re_mat_khau": {
                     equalTo: "Nhập lại không trùng",
-                    minlength: "Nhập ít nhất 3 ký tự"
+                    minlength: "Nhập ít nhất 3 ký tự",
+                    maxlength: "Nhập ít hơn 16 ký tự"
+
                 },
                 "email": {
                     required: "Bắt buộc nhập",
@@ -49,7 +56,9 @@
                 },
                 "ho_ten": {
                     required: "Bắt buộc nhập",
-                    pattern: "Chỉ chứa chữ cái và khoảng trắng"
+                    pattern: "Chỉ chứa chữ cái và khoảng trắng",
+                    minlength: "Nhập ít nhất 3 ký tự",
+                    maxlength: "Nhập ít hơn 30 ký tự"
                 }
 
             }

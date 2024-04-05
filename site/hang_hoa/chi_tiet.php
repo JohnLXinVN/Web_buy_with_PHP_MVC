@@ -1,14 +1,15 @@
 <?php
 require_once ("../../dao/hang_hoa.php");
+require_once ("../../dao/bien_the.php");
 require_once ("../../dao/loai_hang.php");
+require_once ("../../dao/favourite.php");
 require_once ("../../dao/gio_hang.php");
 require_once ("../../dao/pdo.php");
 require ("../../global.php");
 $ds_loai_hang = loai_selectall();
 $ds_hang_hoa_top_10 = hang_hoa_select_top10();
-
 $userLogin = null;
-if (isset ($_COOKIE['user'])) {
+if (isset($_COOKIE['user'])) {
     $userCookie = $_COOKIE['user'];
     $userLogin = unserialize($userCookie);
 
@@ -16,9 +17,15 @@ if (isset ($_COOKIE['user'])) {
 
 if (exist_param("ma_hh")) {
     $ma_hh = $_GET["ma_hh"];
+    if ($userLogin["ma_kh"]) {
+        $check = kiem_tra_hh_yt($userLogin["ma_kh"]);
+    } else {
+        $check = [];
+    }
+
     $list_variant = get_variant_by_hh($ma_hh);
     $item_hh = hang_hoa_select_by_id($ma_hh);
-
+    $item_loai = hang_hoa_select_ma_loai_4($item_hh["ma_loai"]);
     hang_hoa_tang_so_luot_xem($ma_hh);
     $VIEW_NAME = "chi_tiet_ui.php";
 } else if (exist_param("addToCart")) {

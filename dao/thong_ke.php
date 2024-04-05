@@ -15,7 +15,7 @@ function thong_ke_hang_hoa_by_chi_tiet()
     INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
     INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
     INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
-    WHERE don_hang.ma_trang_thai = 4
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1
     GROUP BY loai_hang.ma_loai;
     ";
     return qdo_query($sql);

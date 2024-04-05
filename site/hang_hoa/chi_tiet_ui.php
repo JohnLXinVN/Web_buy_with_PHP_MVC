@@ -123,16 +123,15 @@
                             </a>
                         <?php } ?>
                     </div>
-
+                    <!-- 
                     <ul class="product-btns">
-                        <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-                    </ul>
+                        <li><a href="#"><i class="fa fa-heart-o"></i> Thêm vào danh sách yêu thích</a></li>
+                    </ul> -->
 
                     <ul class="product-links">
                         <li>Category:</li>
                         <li><a href="#">
-
+                                <?php echo $value["ten_loai"] ?>
                             </a></li>
                     </ul>
 
@@ -223,7 +222,9 @@
                         <?php echo $ds_bt[0]["id"] ?>
                     </p>
                     <div class="product-img">
-                        <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
+                        <div class="h-[300px]">
+                            <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
+                        </div>
                         <div class="product-label">
                             <?php if ($hang_hoa['giam_gia'] > 0)
                                 echo '<span class="sale">' . $phan_tram . '%</span>' ?>
@@ -246,13 +247,13 @@
                                 <?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
                             </del>
                         </h4>
-                        <div class="product-rating">
+                        <!-- <div class="product-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div>
+                        </div> -->
                         <form action="../favourite/favourite_product.php?add_favourite" method="POST">
                             <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
                             <input type="hidden" name="ma_kh" value="12">
@@ -261,7 +262,7 @@
                                 if (isset($userLogin)) { ?>
                                     <button class="add-to-wishlist">
                                         <i class="fa fa-heart <?= $is_favorite ?>"></i>
-                                        <span class="tooltipp">add to wishlist</span>
+                                        <span class="tooltipp">Thêm vào danh sách yêu thích</span>
                                     </button>
                                     <?php
                                 } else { ?>
@@ -370,7 +371,7 @@
                                 }).showToast();
 
                             }
-                        // Xác định phương thức và URL yêu cầu
+                                                                    // Xác định phương thức và URL yêu cầu
 
 
 

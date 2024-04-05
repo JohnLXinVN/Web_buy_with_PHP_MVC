@@ -69,7 +69,7 @@
                                     if (isset($userLogin)) { ?>
                                         <button class="add-to-wishlist">
                                             <i class="fa fa-heart <?= $is_favorite ?>"></i>
-                                            <span class="tooltipp">add to wishlist</span>
+                                            <span class="tooltipp">Thêm vào danh sách yêu thích</span>
                                         </button>
                                         <?php
                                     } else { ?>
@@ -178,7 +178,7 @@
                                     }).showToast();
 
                                 }
-            // Xác định phương thức và URL yêu cầu
+                // Xác định phương thức và URL yêu cầu
 
 
 

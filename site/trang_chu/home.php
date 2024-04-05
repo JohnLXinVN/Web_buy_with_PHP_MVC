@@ -341,15 +341,6 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h3 class="title">Top Bán Chạy</h3>
-                    <!-- <div class="section-nav">
-                        <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab2">Phấn</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Son Môi</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Dưỡng Da</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Kem Nền</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Sữa Rửa Mặt</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
             <!-- /section title -->

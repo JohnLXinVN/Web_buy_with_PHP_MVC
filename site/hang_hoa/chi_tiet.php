@@ -17,7 +17,7 @@ if (isset($_COOKIE['user'])) {
 
 if (exist_param("ma_hh")) {
     $ma_hh = $_GET["ma_hh"];
-    if ($userLogin["ma_kh"]) {
+    if (isset($userLogin["ma_kh"])) {
         $check = kiem_tra_hh_yt($userLogin["ma_kh"]);
     } else {
         $check = [];

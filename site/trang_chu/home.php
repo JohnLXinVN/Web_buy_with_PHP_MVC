@@ -1,15 +1,3 @@
-<style>
-    .product-name p {
-
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-
-
-    }
-</style>
-
 <div class="section">
     <!-- container -->
     <div class="container">
@@ -112,10 +100,7 @@
                                             <?php echo $ds_bt[0]["id"] ?>
                                         </p>
                                         <div class="product-img">
-                                            <div class="w-full h-[200px]">
-                                                <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover"
-                                                    alt="">
-                                            </div>
+                                            <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
                                             <div class="product-label">
                                                 <?php if ($hang_hoa['giam_gia'] > 0)
                                                     echo '<span class="sale">' . $phan_tram . '%</span>' ?>
@@ -126,8 +111,7 @@
                                             <p class="product-category">
                                                 <?= $hang_hoa['ten_loai'] ?>
                                             </p>
-                                            <h3 class="product-name"><a
-                                                    href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                            <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
                                                     <?= $hang_hoa['ten_hh'] ?>
                                                 </a></h3>
                                             <h3 class="product-name text-yellow-500 text-xl">
@@ -153,7 +137,7 @@
                                                     if (isset($userLogin)) { ?>
                                                         <button class="add-to-wishlist">
                                                             <i class="fa fa-heart"></i>
-                                                            <span class="tooltipp">Thêm vào danh sách yêu thích</span>
+                                                            <span class="tooltipp">add to wishlist</span>
                                                         </button>
                                                     <?php
                                                     } else { ?>
@@ -259,12 +243,7 @@
                                                     }).showToast();
 
                                                 }
-                                            // Xác định phương thức và URL yêu cầu
-
-
-
-
-
+                                                // Xác định phương thức và URL yêu cầu
                                             </script>
                                         </div>
                                     </div>
@@ -388,10 +367,7 @@
                                             <?php echo $ds_bt[0]["id"] ?>
                                         </p>
                                         <div class="product-img">
-                                            <div class="w-full h-[200px]">
-                                                <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover"
-                                                    alt="">
-                                            </div>
+                                            <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" alt="">
                                             <div class="product-label">
                                                 <?php if ($hang_hoa['giam_gia'] > 0)
                                                     echo '<span class="sale">' . $phan_tram . '%</span>' ?>
@@ -402,8 +378,7 @@
                                             <p class="product-category">
                                                 <?= $hang_hoa['ten_loai'] ?>
                                             </p>
-                                            <h3 class="product-name"><a
-                                                    href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                            <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
                                                     <?= $hang_hoa['ten_hh'] ?>
                                                 </a></h3>
                                             <h3 class="product-name text-yellow-500 text-xl">
@@ -429,7 +404,7 @@
                                                     if (isset($userLogin)) { ?>
                                                         <button class="add-to-wishlist">
                                                             <i class="fa fa-heart"></i>
-                                                            <span class="tooltipp">Thêm vào danh sách yêu thích</span>
+                                                            <span class="tooltipp">add to wishlist</span>
                                                         </button>
                                                     <?php
                                                     } else { ?>
@@ -479,7 +454,7 @@
                                                     cart</button>
 
                                             <?php } else { ?>
-                                                <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
+                                                <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-3">
                                                     Đăng nhập để
                                                     thêm
                                                     vào
@@ -532,13 +507,8 @@
                                                     }).showToast();
 
                                                 }
-                        // Xác định phương thức và URL yêu cầu
-
-
-
-
-
-                                            </script>
+                                                // Xác định phương thức và URL yêu cầu
+                                            </script> -->
 
                                         </div>
                                     </div>
@@ -597,6 +567,8 @@
 
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script> -->
+<!-- Liên kết jQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 <!-- /NEWSLETTER -->

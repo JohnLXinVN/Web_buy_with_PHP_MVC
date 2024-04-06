@@ -11,6 +11,7 @@ function get_dssp_all($page, $soluongsp)
     $sql .= " LIMIT " . $start . "," . $soluongsp;
     return qdo_query($sql);
 }
+
 function hang_hoa_select_all()
 {
     $sql = "SELECT hh.* , lh.ten_loai FROM hang_hoa as hh inner join loai_hang as lh on lh.ma_loai = hh.ma_loai";
@@ -25,7 +26,6 @@ function hang_hoa_select_ma_loai_4($ma_loai)
 
 
 
-
 function hien_thi_so_trang_ds_sp($tong_sp, $soluongsp)
 {
     $tongsp = count($tong_sp);
@@ -36,16 +36,6 @@ function hien_thi_so_trang_ds_sp($tong_sp, $soluongsp)
     }
     return $html_so_trang;
 }
-
-// function load_page_ds_hang_hoa()
-// {
-//     $start = ($page - 1) * $soluongsp;
-
-//     $sql = "SELECT * FROM hang_hoa where 1";
-//     $sql .= " ORDER BY ma_hh DESC";
-//     $sql .= " LIMIT " . $start . "," . $soluongsp;
-//     return qdo_query($sql);
-// }
 
 function hang_hoa_select_all_by_key($key_word)
 {

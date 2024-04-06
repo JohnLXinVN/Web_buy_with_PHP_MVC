@@ -66,7 +66,9 @@
 							</p>
 							<div class="product-img">
 								<div class="w-full h-[200px]">
+									<a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
 									<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
+									</a>
 								</div>
 								<div class="product-label">
 									<?php if ($hang_hoa['giam_gia'] > 0)
@@ -79,8 +81,8 @@
 									<!-- <p class="product-category">
 									<?= $hang_hoa['ten_loai'] ?>
 								</p> -->
-								<h3 class="product-name"><a
-										href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+								<h3 class="product-name">
+									    <a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
 										<p>
 											<?= $hang_hoa['ten_hh'] ?>
 										</p>

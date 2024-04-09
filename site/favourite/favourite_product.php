@@ -23,7 +23,7 @@ if (exist_param("yeu_thich")) {
     $ds_yt = hang_hoa_yt_select_ma_kh($ma_kh);
     $VIEW_NAME = "../favourite/favourite_product_ui.php";
 } else if (exist_param("add_favourite")) {
-    $ma_hh = $_POST['ma_hh'];
+    $ma_hh = $_GET['ma_hh'];
     $ma_kh = $userLogin['ma_kh'];
 
     hang_hoa_yt_insert($ma_hh, $ma_kh);

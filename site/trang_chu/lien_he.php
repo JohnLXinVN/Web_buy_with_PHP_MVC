@@ -1,3 +1,35 @@
+<script>
+    $().ready(function () {
+        $("#them_lien_he").validate({
+            onfocusout: true,
+            onkeyup: true,
+            onclick: true,
+            rules: {
+                "ho_ten": {
+                    required: true,
+                },
+                "email": {
+                    required: true,
+                },
+                "message": {
+                    required: true,
+                }
+            },
+            messages: {
+                "ho_ten": {
+                    required: "Bắt buộc nhập Họ Tên",
+                },
+                "email": {
+                    required: "Bắt Buộc Nhập Email"
+                },
+                "message": {
+                    required: "Bắt Buộc Nhập Lời Nhắn",
+                }
+            }
+        });
+    });
+
+</script>
 <?php
 $userLogin = null;
 if (isset($_COOKIE['user'])) {
@@ -9,8 +41,11 @@ $ma_kh = $userLogin !== null ? $userLogin['ma_kh'] : 0;
 // Kiểm tra xem liên hệ đã được gửi thành công hay chưa
 $lienHeDaGui = false;
 if (isset($_GET['btn_gui_lh'])) {
-    // Thực hiện xử lý gửi liên hệ ở đây
-    // Nếu thành công, đặt biến $lienHeDaGui thành true
+    $hoTen = $_POST['ho_ten'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    $ma_kh = $_POST['ma_kh'];
+    
     $lienHeDaGui = true;
 }
 ?>
@@ -26,7 +61,7 @@ if (isset($_GET['btn_gui_lh'])) {
                 <?php if ($lienHeDaGui) : ?>
                     <p class="text-center text-success">Cảm ơn bạn đã liên hệ!</p>
                 <?php else : ?>
-                    <form id="lien_he" name="lien_he" action="index.php?btn_gui_lh" method="POST">
+                    <form name="lien_he" id="them_lien_he" action="index.php?btn_gui_lh" method="POST">
                         <input type="hidden" id="ma_kh" name="ma_kh" value="<?= $ma_kh ?>">
                         <div class="row">
                             <div class="col-md-12">

@@ -67,20 +67,25 @@
                             <?php echo $value["status"] == 0 ? "Khách hàng đã hủy" : "" ?>
                         </div>
                     <?php } ?>
-                    <select class="ma_trang_thai" name="ma_trang_thai" id="ma_trang_thai"
-                        value="<?php echo $value["ma_trang_thai"] ?>">
-                        <?php foreach ($list_trang_thai as $key => $value1) {
+                    <?php
+                    if ($value["ma_trang_thai"] != 4) {
 
-                            ?>
-                            <option value="<?php echo $value1["id"] ?>" <?php echo $value1["id"] == $value["ma_trang_thai"] ? "selected" : "" ?>>
-                                <?php echo $value1["ten_trang_thai"] ?>
-                            </option>
-                        <?php } ?>
-                    </select>
+                        ?>
+                        <select class="ma_trang_thai" name="ma_trang_thai" id="ma_trang_thai"
+                            value="<?php echo $value["ma_trang_thai"] ?>">
+                            <?php foreach ($list_trang_thai as $key => $value1) {
+
+                                ?>
+                                <option value="<?php echo $value1["id"] ?>" <?php echo $value1["id"] == $value["ma_trang_thai"] ? "selected" : "" ?>>
+                                    <?php echo $value1["ten_trang_thai"] ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    <?php } ?>
                 </div>
 
             </div>
-            <div class="w-full px-3 min-[400px]:px-6">
+            <!-- <div class="w-full px-3 min-[400px]:px-6">
                 <?php
                 $list_sp_in_dh = get_product_by_ma_dh($value["ma_dh"]);
                 foreach ($list_sp_in_dh as $sp) {
@@ -135,7 +140,7 @@
                 <?php } ?>
 
 
-            </div>
+            </div> -->
             <div class="w-full border-t border-gray-200 px-6 flex flex-col lg:flex-row items-center justify-between ">
                 <div class="flex flex-col sm:flex-row items-center max-lg:border-b border-gray-200">
                     <!-- <a href="index.php?deteteItemDH&ma_dh=<?php echo $value["ma_dh"] ?>" onclick='return confirmDelete()'

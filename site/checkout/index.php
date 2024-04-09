@@ -46,6 +46,8 @@ if (exist_param("cart_check")) {
 
 } else if (exist_param("page_successfull")) {
     // $ds_loai_hang = loai_selectall();
+    $ds_order = get_order_by_ma_kh($userLogin["ma_kh"]);
+
     $VIEW_NAME = "page_successfull.php";
 
 
@@ -82,41 +84,133 @@ if (exist_param("cart_check")) {
 
     $ngayHienTai = date("Y-m-d");
 
-    $idDH = add_don_hang($ma_kh, $ma_trang_thai, $tong_gia, $address, $payment, $first_name, $last_name, $email, $tel, $notes, $ngayHienTai);
 
 
-    $ds_item_cart = array();
-    $array = array();
 
-    // print_r($ds_item_cart_by_id);
-
-    // echo "123123123123";
-
-    foreach ($ds_item_cart_by_id as $key => $value) {
-
-
-        // echo "12333333";
-        $ds_item_cart[] = get_all_item_in_cart_by_id($ma_kh, $value);
-
+    function execPostRequest($url, $data)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data)
+            )
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //execute post
+        $result = curl_exec($ch);
+        //close connection
+        curl_close($ch);
+        return $result;
     }
-    // echo "<pre>";
-    // echo "122222222222222222222222222222222222222222222222222";
-    // print_r($ds_item_cart);
-    // echo "</pre>";
-    foreach ($ds_item_cart as $key => $value) {
 
-        foreach ($ds_item_cart[$key] as $item) {
+    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+
+    if ($payment == "Thanh toán thẻ") {
+        $partnerCode = 'MOMOBKUN20180529';
+        $accessKey = 'klm05TvNBzhg7h7j';
+        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+        $orderInfo = "Thanh toán qua MoMo";
+        $amount = $tong_gia;
+        $orderId = time() . "";
+        $redirectUrl = "http://xxshop.test/site/checkout/index.php?page_successfull";
+        $ipnUrl = "http://xxshop.test/site/checkout/index.php?page_successfull";
+        $extraData = "";
 
 
-            add_chi_tiet_dh($idDH, $item["sl_hh_cart"], $item["tong_gia"], $item["ma_bt"]);
-            $bt = get_one_item_bt($item["ma_bt"]);
-            $sl_con_lai = (int) $bt["tong_so_luong"] - (int) $item["sl_hh_cart"];
-            update_sl_when_order($item["ma_bt"], $sl_con_lai);
-            delete_item_by_ma_bt($item["ma_bt"]);
+        // $partnerCode = $partnerCode;
+        // $accessKey = $accessKey;
+        $serectkey = $secretKey;
+        // $orderId = $_POST["orderId"]; // Mã đơn hàng
+        // $orderInfo = $_POST["orderInfo"];
+        // $amount = $_POST["amount"];
+        // $ipnUrl = $_POST["ipnUrl"];
+        // $redirectUrl = $_POST["redirectUrl"];
+        // $extraData = $_POST["extraData"];
+
+        $requestId = time() . "";
+        $requestType = "payWithATM";
+        // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
+        //before sign HMAC SHA256 signature
+        $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+        $signature = hash_hmac("sha256", $rawHash, $serectkey);
+        $data = array(
+            'partnerCode' => $partnerCode,
+            'partnerName' => "Test",
+            "storeId" => "MomoTestStore",
+            'requestId' => $requestId,
+            'amount' => $amount,
+            'orderId' => $orderId,
+            'orderInfo' => $orderInfo,
+            'redirectUrl' => $redirectUrl,
+            'ipnUrl' => $ipnUrl,
+            'lang' => 'vi',
+            'extraData' => $extraData,
+            'requestType' => $requestType,
+            'signature' => $signature
+        );
+        $result = execPostRequest($endpoint, json_encode($data));
+        $jsonResult = json_decode($result, true);  // decode json
+
+        //Just a example, please check more in there
+        // print_r($jsonResult);
+        if ($jsonResult["resultCode"] == 0) {
+
+            $idDH = add_don_hang($ma_kh, $ma_trang_thai, $tong_gia, $address, $payment, $first_name, $last_name, $email, $tel, $notes, $ngayHienTai);
+            $ds_item_cart = array();
+            $array = array();
+            foreach ($ds_item_cart_by_id as $key => $value) {
+                $ds_item_cart[] = get_all_item_in_cart_by_id($ma_kh, $value);
+
+            }
+            foreach ($ds_item_cart as $key => $value) {
+
+                foreach ($ds_item_cart[$key] as $item) {
+
+
+                    add_chi_tiet_dh($idDH, $item["sl_hh_cart"], $item["tong_gia"], $item["ma_bt"]);
+                    $bt = get_one_item_bt($item["ma_bt"]);
+                    $sl_con_lai = (int) $bt["tong_so_luong"] - (int) $item["sl_hh_cart"];
+                    update_sl_when_order($item["ma_bt"], $sl_con_lai);
+                    delete_item_by_ma_bt($item["ma_bt"]);
+                }
+            }
         }
+        print_r($jsonResult);
+        header('Location: ' . $jsonResult['payUrl']);
+    } else {
+
+        $idDH = add_don_hang($ma_kh, $ma_trang_thai, $tong_gia, $address, $payment, $first_name, $last_name, $email, $tel, $notes, $ngayHienTai);
+        $ds_item_cart = array();
+        $array = array();
+        foreach ($ds_item_cart_by_id as $key => $value) {
+            $ds_item_cart[] = get_all_item_in_cart_by_id($ma_kh, $value);
+
+        }
+        foreach ($ds_item_cart as $key => $value) {
+
+            foreach ($ds_item_cart[$key] as $item) {
+
+
+                add_chi_tiet_dh($idDH, $item["sl_hh_cart"], $item["tong_gia"], $item["ma_bt"]);
+                $bt = get_one_item_bt($item["ma_bt"]);
+                $sl_con_lai = (int) $bt["tong_so_luong"] - (int) $item["sl_hh_cart"];
+                update_sl_when_order($item["ma_bt"], $sl_con_lai);
+                delete_item_by_ma_bt($item["ma_bt"]);
+            }
+        }
+        $ds_order = get_order_by_ma_kh($userLogin["ma_kh"]);
+        $VIEW_NAME = "page_successfull.php";
     }
-    $ds_order = get_order_by_ma_kh($userLogin["ma_kh"]);
-    $VIEW_NAME = "page_successfull.php";
+
+
+
 
 } else if (exist_param("deteteItemDH")) {
     $ma_dh = $_GET["ma_dh"];

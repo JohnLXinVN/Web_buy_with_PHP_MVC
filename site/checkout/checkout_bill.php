@@ -208,15 +208,7 @@
                             </label>
 
                         </div>
-                        <div class="input-radio">
-                            <input type="radio" name="payment" id="payment-3" value="Thanh toán paypal">
-                            <label for="payment-3">
-                                <span></span>
-                                Thanh toán paypal
 
-                            </label>
-
-                        </div>
                     </div>
 
                     <button type="submit" name="" class="primary-btn order-submit">Place order</button>

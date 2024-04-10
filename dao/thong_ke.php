@@ -77,6 +77,15 @@ function thong_ke_binh_luan()
     return qdo_query($sql);
 }
 
-
+function hien_thi_so_trang_ds_bl($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
+}
 
 ?>

@@ -181,8 +181,16 @@ function change_loai_by_loai($id_loai)
 {
     $sql = "UPDATE hang_hoa SET ma_loai = 49 WHERE ma_loai = '$id_loai'";
     return qdo_query($sql);
+}
+
+function delete_yt_by_hh($ma_hh)
+{
+    $sql = "DELETE FROM yeu_thich WHERE ma_hh = '$ma_hh'";
+    pdo_execute($sql);
+
 
 }
+
 function hang_hoa_select_by_loai_all($loai_hang)
 {
     $sql = "SELECT ma_hh FROM hang_hoa where ma_loai = $loai_hang";

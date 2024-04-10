@@ -66,7 +66,7 @@
             <dt class="font-medium text-gray-900">Notes</dt>
             <dd class="mt-3 text-gray-500">
                 <span class="block">
-                    <?php echo $infor_dh["first_name"] . " " . $infor_dh["last_name"] ?>
+                    <?php echo $infor_dh["notes"] . " " . $infor_dh["notes"] ?>
                 </span>
 
             </dd>

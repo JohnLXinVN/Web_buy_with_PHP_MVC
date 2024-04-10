@@ -1,7 +1,7 @@
 <?php
-require_once("../../dao/users.php");
-require_once("../../dao/pdo.php");
-require("../../global.php");
+require_once ("../../dao/users.php");
+require_once ("../../dao/pdo.php");
+require ("../../global.php");
 // extract($_REQUEST);
 
 if (exist_param("add_users")) {
@@ -18,7 +18,7 @@ if (exist_param("add_users")) {
     $soluongsp = 5;
 
     $ds_users = get_users_select_all($page, $soluongsp);
-    $tong_sp= users_all();
+    $tong_sp = users_all();
     $hien_thi_so_trang = hien_thi_so_trang_ds_users($tong_sp, $soluongsp);
 
     $VIEW_NAME = "users/users.php";
@@ -34,18 +34,12 @@ if (exist_param("add_users")) {
 
     users_insert($user_name, $mat_khau, $ho_ten, $email, $vai_tro, $kich_hoat, $hinh);
 
-    $ds_users = users_select_all();
-
-    $VIEW_NAME = "users/users.php";
+    header("Location: /admin/users/index.php?list_users");
 
 
 } elseif (exist_param("edit_user")) {
     $edit_id = $_GET["ma_kh"];
     $data_edit = users_select_by_id($edit_id);
-
-
-
-
     $VIEW_NAME = "users/edit_user.php";
 } elseif (exist_param("btn_edit_user")) {
     $ma_kh = $_POST["ma_kh"];
@@ -62,20 +56,24 @@ if (exist_param("add_users")) {
 
     users_update($ma_kh, $user_name, $mat_khau, $ho_ten, $email, $vai_tro, $kich_hoat, $hinh);
 
-    $ds_users = users_select_all();
+    header("Location: /admin/users/index.php?list_users");
 
-    $VIEW_NAME = "users/users.php";
 } elseif (exist_param("btn_delete")) {
     $delete_id = $_GET["ma_kh"];
+
+    delete_gh_by_user($delete_id);
+    delete_dh_by_user($delete_id);
+    delete_bl_by_user($delete_id);
+    delete_yt_by_user($delete_id);
     users_delete($delete_id);
-    $ds_users = users_select_all();
-    $VIEW_NAME = "users/users.php";
+    header("Location: /admin/users/index.php?list_users");
+
 } else {
     $errors = [];
     $VIEW_NAME = "users/add_user.php";
 
 }
 
-require("../layout.php");
+require ("../layout.php");
 
 ?>

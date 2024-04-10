@@ -44,7 +44,6 @@
 
 <?php
 $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-echo $currentURL;
 $url_ds_bt = str_replace("add_bien_the", "list_loai_bt", $currentURL);
 $url_action_add_bt = str_replace("add_bien_the", "btn_add_loai_bt", $currentURL);
 

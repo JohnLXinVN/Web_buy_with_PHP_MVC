@@ -22,6 +22,31 @@ function xoa_bien_the($ma_bien_the)
     pdo_execute($sql);
 }
 
+function delete_chi_tiet_don_by_bt($id_bt)
+{
+    $sql = "DELETE FROM chi_tiet_don_hang WHERE ma_bt = $id_bt";
+    pdo_execute($sql);
+}
+
+
+
+function bien_the_delete_by_ma_hh($id_hh)
+{
+    $sqlGetBt = "SELECT * FROM variant WHERE ma_hh = $id_hh";
+    $ds_bt = qdo_query($sqlGetBt);
+    foreach ($ds_bt as $key => $value) {
+        $sql = "DELETE FROM chi_tiet_don_hang WHERE ma_bt = ?";
+        pdo_execute($sql, $value["id"]);
+    }
+    $sql1 = "DELETE FROM variant WHERE ma_hh = $id_hh";
+    pdo_execute($sql1);
+}
+
+function delete_chi_tiet_hang_by_bt($ma_bt)
+{
+
+}
+
 
 function edit_bien_the($tenloai, $gia, $ma_hh, $ma_bien_the, $tong_so_luong)
 {

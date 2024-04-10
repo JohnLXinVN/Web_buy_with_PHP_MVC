@@ -1,6 +1,4 @@
 <div class="mt-8 flow-root">
-    <?php var_dump($ds_loai_hang_thong_ke);
-                            die; ?>
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="flex w-full justify-center">
             <?php require "chart.php" ?>

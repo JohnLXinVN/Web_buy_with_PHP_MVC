@@ -166,6 +166,16 @@
 
     <?php } ?>
 </div>
+<div class="store-filter clearfix">
+    <ul class="store-pagination flex flex-row items-center mt-3">
+
+        <?php
+        echo $hien_thi_so_trang;
+        ?>
+
+
+    </ul>
+</div>
 
 <script>
     function confirmDelete() {

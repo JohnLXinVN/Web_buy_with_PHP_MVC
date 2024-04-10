@@ -1,51 +1,51 @@
 <style>
     .store-pagination {
-  float: right;
-}
+        float: right;
+    }
 
-.store-pagination li {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid #e4e7ed;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
+    .store-pagination li {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #e4e7ed;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
 
-.store-pagination li + li {
-  margin-left: 5px;
-}
+    .store-pagination li+li {
+        margin-left: 5px;
+    }
 
-.store-pagination li:hover {
-  background-color: #e4e7ed;
-  color: #d10024;
-}
+    .store-pagination li:hover {
+        background-color: #e4e7ed;
+        color: #d10024;
+    }
 
-.store-pagination li.active {
-  background-color: #d10024;
-  border-color: #d10024;
-  color: #fff;
-  font-weight: 500;
-  cursor: default;
-}
+    .store-pagination li.active {
+        background-color: #d10024;
+        border-color: #d10024;
+        color: #fff;
+        font-weight: 500;
+        cursor: default;
+    }
 
-.store-pagination li a {
-  display: block;
-}
+    .store-pagination li a {
+        display: block;
+    }
 
-.store-qty {
-  margin-right: 30px;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 12px;
-}
+    .store-qty {
+        margin-right: 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
 
-.store-filter{
-    margin-top: 30px;
-}
+    .store-filter {
+        margin-top: 30px;
+    }
 </style>
 
 <div class="sm:flex sm:items-center">
@@ -121,13 +121,12 @@
 </div>
 
 <div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
-					<ul class="store-pagination">
+    <ul class="store-pagination">
 
-						<?php
-						echo $hien_thi_so_trang;
-						?>
+        <?php
+        echo $hien_thi_so_trang;
+        ?>
 
 
-					</ul>
-				</div>
+    </ul>
+</div>

@@ -1,5 +1,5 @@
 <?php
-require_once("pdo.php");
+require_once ("pdo.php");
 
 
 function tin_tuc_select_all()
@@ -33,6 +33,12 @@ function tin_tuc_insert($tieu_de, $mo_ta, $noi_dung, $hinh, $tac_gia, $ngay_xuat
 function tin_tuc_delete($id_tin_tuc)
 {
     $sql = "DELETE FROM tin_tuc where id_tin_tuc = '$id_tin_tuc'";
+    pdo_execute($sql);
+}
+
+function change_tin_tuc_by_loai($id_loai)
+{
+    $sql = "UPDATE tin_tuc set id_danh_muc = 6 WHERE id_danh_muc = $id_loai";
     pdo_execute($sql);
 }
 
@@ -99,7 +105,7 @@ function danh_muc_tin_tuc_delete($id)
     pdo_execute($sql);
 }
 
-function danh_muc_tin_tuc_edit ($ten_danh_muc , $id) 
+function danh_muc_tin_tuc_edit($ten_danh_muc, $id)
 {
     $sql = "UPDATE danh_muc_tin_tuc SET ten_danh_muc = '$ten_danh_muc' , id = '$id' ";
     pdo_execute($sql);

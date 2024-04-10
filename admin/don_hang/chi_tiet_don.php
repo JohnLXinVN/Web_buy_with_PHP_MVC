@@ -43,18 +43,23 @@
                     </p>
                 </dd>
             </div>
-            <div>
-                <select class="ma_trang_thai" name="ma_trang_thai" id="ma_trang_thai"
-                    value="<?php echo $infor_dh["ma_trang_thai"] ?>">
-                    <?php foreach ($list_trang_thai as $key => $value1) {
+            <?php
+            if ($infor_dh["ma_trang_thai"] != 4) {
 
-                        ?>
-                        <option value="<?php echo $value1["id"] ?>" <?php echo $value1["id"] == $infor_dh["ma_trang_thai"] ? "selected" : "" ?>>
-                            <?php echo $value1["ten_trang_thai"] ?>
-                        </option>
-                    <?php } ?>
-                </select>
-            </div>
+                ?>
+                <div>
+                    <select class="ma_trang_thai" name="ma_trang_thai" id="ma_trang_thai"
+                        value="<?php echo $infor_dh["ma_trang_thai"] ?>">
+                        <?php foreach ($list_trang_thai as $key => $value1) {
+
+                            ?>
+                            <option value="<?php echo $value1["id"] ?>" <?php echo $value1["id"] == $infor_dh["ma_trang_thai"] ? "selected" : "" ?>>
+                                <?php echo $value1["ten_trang_thai"] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+            <?php } ?>
 
         </dl>
         <div>

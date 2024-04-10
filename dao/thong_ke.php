@@ -21,6 +21,47 @@ function thong_ke_hang_hoa_by_chi_tiet()
     return qdo_query($sql);
 }
 
+
+function thong_ke_hang_hoa_by_chi_tiet_date_from_to($dateFrom, $dateTo)
+{
+    $sql = "SELECT loai_hang.ten_loai, loai_hang.ma_loai, sum(chi_tiet_don_hang.so_luong) AS so_luong, SUM(chi_tiet_don_hang.don_gia) AS doanh_thu
+    FROM chi_tiet_don_hang
+    INNER JOIN don_hang ON chi_tiet_don_hang.ma_dh = don_hang.ma_dh
+    INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
+    INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
+    INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND don_hang.ngay_dat BETWEEN '$dateFrom' AND '$dateTo'
+    GROUP BY loai_hang.ma_loai;
+    ";
+    return qdo_query($sql);
+}
+
+function thong_ke_hang_hoa_by_chi_tiet_date_from($dateFrom)
+{
+    $sql = "SELECT loai_hang.ten_loai, loai_hang.ma_loai, SUM(chi_tiet_don_hang.so_luong) AS so_luong, SUM(chi_tiet_don_hang.don_gia) AS doanh_thu
+    FROM chi_tiet_don_hang
+    INNER JOIN don_hang ON chi_tiet_don_hang.ma_dh = don_hang.ma_dh
+    INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
+    INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
+    INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND don_hang.ngay_dat >= '$dateFrom'
+    GROUP BY loai_hang.ma_loai;";
+    return qdo_query($sql);
+}
+
+function thong_ke_hang_hoa_by_chi_tiet_date_to($dateTo)
+{
+    $sql = "SELECT loai_hang.ten_loai, loai_hang.ma_loai, SUM(chi_tiet_don_hang.so_luong) AS so_luong, SUM(chi_tiet_don_hang.don_gia) AS doanh_thu
+    FROM chi_tiet_don_hang
+    INNER JOIN don_hang ON chi_tiet_don_hang.ma_dh = don_hang.ma_dh
+    INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
+    INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
+    INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND don_hang.ngay_dat <= '$dateTo'
+    GROUP BY loai_hang.ma_loai;";
+    return qdo_query($sql);
+}
+
 function get_thong_ke_binh_luan($page, $soluongsp)
 {
     $start = ($page - 1) * $soluongsp;
@@ -36,15 +77,6 @@ function thong_ke_binh_luan()
     return qdo_query($sql);
 }
 
-function hien_thi_so_trang_ds_bl($tong_sp, $soluongsp)
-{
-    $tongsp = count($tong_sp);
-    $so_trang = ceil($tongsp / $soluongsp);
-    $html_so_trang = "";
-    for ($i = 1; $i <= $so_trang; $i++) {
-        $html_so_trang .= '<li><a href="index.php&page=' . $i . '">' . $i . '</a></li>';
-    }
-    return $html_so_trang;
-}
+
 
 ?>

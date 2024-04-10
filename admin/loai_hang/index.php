@@ -20,7 +20,7 @@ if (exist_param("add_loai_hang")) {
     }
     $soluongsp = 5;
     $ds_loai_hang = get_loai_selectall($page, $soluongsp);
-    $tong_sp=loai_selectall();
+    $tong_sp = loai_selectall();
     $hien_thi_so_trang = hien_thi_so_trang_loai_hang($tong_sp, $soluongsp);
 
     $VIEW_NAME = "loai_hang/loai_hang.php";
@@ -65,9 +65,10 @@ if (exist_param("add_loai_hang")) {
     $VIEW_NAME = "loai_hang/loai_hang.php";
 } elseif (exist_param("btn_delete")) {
     $delete_id = $_GET["ma_loai"];
-    $hang_hoa_delete = hang_hoa_select_by_loai_all($delete_id);
-    binh_luan_delete_by_ma_hh($hang_hoa_delete);
-    hang_hoa_delete_by_loai($delete_id);
+    // $hang_hoa_delete = hang_hoa_select_by_loai_all($delete_id);
+    // hang_hoa_delete_by_loai($delete_id);
+    change_loai_by_loai($delete_id);
+
     xoa_loai_hang($delete_id);
     $ds_loai_hang = loai_selectall();
 

@@ -67,7 +67,7 @@
 							<div class="product-img">
 								<div class="w-full h-[200px]">
 									<a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
-									<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
+										<img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
 									</a>
 								</div>
 								<div class="product-label">
@@ -82,11 +82,12 @@
 									<?= $hang_hoa['ten_loai'] ?>
 								</p> -->
 								<h3 class="product-name">
-									    <a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+									<a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
 										<p>
 											<?= $hang_hoa['ten_hh'] ?>
 										</p>
-									</a></h3>
+									</a>
+								</h3>
 								<h3 class="product-name text-yellow-500 text-xl">
 									<?= $ds_bt[0]['ten_loai'] ?>
 								</h3>
@@ -257,7 +258,6 @@
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
 					<ul class="store-pagination">
 						<?php
 						// echo $hien_thi_so_trang;

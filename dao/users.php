@@ -1,6 +1,6 @@
 <?php
 
-require_once("pdo.php");
+require_once ("pdo.php");
 
 function get_users_select_all($page, $soluongsp)
 {
@@ -9,6 +9,38 @@ function get_users_select_all($page, $soluongsp)
     $sql = "SELECT * FROM users";
     $sql .= " LIMIT " . $start . "," . $soluongsp;
     return qdo_query($sql);
+}
+
+function delete_gh_by_user($ma_kh)
+{
+    $sql = "DELETE FROM gio_hang WHERE ma_kh = $ma_kh";
+    pdo_execute($sql);
+}
+
+function delete_dh_by_user($ma_kh)
+{
+
+    $sqlGetBt = "SELECT * FROM don_hang WHERE ma_kh = $ma_kh";
+    $ds_bt = qdo_query($sqlGetBt);
+    foreach ($ds_bt as $key => $value) {
+        $sql = "DELETE FROM chi_tiet_don_hang WHERE ma_dh = ?";
+        pdo_execute($sql, $value["ma_dh"]);
+    }
+
+    $sql1 = "DELETE FROM don_hang WHERE ma_kh = $ma_kh";
+    pdo_execute($sql1);
+}
+
+function delete_yt_by_user($ma_kh)
+{
+    $sql = "DELETE FROM yeu_thich WHERE ma_kh = $ma_kh";
+    pdo_execute($sql);
+}
+
+function delete_bl_by_user($ma_kh)
+{
+    $sql = "DELETE FROM binh_luan WHERE ma_kh = $ma_kh";
+    pdo_execute($sql);
 }
 
 function users_all()

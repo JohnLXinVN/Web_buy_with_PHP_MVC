@@ -24,10 +24,28 @@ if (exist_param("deteteItemDH")) {
     $ma_tt = $_GET["ma_tt"];
     $list_trang_thai = list_trang_thai_don();
     if ($ma_tt == 0) {
-        $ds_order = get_all_order();
+        $ds_order_pa = get_all_order();
+
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        $soluongsp = 5;
+        $ds_order = get_all_order_paga($page, $soluongsp);
+        $hien_thi_so_trang = hien_thi_so_trang_don_hang($ds_order_pa, $soluongsp);
 
     } else {
-        $ds_order = get_all_order_filter($ma_tt);
+        $ds_order_pa = get_all_order_filter($ma_tt);
+
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        $soluongsp = 5;
+        $ds_order = get_all_order_filter_paga($page, $soluongsp, $ma_tt);
+        $hien_thi_so_trang = hien_thi_so_trang_don_hang($ds_order_pa, $soluongsp);
 
     }
     $VIEW_NAME = "don_hang/list_don_hang.php";
@@ -42,9 +60,33 @@ if (exist_param("deteteItemDH")) {
     $VIEW_NAME = "don_hang/chi_tiet_don.php";
 
 
-} else {
-    $ds_order = get_all_order();
+} else if (exist_param("filterPage")) {
+    $ds_order_pa = get_all_order();
     $list_trang_thai = list_trang_thai_don();
+
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+    $ds_order = get_all_order_paga($page, $soluongsp);
+    $hien_thi_so_trang = hien_thi_so_trang_don_hang($ds_order_pa, $soluongsp);
+
+    $VIEW_NAME = "don_hang/list_don_hang.php";
+} else {
+    $ds_order_pa = get_all_order();
+    $list_trang_thai = list_trang_thai_don();
+
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $soluongsp = 5;
+    $ds_order = get_all_order_paga($page, $soluongsp);
+    $hien_thi_so_trang = hien_thi_so_trang_don_hang($ds_order_pa, $soluongsp);
+
     $VIEW_NAME = "don_hang/list_don_hang.php";
 
 }

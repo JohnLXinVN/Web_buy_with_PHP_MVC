@@ -76,6 +76,7 @@ if (exist_param("add_bien_the")) {
 } elseif (exist_param("btn_delete")) {
     $delete_id = $_GET["ma_bien_the"];
     $ma_hh = $_GET["ma_hh"];
+    delete_chi_tiet_don_by_bt($delete_id);
     xoa_bien_the($delete_id);
     $ds_loai_bt = bien_the_selectall($ma_hh);
     $ma_hh = $_GET["ma_hh"];

@@ -110,7 +110,7 @@
                                 name:</label>
                             <input type="text" name="first_name" id="first_name" placeholder="First name"
                                 class="block w-full rounded-md border-0 py-3 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6 "
-                                required>
+                                required value="<?php echo $userLogin["ho_ten"] ?>">
                         </div>
                         <div class="mb-4">
                             <label for="last_name" class="block mb-2 text-black font-medium text-black">Last
@@ -123,7 +123,7 @@
                             <label for="email" class="block mb-2 text-black font-medium text-black">Email:</label>
                             <input type="email" name="email" id="email" placeholder="Email"
                                 class="block w-full rounded-md border-0 py-3 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6 "
-                                required>
+                                required value="<?php echo $userLogin["email"] ?>">
                         </div>
                         <div class="mb-4">
                             <label for="address" class="block mb-2 text-black font-medium text-black">Địa chỉ</label>
@@ -145,7 +145,7 @@
 
                     <!-- Order notes -->
                     <div class="order-notes">
-                        <textarea class="input" name="notes" id="notes" clas placeholder="Order Notes"></textarea>
+                        <textarea class="input" name="notes" id="notes" placeholder="Order Notes"></textarea>
                     </div>
                     <!-- /Order notes -->
                 </div>

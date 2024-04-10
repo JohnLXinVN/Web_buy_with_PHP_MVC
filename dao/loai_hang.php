@@ -12,6 +12,7 @@ function get_loai_selectall($page, $soluongsp)
 }
 
 
+
 function loai_selectall()
 {
     $sql = "SELECT * FROM loai_hang";
@@ -20,6 +21,7 @@ function loai_selectall()
 
 function hien_thi_so_trang_loai_hang($tong_sp, $soluongsp)
 {
+
     $tongsp = count($tong_sp);
     $so_trang = ceil($tongsp / $soluongsp);
     $html_so_trang = "";

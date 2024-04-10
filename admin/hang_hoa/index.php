@@ -1,6 +1,7 @@
 <?php
 require_once ("../../dao/hang_hoa.php");
 require_once ("../../dao/loai_hang.php");
+require_once ("../../dao/bien_the.php");
 require_once ("../../dao/binh_luan.php");
 require_once ("../../dao/pdo.php");
 require ("../../global.php");
@@ -81,11 +82,13 @@ if (exist_param("add_loai_hang")) {
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
 } elseif (exist_param("btn_delete")) {
     $delete_id = $_GET["ma_hh"];
-    hang_hoa_delete($delete_id);
     binh_luan_delete_by_ma_hh($delete_id);
+    bien_the_delete_by_ma_hh($delete_id);
+    delete_yt_by_hh($delete_id);
+    hang_hoa_delete($delete_id);
     $ds_hang_hoa = hang_hoa_select_all();
     $ds_loai_hang = loai_selectall();
-
+    header("Location: /admin/hang_hoa/index.php?list_hang_hoa");
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
 } else {
     $ds_loai_hang = loai_selectall();

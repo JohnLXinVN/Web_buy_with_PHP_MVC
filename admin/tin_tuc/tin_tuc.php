@@ -12,52 +12,52 @@
 
 
     .store-pagination {
-  float: right;
-}
+        float: right;
+    }
 
-.store-pagination li {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid #e4e7ed;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
+    .store-pagination li {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #e4e7ed;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
 
-.store-pagination li + li {
-  margin-left: 5px;
-}
+    .store-pagination li+li {
+        margin-left: 5px;
+    }
 
-.store-pagination li:hover {
-  background-color: #e4e7ed;
-  color: #d10024;
-}
+    .store-pagination li:hover {
+        background-color: #e4e7ed;
+        color: #d10024;
+    }
 
-.store-pagination li.active {
-  background-color: #d10024;
-  border-color: #d10024;
-  color: #fff;
-  font-weight: 500;
-  cursor: default;
-}
+    .store-pagination li.active {
+        background-color: #d10024;
+        border-color: #d10024;
+        color: #fff;
+        font-weight: 500;
+        cursor: default;
+    }
 
-.store-pagination li a {
-  display: block;
-}
+    .store-pagination li a {
+        display: block;
+    }
 
-.store-qty {
-  margin-right: 30px;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 12px;
-}
+    .store-qty {
+        margin-right: 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
 
-.store-filter{
-    margin-top: 30px;
-}
+    .store-filter {
+        margin-top: 30px;
+    }
 </style>
 <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
@@ -77,16 +77,10 @@
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-
                 <table class="min-w-full divide-y divide-gray-300">
-
-
                     <thead class="bg-gray-50">
 
-
                         <tr>
-
-
                             <th scope="col"
                                 class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                 Tên Tin Tức</th>
@@ -167,13 +161,12 @@
 </div>
 
 <div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
-					<ul class="store-pagination">
+    <ul class="store-pagination">
 
-						<?php
-						echo $hien_thi_so_trang;
-						?>
+        <?php
+        echo $hien_thi_so_trang;
+        ?>
 
 
-					</ul>
-				</div>
+    </ul>
+</div>

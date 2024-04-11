@@ -139,7 +139,7 @@
                     <ul class="product-links">
                         <li>Category:</li>
                         <li>
-                            <a href="../hang_hoa/store.php?ma_loai=<?=$item_hh['ma_loai']?>">
+                            <a href="../hang_hoa/store.php?ma_loai=<?= $item_hh['ma_loai'] ?>">
                                 <?php echo $item_hh["ten_loai"] ?>
                             </a>
                         </li>
@@ -257,54 +257,50 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div> -->
-                        <form action="../favourite/favourite_product.php?add_favourite" method="POST">
-                            <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
-                            <input type="hidden" name="ma_kh" value="12">
-                            <div class="product-btns">
-                                <?php
-                                if (isset($userLogin)) { ?>
-                                    <button class="add-to-wishlist">
-                                        <i class="fa fa-heart <?= $is_favorite ?>"></i>
-                                        <span class="tooltipp">Thêm vào danh sách yêu thích</span>
-                                    </button>
-                                <?php
-                                } else { ?>
-                                    <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-                                <?php
-                                }
-                                ?>
-                                <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
-                                    <i class="fa fa-eye"></i>
-                                    <span class="tooltipp">quick view</span>
+                        <div class="product-btns">
+                            <?php
+                            if (isset($userLogin)) { ?>
+                                <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="tooltipp">add to wishlist</span>
                                 </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        // Xử lý sự kiện nhấp vào nút Quickview
-                                        $('.quick-view').click(function(e) {
-                                            e.preventDefault();
-                                            // Lấy thông tin sản phẩm từ thuộc tính data
-                                            var tenHH = $(this).data('tenhh');
-                                            var moTa = $(this).data('mota');
-                                            var hinhAnh = $(this).data("anh");
+                            <?php
+                            } else { ?>
+                                <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
+                            <?php
+                            }
+                            ?>
+                            <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+                                <i class="fa fa-eye"></i>
+                                <span class="tooltipp">quick view</span>
+                            </button>
+                            <script>
+                                $(document).ready(function() {
+                                    // Xử lý sự kiện nhấp vào nút Quickview
+                                    $('.quick-view').click(function(e) {
+                                        e.preventDefault();
+                                        // Lấy thông tin sản phẩm từ thuộc tính data
+                                        var tenHH = $(this).data('tenhh');
+                                        var moTa = $(this).data('mota');
+                                        var hinhAnh = $(this).data("anh");
 
-                                            // Gọi hàm showQuickViewModal với thông tin sản phẩm
-                                            showQuickViewModal(tenHH, moTa, hinhAnh);
-                                        });
-
-                                        // Hiển thị modal Quickview với thông tin sản phẩm
-                                        function showQuickViewModal(tenHH, moTa, hinhAnh) {
-                                            // Điền thông tin sản phẩm vào modal Quickview
-                                            $('#quick-view-title').text(tenHH);
-                                            $('#quick-view-description').text(moTa);
-                                            $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
-
-                                            // Hiển thị modal Quickview
-                                            $('#quick-view-modal').modal('show');
-                                        }
+                                        // Gọi hàm showQuickViewModal với thông tin sản phẩm
+                                        showQuickViewModal(tenHH, moTa, hinhAnh);
                                     });
-                                </script>
-                            </div>
-                        </form>
+
+                                    // Hiển thị modal Quickview với thông tin sản phẩm
+                                    function showQuickViewModal(tenHH, moTa, hinhAnh) {
+                                        // Điền thông tin sản phẩm vào modal Quickview
+                                        $('#quick-view-title').text(tenHH);
+                                        $('#quick-view-description').text(moTa);
+                                        $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
+
+                                        // Hiển thị modal Quickview
+                                        $('#quick-view-modal').modal('show');
+                                    }
+                                });
+                            </script>
+                        </div>
                     </div>
                     <div class="add-to-cart">
                         <?php
@@ -375,8 +371,29 @@
             <?php
             }
             ?>
-
-
+            <div id="quick-view-modal" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quick-view-title"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img id="quick-view-image" src="" alt="Product Image">
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="quick-view-description"></p>
+                                    <!-- Thêm các thông tin khác của sản phẩm vào modal -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- /row -->

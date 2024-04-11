@@ -45,6 +45,7 @@ if (exist_param("add_danh_muc")) {
     $VIEW_NAME = "danh_muc_tin_tuc/danh_muc.php";
 } else if (exist_param("btn_delete")) {
     $id = $_GET['id'];
+    change_tin_tuc_by_loai($id);
     danh_muc_tin_tuc_delete($id);
     header("Location: /admin/danh_muc_tin_tuc/index.php?list_danh_muc");
     // $ds_dm = danh_muc_tin_tuc_sellect_all();

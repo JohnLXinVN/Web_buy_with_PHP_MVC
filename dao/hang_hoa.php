@@ -199,9 +199,9 @@ function hang_hoa_select_by_loai_all($loai_hang)
 
 function hang_hoa_select_by_loai($ma_loai)
 {
-    $sql = "SELECT * FROM hang_hoa";
+    $sql = "SELECT * FROM hang_hoa inner join loai_hang on hang_hoa.ma_loai = loai_hang.ma_loai";
     if ($ma_loai > 0) {
-        $sql .= " WHERE 1 and ma_loai = $ma_loai";
+        $sql .= " WHERE  hang_hoa.ma_loai = $ma_loai";
     }
     return qdo_query($sql);
 }

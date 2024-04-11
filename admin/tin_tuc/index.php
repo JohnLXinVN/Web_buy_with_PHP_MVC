@@ -68,7 +68,8 @@ if (exist_param("add_tin_tuc")) {
     $VIEW_NAME = "tin_tuc/tin_tuc.php";
 } elseif (exist_param("btn_delete")) {
     $id_tin_tuc = $_GET['id_tin_tuc'];
-    change_tin_tuc_by_loai($id_tin_tuc);
+
+
     tin_tuc_delete($id_tin_tuc);
 
     $ds_tin_tuc = tin_tuc_select_all();

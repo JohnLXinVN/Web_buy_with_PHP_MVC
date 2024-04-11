@@ -164,7 +164,7 @@ $currentURL = $_SERVER['PHP_SELF'];
                         <li>
                             <!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
                             <a href="/admin/danh_muc_tin_tuc/index.php"
-                                class="<?= strpos($currentURL, '/tin_tuc') !== false ? 'bg-indigo-700 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold' : 'text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'; ?>">
+                                class="<?= strpos($currentURL, '/danh_muc_tin_tuc') !== false ? 'bg-indigo-700 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold' : 'text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'; ?>">
                                 <svg class="svg-icon h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"">
                                     <path

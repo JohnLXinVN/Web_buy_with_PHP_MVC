@@ -102,7 +102,7 @@
                             echo "<i class='fa-solid fa-pencil'></i>";
                             echo "Sửa";
                             echo "</a>";
-                            echo "<a href='?btn_delete&ma_loai=" . $value["ma_loai"] . "' type='button' onclick='return confirmDelete()' class=' ml-2 mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
+                            echo "<a href='?btn_delete&ma_loai=" . $value["ma_loai"] . "' type='button' onclick='return confirmDelete()' class='" . ($value["ma_loai"] == 49 ? 'disabled' : '') . "  ml-2 mb-1 inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>";
                             echo "<i class='fa-solid fa-trash-can'></i>";
                             echo "Xóa";
                             echo "</a>";

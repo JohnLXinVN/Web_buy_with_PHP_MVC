@@ -33,7 +33,7 @@
 							<a href="store.php?ma_loai=<?= $loai['ma_loai'] ?>" class="sub-item">
 								<?= $loai['ten_loai'] ?>
 							</a>
-						<?php
+							<?php
 						}
 						?>
 					</div>
@@ -45,7 +45,7 @@
 			<!-- STORE -->
 			<div id="store" class="col-md-8 ">
 
-				<div class="grid grid-cols-4 gap-x-10 gap-y-[40px]">
+				<div class="grid grid-cols-3	 gap-x-10 gap-y-[40px]">
 
 					<?php
 					// đăng nhập 
@@ -63,7 +63,7 @@
 						$phan_tram = $hang_hoa['giam_gia'] * 100;
 
 						$is_favorite = $check > 0 ? "fa-hearted" : '';
-					?>
+						?>
 						<div class="product col-span-1 ">
 							<p class="tien hidden">
 								<?php echo $thanh_tien ?>
@@ -80,12 +80,12 @@
 								<div class="product-label">
 									<?php if ($hang_hoa['giam_gia'] > 0)
 										echo '<span class="sale">' . $phan_tram . '%</span>'
-									?>
-									<span class="new">NEW</span>
+											?>
+										<span class="new">NEW</span>
+									</div>
 								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category mt-4">
+								<div class="product-body">
+									<p class="product-category mt-4">
 									<?= $hang_hoa['ten_loai'] ?>
 								</p>
 								<h3 class="product-name">
@@ -99,7 +99,8 @@
 									<?= $ds_bt[0]['ten_loai'] ?>
 								</h3>
 								<h4 class="product-price">
-									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
+									<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del
+										class="product-old-price">
 										<?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
 									</del>
 								</h4>
@@ -113,24 +114,26 @@
 								<div class="product-btns">
 									<?php
 									if (isset($userLogin)) { ?>
-										<button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
+										<button class="add-to-wishlist"
+											onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
 											<i class="fa fa-heart"></i>
 											<span class="tooltipp">add to wishlist</span>
 										</button>
-									<?php
+										<?php
 									} else { ?>
 										<p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-									<?php
+										<?php
 									}
 									?>
-									<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+									<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
+										data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
 										<i class="fa fa-eye"></i>
 										<span class="tooltipp">quick view</span>
 									</button>
 									<script>
-										$(document).ready(function() {
+										$(document).ready(function () {
 											// Xử lý sự kiện nhấp vào nút Quickview
-											$('.quick-view').click(function(e) {
+											$('.quick-view').click(function (e) {
 												e.preventDefault();
 												// Lấy thông tin sản phẩm từ thuộc tính data
 												var tenHH = $(this).data('tenhh');
@@ -159,12 +162,15 @@
 								<?php
 								if ($userLogin) {
 
-								?>
-									<button class="add-to-cart-btn" onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i class="fa fa-shopping-cart"></i> add to
+									?>
+									<button class="add-to-cart-btn"
+										onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i
+											class="fa fa-shopping-cart"></i> add to
 										cart</button>
 
 								<?php } else { ?>
-									<a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
+									<a href="/site/tai_khoan/index.php?login"
+										class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
 										Đăng nhập để
 										thêm
 										vào
@@ -184,7 +190,7 @@
 										xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 										// Xử lý sự kiện khi yêu cầu hoàn thành
-										xhr.onload = function() {
+										xhr.onload = function () {
 											if (xhr.status === 200) {
 												// Xử lý kết quả trả về từ yêu cầu IJAX
 												console.log("connect oki")
@@ -244,7 +250,7 @@
 								</div>
 							</div>
 						</div>
-					<?php
+						<?php
 					}
 					?>
 

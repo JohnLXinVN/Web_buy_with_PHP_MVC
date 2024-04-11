@@ -38,7 +38,7 @@ function tin_tuc_delete($id_tin_tuc)
 
 function change_tin_tuc_by_loai($id_loai)
 {
-    $sql = "UPDATE tin_tuc set id_danh_muc = 6 WHERE id_danh_muc = $id_loai";
+    $sql = "UPDATE tin_tuc set id_danh_muc = 6 WHERE id_danh_muc = '$id_loai'";
     pdo_execute($sql);
 }
 
@@ -68,7 +68,8 @@ function get_tin_tuc_select_all($page, $soluongsp)
     return qdo_query($sql);
 }
 
-function hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp) {
+function hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp)
+{
     $tongsp = count($tong_sp);
     $so_trang = ceil($tongsp / $soluongsp);
     $html_so_trang = "";

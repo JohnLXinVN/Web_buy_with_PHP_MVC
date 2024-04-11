@@ -15,7 +15,7 @@ function thong_ke_hang_hoa_by_chi_tiet()
     INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
     INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
     INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
-    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND loai_hang.ma_loai != 49
     GROUP BY loai_hang.ma_loai;
     ";
     return qdo_query($sql);
@@ -30,7 +30,7 @@ function thong_ke_hang_hoa_by_chi_tiet_date_from_to($dateFrom, $dateTo)
     INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
     INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
     INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
-    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND don_hang.ngay_dat BETWEEN '$dateFrom' AND '$dateTo'
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND loai_hang.ma_loai != 49 AND don_hang.ngay_dat BETWEEN '$dateFrom' AND '$dateTo'
     GROUP BY loai_hang.ma_loai;
     ";
     return qdo_query($sql);
@@ -44,7 +44,7 @@ function thong_ke_hang_hoa_by_chi_tiet_date_from($dateFrom)
     INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
     INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
     INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
-    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND don_hang.ngay_dat >= '$dateFrom'
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND loai_hang.ma_loai != 49 AND don_hang.ngay_dat >= '$dateFrom'
     GROUP BY loai_hang.ma_loai;";
     return qdo_query($sql);
 }
@@ -57,7 +57,7 @@ function thong_ke_hang_hoa_by_chi_tiet_date_to($dateTo)
     INNER JOIN variant ON chi_tiet_don_hang.ma_bt = variant.id
     INNER JOIN hang_hoa ON variant.ma_hh = hang_hoa.ma_hh
     INNER JOIN loai_hang ON hang_hoa.ma_loai = loai_hang.ma_loai
-    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND don_hang.ngay_dat <= '$dateTo'
+    WHERE don_hang.ma_trang_thai = 4 AND don_hang.status = 1 AND loai_hang.ma_loai != 49 AND don_hang.ngay_dat <= '$dateTo'
     GROUP BY loai_hang.ma_loai;";
     return qdo_query($sql);
 }

@@ -1,12 +1,10 @@
 <style>
-    .example_text {
+    p {
 
-        white-space: nowrap;
-        /* Ngăn văn bản xuống dòng */
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        /* Ẩn phần văn bản vượt qua khung */
-        text-overflow: ellipsis;
-        /* Hiển thị dấu ba chấm */
 
     }
 
@@ -118,8 +116,8 @@
                                 <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
                                     <?php echo $tin_tuc["mo_ta"]; ?>
                                 </td>
-                                <td class='whitespace-nowrap px-3 py-4 text-sm text-gray-500 w-[250px]'>
-                                    <p class='example_text'>
+                                <td class=' px-3 py-4 text-sm text-gray-500 w-[250px]'>
+                                    <p class='text-gray-500 w-[250px]'>
                                         <?php echo $tin_tuc["noi_dung"]; ?>
                                     </p>
                                 </td>

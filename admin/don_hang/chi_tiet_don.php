@@ -102,8 +102,7 @@
                                     <h2 class="font-semibold text-xl leading-8 text-black mb-3">
                                         <?php echo $sp["ten_hh"] ?>
                                     </h2>
-                                    <p class="font-normal text-lg leading-8 text-gray-500 mb-3 ">
-                                        By: Dust Studios</p>
+
                                     <div class="flex items-center ">
                                         <p
                                             class="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">

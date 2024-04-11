@@ -66,11 +66,14 @@
                 <div class="w-full !h-[400px]">
                     <img class="w-full h-full object-cover" src="/upload/<?php echo $item_hh["hinh"] ?>" alt="">
                 </div>
-                <div class="product-label w-[60px] h-[60px] flex items-center justify-center rounded-full bg-red-500 absolute right-0 top-[-10px]">
+                <div
+                    class="product-label w-[60px] h-[60px] flex items-center justify-center rounded-full bg-red-500 absolute right-0 top-[-10px]">
                     <span class="sale text-white">-
                         <?php echo $item_hh["giam_gia"] * 100 ?>%
                     </span>
                 </div>
+
+
             </div>
 
             <div class="col-md-7">
@@ -97,7 +100,7 @@
                             <select class="input-select-variant">
                                 <?php
                                 foreach ($list_variant as $key => $value) {
-                                ?>
+                                    ?>
                                     <option value="<?php echo $value["id"] ?>">
                                         <?php echo $value["ten_loai"] ?>
                                     </option>
@@ -123,11 +126,12 @@
                         <?php
                         if ($userLogin) {
 
-                        ?>
+                            ?>
                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 
                         <?php } else { ?>
-                            <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2"> Đăng nhập để
+                            <a href="/site/tai_khoan/index.php?login"
+                                class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2"> Đăng nhập để
                                 thêm
                                 vào
                                 giỏ
@@ -139,7 +143,7 @@
                     <ul class="product-links">
                         <li>Category:</li>
                         <li>
-                            <a href="../hang_hoa/store.php?ma_loai=<?=$item_hh['ma_loai']?>">
+                            <a href="../hang_hoa/store.php?ma_loai=<?= $item_hh['ma_loai'] ?>">
                                 <?php echo $item_hh["ten_loai"] ?>
                             </a>
                         </li>
@@ -183,7 +187,7 @@
         <div>
             <h1>Bình luận</h1>
             <?php
-            require("./binh_luan.php");
+            require ("./binh_luan.php");
             ?>
         </div>
     </div>
@@ -196,7 +200,8 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <div class=" grid grid-cols-4 gap-3">
+
+        <div class="grid grid-cols-4 gap-x-10 gap-y-[40px]">
 
             <?php
             // đăng nhập 
@@ -206,17 +211,16 @@
                 $userLogin = unserialize($userCookie);
             }
 
-
             foreach ($item_loai as $hang_hoa) {
+
                 $ds_bt = get_bt_by_ma_hh($hang_hoa["ma_hh"]);
 
                 $thanh_tien = $ds_bt[0]['gia'] - ($ds_bt[0]['gia'] * $hang_hoa['giam_gia']);
                 $phan_tram = $hang_hoa['giam_gia'] * 100;
 
                 $is_favorite = $check > 0 ? "fa-hearted" : '';
-            ?>
-
-                <div class="product col-span-1">
+                ?>
+                <div class="product col-span-1 ">
                     <p class="tien hidden">
                         <?php echo $thanh_tien ?>
                     </p>
@@ -225,23 +229,28 @@
                     </p>
                     <div class="product-img">
                         <div class="w-full h-[200px]">
-                            <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
+                            <a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                <img src="/upload/<?php echo $hang_hoa['hinh'] ?>" class="object-cover" alt="">
+                            </a>
                         </div>
                         <div class="product-label">
                             <?php if ($hang_hoa['giam_gia'] > 0)
-                                echo '<span class="sale">' . $phan_tram . '%</span>' ?>
-                            <span class="new">NEW</span>
+                                echo '<span class="sale">' . $phan_tram . '%</span>'
+                                    ?>
+                                <span class="new">NEW</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">
+                        <div class="product-body">
+                            <p class="product-category mt-4">
                             <?= $hang_hoa['ten_loai'] ?>
                         </p>
-                        <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                        <h3 class="product-name">
+                            <a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
                                 <p>
                                     <?= $hang_hoa['ten_hh'] ?>
                                 </p>
-                            </a></h3>
+                            </a>
+                        </h3>
                         <h3 class="product-name text-yellow-500 text-xl">
                             <?= $ds_bt[0]['ten_loai'] ?>
                         </h3>
@@ -250,72 +259,73 @@
                                 <?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
                             </del>
                         </h4>
-                        <!-- <div class="product-rating">
+                        <div class="product-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                        </div> -->
-                        <form action="../favourite/favourite_product.php?add_favourite" method="POST">
-                            <input type="hidden" name="ma_hh" value="<?= $hang_hoa['ma_hh'] ?>">
-                            <input type="hidden" name="ma_kh" value="12">
-                            <div class="product-btns">
-                                <?php
-                                if (isset($userLogin)) { ?>
-                                    <button class="add-to-wishlist">
-                                        <i class="fa fa-heart <?= $is_favorite ?>"></i>
-                                        <span class="tooltipp">Thêm vào danh sách yêu thích</span>
-                                    </button>
-                                <?php
-                                } else { ?>
-                                    <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-                                <?php
-                                }
-                                ?>
-                                <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
-                                    <i class="fa fa-eye"></i>
-                                    <span class="tooltipp">quick view</span>
+                        </div>
+                        <div class="product-btns">
+                            <?php
+                            if (isset($userLogin)) { ?>
+                                <button class="add-to-wishlist"
+                                    onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="tooltipp">add to wishlist</span>
                                 </button>
-                                <script>
-                                    $(document).ready(function() {
-                                        // Xử lý sự kiện nhấp vào nút Quickview
-                                        $('.quick-view').click(function(e) {
-                                            e.preventDefault();
-                                            // Lấy thông tin sản phẩm từ thuộc tính data
-                                            var tenHH = $(this).data('tenhh');
-                                            var moTa = $(this).data('mota');
-                                            var hinhAnh = $(this).data("anh");
+                                <?php
+                            } else { ?>
+                                <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
+                                <?php
+                            }
+                            ?>
+                            <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
+                                data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+                                <i class="fa fa-eye"></i>
+                                <span class="tooltipp">quick view</span>
+                            </button>
+                            <script>
+                                $(document).ready(function () {
+                                    // Xử lý sự kiện nhấp vào nút Quickview
+                                    $('.quick-view').click(function (e) {
+                                        e.preventDefault();
+                                        // Lấy thông tin sản phẩm từ thuộc tính data
+                                        var tenHH = $(this).data('tenhh');
+                                        var moTa = $(this).data('mota');
+                                        var hinhAnh = $(this).data("anh");
 
-                                            // Gọi hàm showQuickViewModal với thông tin sản phẩm
-                                            showQuickViewModal(tenHH, moTa, hinhAnh);
-                                        });
-
-                                        // Hiển thị modal Quickview với thông tin sản phẩm
-                                        function showQuickViewModal(tenHH, moTa, hinhAnh) {
-                                            // Điền thông tin sản phẩm vào modal Quickview
-                                            $('#quick-view-title').text(tenHH);
-                                            $('#quick-view-description').text(moTa);
-                                            $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
-
-                                            // Hiển thị modal Quickview
-                                            $('#quick-view-modal').modal('show');
-                                        }
+                                        // Gọi hàm showQuickViewModal với thông tin sản phẩm
+                                        showQuickViewModal(tenHH, moTa, hinhAnh);
                                     });
-                                </script>
-                            </div>
-                        </form>
+
+                                    // Hiển thị modal Quickview với thông tin sản phẩm
+                                    function showQuickViewModal(tenHH, moTa, hinhAnh) {
+                                        // Điền thông tin sản phẩm vào modal Quickview
+                                        $('#quick-view-title').text(tenHH);
+                                        $('#quick-view-description').text(moTa);
+                                        $('#quick-view-image').attr('src', "/upload/" + hinhAnh);
+
+                                        // Hiển thị modal Quickview
+                                        $('#quick-view-modal').modal('show');
+                                    }
+                                });
+                            </script>
+                        </div>
                     </div>
                     <div class="add-to-cart">
                         <?php
                         if ($userLogin) {
 
-                        ?>
-                            <button class="add-to-cart-btn" onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i class="fa fa-shopping-cart"></i> add to
+                            ?>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i
+                                    class="fa fa-shopping-cart"></i> add to
                                 cart</button>
 
                         <?php } else { ?>
-                            <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
+                            <a href="/site/tai_khoan/index.php?login"
+                                class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
                                 Đăng nhập để
                                 thêm
                                 vào
@@ -335,7 +345,7 @@
                                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                                 // Xử lý sự kiện khi yêu cầu hoàn thành
-                                xhr.onload = function() {
+                                xhr.onload = function () {
                                     if (xhr.status === 200) {
                                         // Xử lý kết quả trả về từ yêu cầu IJAX
                                         console.log("connect oki")
@@ -368,14 +378,36 @@
                                 }).showToast();
 
                             }
-                            // Xác định phương thức và URL yêu cầu
                         </script>
                     </div>
+
+                    <div id="quick-view-modal" class="modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="quick-view-title"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img id="quick-view-image" src="" alt="Product Image">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="quick-view-description"></p>
+                                            <!-- Thêm các thông tin khác của sản phẩm vào modal -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <?php
+                <?php
             }
             ?>
-
 
 
         </div>
@@ -437,11 +469,32 @@
 
     updatePrice();
 
+
+    inputElement.addEventListener('input', function () {
+        // Kiểm tra nếu giá trị nhập vào vượt quá giá trị tối đa
+        if (parseInt(myInput.value) > parseInt(myInput.max)) {
+            myInput.value = myInput.max; // Đặt giá trị của trường input thành giá trị tối đa
+        }
+    });
+
     function updatePrice() {
         // Thực hiện cập nhật số tiền tương ứng với biến thể đã chọn
         var selectedVariant = list_variant[0];
-        so_luong_view.textContent = list_variant[0].tong_so_luong;
+        if (list_variant[0].tong_so_luong == 0) {
+            so_luong_view.textContent = list_variant[0].tong_so_luong + "(Hết hàng)";
+            addToCartButton.disabled = true
+        } else {
+            so_luong_view.textContent = list_variant[0].tong_so_luong;
+
+        }
         inputElement.max = list_variant[0].tong_so_luong;
+
+        // const soLuongViewElement = document.querySelector('.so_luong_view');
+        // const soLuongView = parseInt(soLuongViewElement.textContent);
+
+        // // Gán giá trị max cho input number
+        // const myInput = document.getElementById('myInput');
+        // myInput.max = soLuongView;
 
         // Cập nhật giá tiền hiển thị
 
@@ -459,12 +512,19 @@
 
 
     // Lắng nghe sự kiện khi người dùng thay đổi biến thể
-    variantSelect.addEventListener('change', function() {
+    variantSelect.addEventListener('change', function () {
         // Lấy thông tin về biến thể đã chọn
         var selectedVariantIndex = variantSelect.selectedIndex;
         var selectedVariant = list_variant[selectedVariantIndex];
         // Cập nhật giá tiền hiển thị
-        so_luong_view.textContent = list_variant[selectedVariantIndex].tong_so_luong;
+        if (list_variant[selectedVariantIndex].tong_so_luong == 0) {
+            so_luong_view.textContent = list_variant[selectedVariantIndex].tong_so_luong + "(Hết hàng)";
+            addToCartButton.disabled = true
+
+        } else {
+            so_luong_view.textContent = list_variant[selectedVariantIndex].tong_so_luong;
+
+        }
         inputElement.max = list_variant[selectedVariantIndex].tong_so_luong;
 
         // Kiểm tra và cập nhật giá tiền đã trừ giảm giá (nếu có)
@@ -486,7 +546,7 @@
     });
 
     // Xử lý sự kiện khi người dùng nhấp vào nút "Thêm vào giỏ hàng"
-    addToCartButton.addEventListener('click', function() {
+    addToCartButton.addEventListener('click', function () {
         const variantPriceFirst = !item_hh.giam_gia ? parseFloat(list_variant[0].gia).toFixed(2) : (parseFloat(list_variant[0].gia) - parseFloat(list_variant[0].gia) * parseFloat(item_hh.giam_gia)).toFixed(2)
         const selectedVariantId = this.getAttribute('data-variant-id') ? this.getAttribute('data-variant-id') : list_variant[0].id;
         const selectedVariantPrice = this.getAttribute('data-variant-price') ? this.getAttribute('data-variant-price') : variantPriceFirst;
@@ -503,7 +563,7 @@
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         // Xử lý sự kiện khi yêu cầu hoàn thành
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (xhr.status === 200) {
                 // Xử lý kết quả trả về từ yêu cầu IJAX
                 console.log("connect oki")

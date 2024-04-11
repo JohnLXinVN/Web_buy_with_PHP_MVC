@@ -1064,9 +1064,9 @@ textarea.input {
 
 .product .add-to-cart {
   position: absolute;
-  left: 50%; /* Đưa nút về giữa theo chiều ngang */
+  /* Đưa nút về giữa theo chiều ngang */
   bottom: 20px; /* Đưa nút cách bên dưới một khoảng 20px */
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   padding: 15px;
   background: #1e1f29;
   text-align: center;
@@ -1076,6 +1076,7 @@ textarea.input {
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
   z-index: 2;
+  width: 100%;
 }
 
 .product:hover .add-to-cart {

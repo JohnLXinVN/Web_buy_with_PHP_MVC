@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 require_once ("pdo.php");
-
-=======
-require_once("pdo.php");
 function get_tin_tuc_select_all($page, $soluongsp)
 {
     $start = ($page - 1) * $soluongsp;
@@ -17,7 +13,6 @@ function get_tin_tuc_select_all($page, $soluongsp)
     $sql .= " LIMIT " . $start . "," . $soluongsp;
     return qdo_query($sql);
 }
->>>>>>> origin/duong
 
 function tin_tuc_select_all()
 {
@@ -77,13 +72,7 @@ function tin_tuc_load_danh_muc($id_danh_muc = 0)
 }
 
 
-function get_tin_tuc_select_all($page, $soluongsp)
-{
-    $start = ($page - 1) * $soluongsp;
-    $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
-    $sql .= " LIMIT " . $start . "," . $soluongsp;
-    return qdo_query($sql);
-}
+
 
 function hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp)
 {

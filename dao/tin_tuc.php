@@ -60,6 +60,23 @@ function tin_tuc_load_danh_muc($id_danh_muc = 0)
 }
 
 
+function get_tin_tuc_select_all($page, $soluongsp)
+{
+    $start = ($page - 1) * $soluongsp;
+    $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
+    $sql .= " LIMIT " . $start . "," . $soluongsp;
+    return qdo_query($sql);
+}
+
+function hien_thi_so_trang_ds_tin_tuc($tong_sp, $soluongsp) {
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="index.php?tin_tuc&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
+}
 //  Danh Mục Tin Tức
 
 function get_danh_muc_tin_tuc_sellect_all($page, $soluongsp)

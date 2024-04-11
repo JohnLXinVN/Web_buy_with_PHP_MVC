@@ -64,18 +64,10 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <div class="product-btns">
-                                        <?php
-                                        if (isset($userLogin)) { ?>
-                                            <button class="add-to-wishlist" onclick="window.location.href = '../favourite/favourite_product.php?remove_favourite&id=<?=$hang_hoa['id']?>'">
-                                                <i class="fa fa-heart"></i>
-                                                <span class="tooltipp">Remove</span>
-                                            </button>
-                                        <?php
-                                        } else { ?>
-                                            <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-                                        <?php
-                                        }
-                                        ?>
+                                        <button class="add-to-wishlist" onclick="window.location.href = '../favourite/favourite_product.php?remove_favourite&id=<?= $hang_hoa['id'] ?>'">
+                                            <i class="fa fa-heart"></i>
+                                            <span class="tooltipp">Remove</span>
+                                        </button>
                                         <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
                                             <i class="fa fa-eye"></i>
                                             <span class="tooltipp">quick view</span>
@@ -211,3 +203,4 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

@@ -3,7 +3,7 @@
     <!-- container -->
     <div class="container">
         <div class="form-wrapper">
-            <form action="../tin_tuc/list_tin_tuc.php" method="POST" id="form_danh_muc" class="form">
+            <form action="../tin_tuc/list_tin_tuc.php?list_tin_tuc" method="POST" id="form_danh_muc" class="form">
                 <div class="form-container">
                     <label for="danh_muc" class="form-label">Tên Danh Mục:</label>
                     <div class="form-group">

@@ -7,7 +7,7 @@ extract($_REQUEST);
 if (exist_param("list_tin_tuc")) {
     $ds_dm = danh_muc_tin_tuc_sellect_all();
     $listt = tin_tuc_select_all();
-} else if (exist_param("id_danh_muc")) {
+} else if (exist_param("danh_muc")) {
     $ds_dm = danh_muc_tin_tuc_sellect_all();
     $id_danh_muc = $_POST['danh_muc'];
     $listt = tin_tuc_select_all();

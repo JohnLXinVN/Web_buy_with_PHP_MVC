@@ -37,7 +37,7 @@ if (exist_param("yeu_thich")) {
 
     remove_hang_hoa_yt($id);
 
-    
+
 
     if ($userLogin !== null && isset($userLogin['ma_kh'])) {
         $ma_kh = $userLogin['ma_kh'];
@@ -67,11 +67,3 @@ if (exist_param("yeu_thich")) {
 }
 
 require("../layout.php");
-
-
-
-
-
-
-
-

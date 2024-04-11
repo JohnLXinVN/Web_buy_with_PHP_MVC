@@ -1,6 +1,23 @@
 <?php
+<<<<<<< HEAD
 require_once ("pdo.php");
 
+=======
+require_once("pdo.php");
+function get_tin_tuc_select_all($page, $soluongsp)
+{
+    $start = ($page - 1) * $soluongsp;
+    $sql = "SELECT tt.*, dm.ten_danh_muc FROM tin_tuc AS tt INNER JOIN danh_muc_tin_tuc AS dm ON dm.id= tt.id_danh_muc";
+    if (isset($_POST['danh_muc']) && $_POST['danh_muc'] != "all") {
+        $danh_muc = $_POST['danh_muc'];
+        $start = ($page - 1) * $soluongsp;
+        $sql .= " WHERE tt.id_danh_muc = $danh_muc";
+        $sql .= " LIMIT " . $start . "," . $soluongsp;
+    }
+    $sql .= " LIMIT " . $start . "," . $soluongsp;
+    return qdo_query($sql);
+}
+>>>>>>> origin/duong
 
 function tin_tuc_select_all()
 {

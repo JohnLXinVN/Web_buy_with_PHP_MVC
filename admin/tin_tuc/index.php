@@ -16,7 +16,7 @@ if (exist_param("add_tin_tuc")) {
     } else {
         $page = $_GET['page'];
     }
-    $soluongsp = 5;
+    $soluongsp = 4;
 
     $ds_tin_tuc = get_tin_tuc_select_all($page, $soluongsp);
     $tong_sp = tin_tuc_select_all();

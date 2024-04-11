@@ -37,6 +37,27 @@ function hien_thi_so_trang_ds_sp($tong_sp, $soluongsp)
     return $html_so_trang;
 }
 
+function hien_thi_so_trang_ds_sp_main($tong_sp, $soluongsp)
+{
+    $tongsp = count($tong_sp);
+    $so_trang = ceil($tongsp / $soluongsp);
+    $html_so_trang = "";
+    for ($i = 1; $i <= $so_trang; $i++) {
+        $html_so_trang .= '<li><a href="store.php?san_pham&page=' . $i . '">' . $i . '</a></li>';
+    }
+    return $html_so_trang;
+}
+
+// function load_page_ds_hang_hoa()
+// {
+//     $start = ($page - 1) * $soluongsp;
+
+//     $sql = "SELECT * FROM hang_hoa where 1";
+//     $sql .= " ORDER BY ma_hh DESC";
+//     $sql .= " LIMIT " . $start . "," . $soluongsp;
+//     return qdo_query($sql);
+// }
+
 function hang_hoa_select_all_by_key($key_word)
 {
     $sql = "SELECT hh.* , lh.* FROM hang_hoa as hh 
@@ -86,33 +107,33 @@ function loadall_hang_hoa_store_all()
 }
 
 
-function loadall_hang_hoa_han($page, $soluongsp)
-{
+// function loadall_hang_hoa_han($page, $soluongsp)
+// {
 
-    // if(($page="") || ($page=0)){
-    //     $page=1;
-    // }
-    $start = ($page - 1) * $soluongsp;
+//     // if(($page="") || ($page=0)){
+//     //     $page=1;
+//     // }
+//     $start = ($page - 1) * $soluongsp;
 
-    $sql = "SELECT * FROM hang_hoa WHERE";
-    $sql .= " ma_loai=46";
-    $sql .= " LIMIT " . $start . "," . $soluongsp;
-    return qdo_query($sql);
-}
+//     $sql = "SELECT * FROM hang_hoa WHERE";
+//     $sql .= " ma_loai=46";
+//     $sql .= " LIMIT " . $start . "," . $soluongsp;
+//     return qdo_query($sql);
+// }
 
-function loadall_hang_hoa_nhat($page, $soluongsp)
-{
+// function loadall_hang_hoa_nhat($page, $soluongsp)
+// {
 
-    // if(($page="") || ($page=0)){
-    //     $page=1;
-    // }
-    $start = ($page - 1) * $soluongsp;
+//     // if(($page="") || ($page=0)){
+//     //     $page=1;
+//     // }
+//     $start = ($page - 1) * $soluongsp;
 
-    $sql = "SELECT * FROM hang_hoa WHERE";
-    $sql .= " ma_loai=55";
-    $sql .= " LIMIT " . $start . "," . $soluongsp;
-    return qdo_query($sql);
-}
+//     $sql = "SELECT * FROM hang_hoa WHERE";
+//     $sql .= " ma_loai=55";
+//     $sql .= " LIMIT " . $start . "," . $soluongsp;
+//     return qdo_query($sql);
+// }
 
 // function get_dssp_han()
 // {
@@ -205,6 +226,35 @@ function hang_hoa_select_by_loai($ma_loai)
     }
     return qdo_query($sql);
 }
+
+// function hang_hoa_select_by_ma_loai_all()
+// {
+//     $sql = "SELECT ma_hh FROM hang_hoa where ma_loai = 48";
+//     return qdo_query($sql);
+// }
+
+// function get_hang_hoa_select_by_loai($ma_loai,$page, $soluongsp)
+// {
+//     $start = ($page - 1) * $soluongsp;
+//     $sql = "SELECT * FROM hang_hoa";
+//     if ($ma_loai > 0) {
+//         $sql .= " WHERE 1 and ma_loai = $ma_loai";
+//         $sql .= " LIMIT " . $start . "," . $soluongsp;
+//     }
+//     return qdo_query($sql);
+// }
+
+// function hien_thi_so_trang_ma_loai($tong_sp, $soluongsp)
+// {
+//     $ma_loai=exist_param("ma_loai");
+//     $tongsp = count($tong_sp);
+//     $so_trang = ceil($tongsp / $soluongsp);
+//     $html_so_trang = "";
+//     for ($i = 1; $i <= $so_trang; $i++) {
+//         $html_so_trang .= '<li><a href="store.php?ma_loai=' .$ma_loai.' &page=' . $i . '">' . $i . '</a></li>';
+//     }
+//     return $html_so_trang;
+// }
 
 function hang_hoa_select_keyword($key_word)
 {

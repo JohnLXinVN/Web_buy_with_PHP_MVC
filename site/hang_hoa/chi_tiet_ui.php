@@ -408,12 +408,35 @@
                 <?php
             }
             ?>
-
-
+            <<<<<<< HEAD=======<div id="quick-view-modal" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quick-view-title"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img id="quick-view-image" src="" alt="Product Image">
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="quick-view-description"></p>
+                                    <!-- Thêm các thông tin khác của sản phẩm vào modal -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
-        <!-- /row -->
+        >>>>>>> origin/bao
+
     </div>
-    <!-- /container -->
+    <!-- /row -->
+</div>
+<!-- /container -->
 </div>
 <!-- /Section -->
 

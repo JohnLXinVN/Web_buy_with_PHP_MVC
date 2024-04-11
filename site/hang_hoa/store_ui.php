@@ -1,9 +1,10 @@
 <style>
-	.product-name p {
+	.clamp-2 {
 		display: -webkit-box;
-		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
 		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.product {
@@ -33,7 +34,7 @@
 							<a href="store.php?ma_loai=<?= $loai['ma_loai'] ?>" class="sub-item">
 								<?= $loai['ten_loai'] ?>
 							</a>
-							<?php
+						<?php
 						}
 						?>
 					</div>
@@ -68,7 +69,7 @@
 							$phan_tram = $hang_hoa['giam_gia'] * 100;
 
 							$is_favorite = $check > 0 ? "fa-hearted" : '';
-							?>
+						?>
 
 							<div class="product col-span-1">
 								<p class="tien hidden">
@@ -82,11 +83,11 @@
 									<div class="product-label">
 										<?php if ($hang_hoa['giam_gia'] > 0)
 											echo '<span class="sale">' . $phan_tram . '%</span>' ?>
-											<span class="new">NEW</span>
-										</div>
+										<span class="new">NEW</span>
 									</div>
-									<div class="product-body">
-										<p class="product-category">
+								</div>
+								<div class="product-body">
+									<p class="product-category">
 										<?= $hang_hoa['ten_loai'] ?>
 									</p>
 									<h3 class="product-name clamp-2">
@@ -98,8 +99,7 @@
 										<?= $ds_bt[0]['ten_loai'] ?>
 									</h3>
 									<h4 class="product-price">
-										<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del
-											class="product-old-price">
+										<?= number_format(round(floatval($thanh_tien), 2), 2) ?>VND<del class="product-old-price">
 											<?= number_format(round(floatval($ds_bt[0]['gia']), 2), 2) ?>VND
 										</del>
 									</h4>
@@ -113,26 +113,24 @@
 									<div class="product-btns">
 										<?php
 										if (isset($userLogin)) { ?>
-											<button class="add-to-wishlist"
-												onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
+											<button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
 												<i class="fa fa-heart"></i>
 												<span class="tooltipp">add to wishlist</span>
 											</button>
-											<?php
+										<?php
 										} else { ?>
 											<p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-											<?php
+										<?php
 										}
 										?>
-										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
-											data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+										<button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
 											<i class="fa fa-eye"></i>
 											<span class="tooltipp">quick view</span>
 										</button>
 										<script>
-											$(document).ready(function () {
+											$(document).ready(function() {
 												// Xử lý sự kiện nhấp vào nút Quickview
-												$('.quick-view').click(function (e) {
+												$('.quick-view').click(function(e) {
 													e.preventDefault();
 													// Lấy thông tin sản phẩm từ thuộc tính data
 													var tenHH = $(this).data('tenhh');
@@ -164,15 +162,12 @@
 									<?php
 									if ($userLogin) {
 
-										?>
-										<button class="add-to-cart-btn"
-											onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i
-												class="fa fa-shopping-cart"></i> Add to
+									?>
+										<button class="add-to-cart-btn" onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i class="fa fa-shopping-cart"></i> Add to
 											cart</button>
 
 									<?php } else { ?>
-										<a href="/site/tai_khoan/index.php?login"
-											class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2 h-fit">
+										<a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
 											Đăng nhập để
 											thêm
 											vào
@@ -192,7 +187,7 @@
 											xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 											// Xử lý sự kiện khi yêu cầu hoàn thành
-											xhr.onload = function () {
+											xhr.onload = function() {
 												if (xhr.status === 200) {
 													// Xử lý kết quả trả về từ yêu cầu IJAX
 													console.log("connect oki")
@@ -225,13 +220,36 @@
 											}).showToast();
 
 										}
-																									// Xác định phương thức và URL yêu cầu
+										// Xác định phương thức và URL yêu cầu
 									</script>
 								</div>
 							</div>
-							<?php
+						<?php
 						}
 						?>
+						<div id="quick-view-modal" class="modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="quick-view-title"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img id="quick-view-image" src="" alt="Product Image">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="quick-view-description"></p>
+                                            <!-- Thêm các thông tin khác của sản phẩm vào modal -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 					</div>
 				</div>

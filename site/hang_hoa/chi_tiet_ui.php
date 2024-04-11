@@ -66,8 +66,7 @@
                 <div class="w-full !h-[400px]">
                     <img class="w-full h-full object-cover" src="/upload/<?php echo $item_hh["hinh"] ?>" alt="">
                 </div>
-                <div
-                    class="product-label w-[60px] h-[60px] flex items-center justify-center rounded-full bg-red-500 absolute right-0 top-[-10px]">
+                <div class="product-label w-[60px] h-[60px] flex items-center justify-center rounded-full bg-red-500 absolute right-0 top-[-10px]">
                     <span class="sale text-white">-
                         <?php echo $item_hh["giam_gia"] * 100 ?>%
                     </span>
@@ -100,7 +99,7 @@
                             <select class="input-select-variant">
                                 <?php
                                 foreach ($list_variant as $key => $value) {
-                                    ?>
+                                ?>
                                     <option value="<?php echo $value["id"] ?>">
                                         <?php echo $value["ten_loai"] ?>
                                     </option>
@@ -126,12 +125,11 @@
                         <?php
                         if ($userLogin) {
 
-                            ?>
+                        ?>
                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 
                         <?php } else { ?>
-                            <a href="/site/tai_khoan/index.php?login"
-                                class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2"> Đăng nhập để
+                            <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2"> Đăng nhập để
                                 thêm
                                 vào
                                 giỏ
@@ -187,7 +185,7 @@
         <div>
             <h1>Bình luận</h1>
             <?php
-            require ("./binh_luan.php");
+            require("./binh_luan.php");
             ?>
         </div>
     </div>
@@ -219,7 +217,7 @@
                 $phan_tram = $hang_hoa['giam_gia'] * 100;
 
                 $is_favorite = $check > 0 ? "fa-hearted" : '';
-                ?>
+            ?>
                 <div class="product col-span-1 ">
                     <p class="tien hidden">
                         <?php echo $thanh_tien ?>
@@ -236,12 +234,12 @@
                         <div class="product-label">
                             <?php if ($hang_hoa['giam_gia'] > 0)
                                 echo '<span class="sale">' . $phan_tram . '%</span>'
-                                    ?>
-                                <span class="new">NEW</span>
-                            </div>
+                            ?>
+                            <span class="new">NEW</span>
                         </div>
-                        <div class="product-body">
-                            <p class="product-category mt-4">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-category mt-4">
                             <?= $hang_hoa['ten_loai'] ?>
                         </p>
                         <h3 class="product-name">
@@ -269,26 +267,24 @@
                         <div class="product-btns">
                             <?php
                             if (isset($userLogin)) { ?>
-                                <button class="add-to-wishlist"
-                                    onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
+                                <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
                                     <i class="fa fa-heart"></i>
                                     <span class="tooltipp">add to wishlist</span>
                                 </button>
-                                <?php
+                            <?php
                             } else { ?>
                                 <p>Đăng Nhập Để Thêm Sản Phẩm Vào yêu Thích</p>
-                                <?php
+                            <?php
                             }
                             ?>
-                            <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>"
-                                data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
+                            <button class="quick-view" data-tenhh="<?= $hang_hoa['ten_hh'] ?>" data-mota="<?= $hang_hoa['mo_ta'] ?>" data-anh="<?= $hang_hoa['hinh'] ?>">
                                 <i class="fa fa-eye"></i>
                                 <span class="tooltipp">quick view</span>
                             </button>
                             <script>
-                                $(document).ready(function () {
+                                $(document).ready(function() {
                                     // Xử lý sự kiện nhấp vào nút Quickview
-                                    $('.quick-view').click(function (e) {
+                                    $('.quick-view').click(function(e) {
                                         e.preventDefault();
                                         // Lấy thông tin sản phẩm từ thuộc tính data
                                         var tenHH = $(this).data('tenhh');
@@ -317,15 +313,12 @@
                         <?php
                         if ($userLogin) {
 
-                            ?>
-                            <button class="add-to-cart-btn"
-                                onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i
-                                    class="fa fa-shopping-cart"></i> add to
+                        ?>
+                            <button class="add-to-cart-btn" onclick="addToCart(<?php echo $thanh_tien ?>, <?php echo $ds_bt[0]['id'] ?>)"><i class="fa fa-shopping-cart"></i> add to
                                 cart</button>
 
                         <?php } else { ?>
-                            <a href="/site/tai_khoan/index.php?login"
-                                class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
+                            <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
                                 Đăng nhập để
                                 thêm
                                 vào
@@ -345,7 +338,7 @@
                                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                                 // Xử lý sự kiện khi yêu cầu hoàn thành
-                                xhr.onload = function () {
+                                xhr.onload = function() {
                                     if (xhr.status === 200) {
                                         // Xử lý kết quả trả về từ yêu cầu IJAX
                                         console.log("connect oki")
@@ -380,35 +373,11 @@
                             }
                         </script>
                     </div>
-
-                    <div id="quick-view-modal" class="modal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="quick-view-title"></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img id="quick-view-image" src="" alt="Product Image">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p id="quick-view-description"></p>
-                                            <!-- Thêm các thông tin khác của sản phẩm vào modal -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <?php
+            <?php
             }
             ?>
-            <<<<<<< HEAD=======<div id="quick-view-modal" class="modal">
+            <div id="quick-view-modal" class="modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -430,13 +399,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-        >>>>>>> origin/bao
-
+        <!-- /row -->
     </div>
-    <!-- /row -->
-</div>
-<!-- /container -->
+    <!-- /container -->
 </div>
 <!-- /Section -->
 
@@ -493,7 +460,7 @@
     updatePrice();
 
 
-    inputElement.addEventListener('input', function () {
+    inputElement.addEventListener('input', function() {
         // Kiểm tra nếu giá trị nhập vào vượt quá giá trị tối đa
         if (parseInt(myInput.value) > parseInt(myInput.max)) {
             myInput.value = myInput.max; // Đặt giá trị của trường input thành giá trị tối đa
@@ -535,7 +502,7 @@
 
 
     // Lắng nghe sự kiện khi người dùng thay đổi biến thể
-    variantSelect.addEventListener('change', function () {
+    variantSelect.addEventListener('change', function() {
         // Lấy thông tin về biến thể đã chọn
         var selectedVariantIndex = variantSelect.selectedIndex;
         var selectedVariant = list_variant[selectedVariantIndex];
@@ -569,7 +536,7 @@
     });
 
     // Xử lý sự kiện khi người dùng nhấp vào nút "Thêm vào giỏ hàng"
-    addToCartButton.addEventListener('click', function () {
+    addToCartButton.addEventListener('click', function() {
         const variantPriceFirst = !item_hh.giam_gia ? parseFloat(list_variant[0].gia).toFixed(2) : (parseFloat(list_variant[0].gia) - parseFloat(list_variant[0].gia) * parseFloat(item_hh.giam_gia)).toFixed(2)
         const selectedVariantId = this.getAttribute('data-variant-id') ? this.getAttribute('data-variant-id') : list_variant[0].id;
         const selectedVariantPrice = this.getAttribute('data-variant-price') ? this.getAttribute('data-variant-price') : variantPriceFirst;
@@ -586,7 +553,7 @@
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         // Xử lý sự kiện khi yêu cầu hoàn thành
-        xhr.onload = function () {
+        xhr.onload = function() {
             if (xhr.status === 200) {
                 // Xử lý kết quả trả về từ yêu cầu IJAX
                 console.log("connect oki")

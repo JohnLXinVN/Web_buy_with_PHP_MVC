@@ -2408,14 +2408,18 @@ textarea.input {
 .about-us {
   text-align: center;
   margin-bottom: 50px;
+  background: rgb(108, 144, 56);
+  padding: 50px;
 }
 
 .about-us .tieu-de {
   font-size: 50px;
+  color: white;
 }
 
 .about-us .tieu-de2 {
   margin-bottom: 20px;
+  color: white;
 }
 
 .about-us2 {
@@ -2428,16 +2432,19 @@ textarea.input {
 }
 
 .about-us3 {
+  background: rgb(35, 11, 122);
   text-align: center;
   margin-bottom: 50px;
 }
 
 .about-us3 .tieu-de {
   font-size: 40px;
+  color: white;
 }
 
 .about-us3 .tieu-de2 {
   margin-bottom: 20px;
+  color: white;
 }
 
 .about-us4 {

@@ -154,7 +154,7 @@ if (isset($_COOKIE['user'])) {
                     <li><a href="../hang_hoa/store.php?san_pham">Sản phẩm</a></li>
                     <li><a href="../trang_chu/index.php?lien_he">Liên hệ</a></li>
                     <li><a href="../tin_tuc/list_tin_tuc.php?list_tin_tuc">Tin tức</a></li>
-                    <li><a href="">Giới thiệu</a></li>
+                    <li><a href="../trang_chu/index.php?gioi_thieu">Giới thiệu</a></li>
 
                 </ul>
                 <!-- /NAV -->

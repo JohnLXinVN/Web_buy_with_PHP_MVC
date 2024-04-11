@@ -20,7 +20,7 @@
 			<div class="side-bar col-md-3">
 				<div class="menu">
 					<div class="item">
-						<a href="store.php?my_pham">Tất Cả Sản Phẩm</a>
+						<a href="store.php?san_pham">Tất Cả Sản Phẩm</a>
 						<?php
 						foreach ($ds_loai_hang as $loai) { ?>
 							<a href="store.php?ma_loai=<?= $loai['ma_loai'] ?>" class="sub-item">
@@ -258,7 +258,11 @@
 					<span class="store-qty">Showing 20-100 products</span>
 					<ul class="store-pagination">
 						<?php
-						// echo $hien_thi_so_trang;
+						// if(exist_param("ma_loai") >= 40 ){
+						// 	echo '<input type="hidden">';
+						// }else{
+						// 	echo $hien_thi_so_trang;
+						// }
 						?>
 					</ul>
 				</div>

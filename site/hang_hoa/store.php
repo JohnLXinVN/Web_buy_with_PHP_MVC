@@ -9,7 +9,7 @@ require ("../../global.php");
 $ds_loai_hang = loai_selectall();
 $ds_hang_hoa_top_10 = hang_hoa_select_top10();
 $hang_hoa_new = loadall_hang_hoa_store_all();
-// $hien_thi_so_trang = hien_thi_so_trang($tong_sp,$soluongsp);
+// $hien_thi_so_trang = hien_thi_so_trang_ds_sp_main($tong_sp, $soluongsp);
 $userLogin = null;
 if (isset($_COOKIE['user'])) {
     $userCookie = $_COOKIE['user'];
@@ -30,14 +30,13 @@ if (exist_param("san_pham")) {
         $page = $_GET['page'];
     }
     $soluongsp = 9;
-    // Dùng Tạm - Đợi Dương Fix Phân Trang
-    $hang_hoa_new = hang_hoa_select_all();
-    // $hang_hoa_new = loadall_hang_hoa_store($page, $soluongsp);
 
-    $tong_sp = get_dssp();
-    $hien_thi_so_trang = hien_thi_so_trang($tong_sp, $soluongsp);
-    // $hien_thi_left = hien_thi_left($page);
-    // $hien_thi_right = hien_thi_right($tong_sp,$soluongsp);
+    $ds_hang_hoa = get_dssp_all($page, $soluongsp);
+    $tong_sp= hang_hoa_select_all();
+    $hien_thi_so_trang = hien_thi_so_trang_ds_sp_main($tong_sp, $soluongsp);
+
+    // $tong_sp = get_dssp();
+    // $hien_thi_so_trang = hien_thi_so_trang($tong_sp, $soluongsp);
     $VIEW_NAME = "hang_hoa/store_ui.php";
 
 } else if (exist_param("ma_loai")) {
@@ -50,6 +49,17 @@ if (exist_param("san_pham")) {
     $check = kiem_tra_hh_yt($ma_kh);
 
     $ma_loai = $_GET['ma_loai'];
+
+    // if (!isset($_GET['page'])) {
+    //     $page = 1;
+    // } else {
+    //     $page = $_GET['page'];
+    // }
+
+    // $soluongsp = 4;
+    // $ds_hang_hoa = get_hang_hoa_select_by_loai($ma_loai,$page, $soluongsp);
+    // $tong_sp = hang_hoa_select_by_ma_loai_all();
+    // $hien_thi_so_trang_ma_loai = hien_thi_so_trang_ma_loai($tong_sp, $soluongsp);
 
     $hang_hoa_new = hang_hoa_select_by_loai($ma_loai);
     $VIEW_NAME = "hang_hoa/store_ui.php";

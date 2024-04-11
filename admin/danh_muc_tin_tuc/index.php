@@ -15,7 +15,7 @@ if (exist_param("add_danh_muc")) {
     } else {
         $page = $_GET['page'];
     }
-    $soluongsp = 5;
+    $soluongsp = 4;
 
     $ds_dm = get_danh_muc_tin_tuc_sellect_all($page, $soluongsp);
     $tong_sp=danh_muc_tin_tuc_sellect_all();

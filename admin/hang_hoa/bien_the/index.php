@@ -11,7 +11,6 @@ if (exist_param("add_bien_the")) {
 
     $ds_loai_bt = bien_the_selectall($ma_hh);
     $VIEW_NAME = "hang_hoa/bien_the/add_loai_bt.php";
-
 } else if (exist_param("list_loai_bt")) {
     $ma_hh = $_GET["ma_hh"];
     $hang_hoa = hang_hoa_select_by_id($ma_hh);
@@ -27,24 +26,15 @@ if (exist_param("add_bien_the")) {
     $gia = $_POST["don_gia"];
     $tong_so_luong = $_POST["tong_so_luong"];
     if ($ten_loai) {
-
-
-
         them_bien_the($ten_loai, $gia, $ma_hh, $tong_so_luong);
         $ds_loai_bt = bien_the_selectall($ma_hh);
         $ma_hh = $_GET["ma_hh"];
         $hang_hoa = hang_hoa_select_by_id($ma_hh);
         $VIEW_NAME = "hang_hoa/bien_the/loai_bt.php";
-
-
     }
-
-
-
 } elseif (exist_param("edit_loai_bt")) {
     $edit_id = $_GET["ma_bien_the"];
     $data_edit = get_one_item($edit_id);
-
 
     $VIEW_NAME = "hang_hoa/bien_the/edit_loai_bt.php";
 } elseif (exist_param("btn_edit_loai_bt")) {
@@ -65,8 +55,7 @@ if (exist_param("add_bien_the")) {
         $hang_hoa = hang_hoa_select_by_id($ma_hh);
         $VIEW_NAME = "hang_hoa/bien_the/loai_bt.php";
 
-    }
-    ;
+    };
     $ma_hh = $_GET["ma_hh"];
 
     $ds_loai_bt = bien_the_selectall($ma_hh);

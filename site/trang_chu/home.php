@@ -1,3 +1,12 @@
+<style>
+    .clamp-2 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
 <div class="section">
     <!-- container -->
     <div class="container">
@@ -111,9 +120,11 @@
                                             <p class="product-category">
                                                 <?= $hang_hoa['ten_loai'] ?>
                                             </p>
-                                            <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                            <h3 class="product-name clamp-2">
+                                                <a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
                                                     <?= $hang_hoa['ten_hh'] ?>
-                                                </a></h3>
+                                                </a>
+                                            </h3>
                                             <h3 class="product-name text-yellow-500 text-xl">
                                                 <?= $ds_bt[0]['ten_loai'] ?>
                                             </h3>
@@ -132,7 +143,7 @@
                                             <div class="product-btns">
                                                 <?php
                                                 if (isset($userLogin)) { ?>
-                                                    <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?=$hang_hoa['ma_hh']?>'">
+                                                    <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
                                                         <i class="fa fa-heart"></i>
                                                         <span class="tooltipp">add to wishlist</span>
                                                     </button>
@@ -186,7 +197,7 @@
                                                     cart</button>
 
                                             <?php } else { ?>
-                                                <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2">
+                                                <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-2 h-fit">
                                                     Đăng nhập để
                                                     thêm
                                                     vào
@@ -374,7 +385,8 @@
                                             <p class="product-category">
                                                 <?= $hang_hoa['ten_loai'] ?>
                                             </p>
-                                            <h3 class="product-name"><a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
+                                            <h3 class="product-name clamp-2">
+                                                <a href="/site/hang_hoa/chi_tiet.php?ma_hh=<?php echo $hang_hoa["ma_hh"] ?>">
                                                     <?= $hang_hoa['ten_hh'] ?>
                                                 </a></h3>
                                             <h3 class="product-name text-yellow-500 text-xl">
@@ -395,7 +407,7 @@
                                             <div class="product-btns">
                                                 <?php
                                                 if (isset($userLogin)) { ?>
-                                                    <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?=$hang_hoa['ma_hh']?>'">
+                                                    <button class="add-to-wishlist" onclick="window.location.href='../favourite/favourite_product.php?add_favourite&ma_hh=<?= $hang_hoa['ma_hh'] ?>'">
                                                         <i class="fa fa-heart"></i>
                                                         <span class="tooltipp">add to wishlist</span>
                                                     </button>
@@ -446,7 +458,7 @@
                                                     cart</button>
 
                                             <?php } else { ?>
-                                                <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-3">
+                                                <a href="/site/tai_khoan/index.php?login" class="block border-2 border-red-500 pointer rounded-3xl py-2 px-4 w-fit mt-6">
                                                     Đăng nhập để
                                                     thêm
                                                     vào

@@ -39,14 +39,8 @@ if ($vi_tri !== false) {
             <?php else: ?>
                 <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-300">
-
-
                         <thead class="bg-gray-50">
-
-
                             <tr>
-
-
                                 <th scope="col"
                                     class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                     Mã loại</th>

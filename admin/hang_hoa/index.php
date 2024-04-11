@@ -92,8 +92,6 @@ if (exist_param("add_loai_hang")) {
     $VIEW_NAME = "hang_hoa/hang_hoa.php";
 } else {
     $ds_loai_hang = loai_selectall();
-    // $ds_loai_hang_parent = loai_select_parent();
-    // $ds_loai_hang_child = loai_select_child();
     $VIEW_NAME = "hang_hoa/add_hang_hoa.php";
 
 }
